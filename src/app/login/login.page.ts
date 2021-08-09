@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { RegistroService } from '../services/registro.service';
@@ -18,8 +19,9 @@ export class LoginPage implements OnInit {
   constructor(    
     public fb: FormBuilder,
     public menuCtrl: MenuController,
+    public router: Router,
     private authService: AuthService,
-    private registroService: RegistroService,
+    private registroService: RegistroService,    
     ) { }
 
   ngOnInit() {
@@ -55,17 +57,17 @@ export class LoginPage implements OnInit {
 
     })
 
-    document.getElementById('id01').style.display='block';
+    document.getElementById('id02').style.display='block';
   
   }
 
   registrar(){
-    this.authService.crearUsuario(this.registroForm.value.correoPrincipal,this.registroForm.value.contra);
     this.registroService.createInfoBasica(this.registroForm.value).then(resp=>{
-
+      this.authService.crearUsuario(this.registroForm.value.correoPrincipal,this.registroForm.value.contra);
     }).catch(error => {
       console.log('error'); 
     })
+    
   }
 
 
@@ -74,7 +76,16 @@ export class LoginPage implements OnInit {
   }
 
   iniciarSesion(){
-    this.authService.iniciarSesion(this.loginForm.value.nombre,this.loginForm.value.contra);
+    try{
+      this.authService.iniciarSesion(this.loginForm.value.nombre,this.loginForm.value.contra);
+      this.router.navigateByUrl('paciente');
+      this.menuCtrl.enable(true);
+    }catch(error){
+      this.router.navigateByUrl('login');
+      this.menuCtrl.enable(false);
+    }
+    
+
   }
 
   regToIn(){

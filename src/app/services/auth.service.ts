@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 
 
 @Injectable({
@@ -7,16 +9,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthService {
 
+  userEmail: string;
   constructor(
-    private auth: AngularFireAuth
-    ) { auth.onAuthStateChanged(user=>{
-      if(user){
-        console.log('Usuario logeado en: ',user);
-      }else{
-        console.log('Usuario no logeado');
-      }
-    })
-   }
+    private auth: AngularFireAuth,
+    public router:Router
+    ) {  }
+   
+
+
 
     crearUsuario(email: any, contra: any){
 
@@ -34,4 +34,9 @@ export class AuthService {
       this.auth.signInWithEmailAndPassword(email,contra).then(cred =>{
       });
     }
+
+
+
+
+
 }
