@@ -14,6 +14,14 @@ const routes: Routes = [
   {
     path: 'paciente',
     loadChildren: () => import('./paginas/paciente/paciente.module').then( m => m.PacientePageModule)
+  },
+  {
+    path: 'pacienteInformacion',
+    loadChildren: () => import('./paginas/paciente/informacion/informacion.module').then( m => m.InformacionPageModule)
+  },
+  {
+    path: 'pacienteEncuestas',
+    loadChildren: () => import('./paginas/paciente/mis-encuestas/mis-encuestas.module').then( m => m.MisEncuestasPageModule)
   }
 ];
 

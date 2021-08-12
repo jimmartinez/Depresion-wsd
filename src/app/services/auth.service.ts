@@ -27,6 +27,8 @@ export class AuthService {
 
     cerrarSesion(){
       this.auth.signOut().then(()=> {
+
+        
       });
     }
 

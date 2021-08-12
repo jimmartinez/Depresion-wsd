@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ɵɵNgOnChangesFeature } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 import { RegistroService } from './services/registro.service';
 
@@ -23,27 +25,32 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
 
-  public paciente = true
+  public paciente = true;
   collectionCorreo = {count: 20, data: []};
+  
 
   constructor(
     private auth: AngularFireAuth,
     private registroService: RegistroService,
     private authService: AuthService,
+    public menuCtrl: MenuController,
+    public router: Router,
+
   ) {
 
 
+  auth.onAuthStateChanged(user=>{
+    if(user){
+      this.correo = user.email.toString();
+    }else{
+    }
+  })
 
-    auth.onAuthStateChanged(user=>{
-      if(user){
-        this.correo = user.email.toString();
-      }else{
-      }
-    })
+
+
 
     
-    setTimeout(() => {
-      console.log(this.correo);
+    setInterval(() => {
       this.registroService.nombreActual(this.correo).subscribe(resp=>{
         this.collectionCorreo.data = resp.map( (e:any)=>{
           return{
@@ -67,12 +74,8 @@ export class AppComponent {
      ////////////////////////////////////77
     if(  true ){
     this.appPages = [
-        { title: 'Mis encuestas pendientes', url: '/folder/Inbox', icon: 'mail' },
-        { title: 'Cerrar sesion', url: '/folder/Outbox', icon: 'paper-plane' },
-        { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-        { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-        { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-        { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+        { title: 'Mis encuestas pendientes', url: '/pacienteEncuestas', icon: 'mail' },
+        { title: 'informacion', url: '/pacienteInformacion', icon: 'list' },
       ];
     }
 
@@ -81,7 +84,13 @@ export class AppComponent {
 
   
   cerrarSesion(){
+    this.menuCtrl.enable(false);
     this.authService.cerrarSesion();
+    this.router.navigateByUrl('login');
+  }
+
+  getNombre(){
+    return this.collectionCorreo.data[0].nombre.toString();
   }
 
 }

@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: PacientePage
+  },
+  {
+    path: 'informacion',
+    loadChildren: () => import('./informacion/informacion.module').then( m => m.InformacionPageModule)
+  },
+  {
+    path: 'mis-encuestas',
+    loadChildren: () => import('./mis-encuestas/mis-encuestas.module').then( m => m.MisEncuestasPageModule)
   }
 ];
 

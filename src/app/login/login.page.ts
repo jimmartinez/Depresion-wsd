@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
   registroForm: FormGroup;
+  socioForm: FormGroup;
 
   constructor(    
     public fb: FormBuilder,
@@ -25,6 +26,8 @@ export class LoginPage implements OnInit {
     ) { }
 
   ngOnInit() {
+
+
 
     this.menuCtrl.enable(false);
 
@@ -57,13 +60,64 @@ export class LoginPage implements OnInit {
 
     })
 
+
+    this.socioForm = this.fb.group({
+
+      correoPrincipal: ['',Validators.required],
+      trabaja: ['',Validators.required],
+      trabajoRelacionado: ['',Validators.required],
+      motivoTrabajo: ['',Validators.required],
+      campoTrabajo: ['',Validators.required],
+      empleado: ['',Validators.required],
+      horasTrabajo: ['',Validators.required],
+      tipoEmpresa: ['',Validators.required],
+      estadoCivil: ['',Validators.required],
+      conQuienVive: ['',Validators.required],
+      tipoVivienda: ['',Validators.required],
+      tipoRedSocial: ['',Validators.required],
+      redSocialFavorita: ['',Validators.required],
+      autorizacionContacto: ['',Validators.required]
+      
+
+    })
+
+
+
     document.getElementById('id02').style.display='block';
   
   }
 
   registrar(){
+
+    this.socioForm.setValue({
+      correoPrincipal: this.registroForm.value.correoPrincipal,
+      trabaja: '',
+      trabajoRelacionado: '',
+      motivoTrabajo: '',
+      campoTrabajo: '',
+      empleado: '',
+      tipoEmpresa: '',
+      horasTrabajo: '',
+      estadoCivil: '',
+      conQuienVive: '',
+      tipoVivienda: '',
+      tipoRedSocial: '',
+      redSocialFavorita: '',
+      autorizacionContacto: '',
+    })
+
+
+
     this.registroService.createInfoBasica(this.registroForm.value).then(resp=>{
       this.authService.crearUsuario(this.registroForm.value.correoPrincipal,this.registroForm.value.contra);
+    }).catch(error => {
+      console.log('error'); 
+    })
+
+
+    this.registroService.createInfoSociodemografica(this.socioForm.value).then(resp=>{
+      document.getElementById('id01').style.display='none';
+      this.router.navigateByUrl('paciente');
     }).catch(error => {
       console.log('error'); 
     })

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AppComponent } from 'src/app/app.component';
+
 
 @Component({
   selector: 'app-paciente',
@@ -20,25 +22,31 @@ export class PacientePage implements OnInit {
 
   ngOnInit() {
 
-    this.menuCtrl.enable(true);
 
-    this.auth.onAuthStateChanged(user=>{
-      if(user){
-        this.router.navigateByUrl('paciente');
-        this.emailUsuario = user.email;
-      }else{
-        this.router.navigateByUrl('login');
-      }
-    })
+    setInterval(() => {
+try{
+  this.auth.onAuthStateChanged(user=>{
+    if(user){
+      this.emailUsuario = user.email;        
+      this.menuCtrl.enable(true);
+    }else{
+      this.router.navigateByUrl('login');
+    }
+  })
+
+}catch(e){
+  this.router.navigateByUrl('login');
+
+}
+}, 5000);
+
+
 
   
 
   }
   
-  obtenerCorreo(){
 
-    console.log(this.emailUsuario);
-  }
 
 
 }
