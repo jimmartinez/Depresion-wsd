@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: MisEncuestasPage
-  }
+  },
+  {
+    path: 'informacion',
+    loadChildren: () => import('../informacion/informacion.module').then( m => m.InformacionPageModule)
+  },
 ];
 
 @NgModule({

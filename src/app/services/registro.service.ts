@@ -35,6 +35,11 @@ export class RegistroService {
     return this.firestore.collection("infobasica").doc(id).delete();
   }
 
+  getInfoBasicaCorreo(correo: string){
+    console.log(correo);
+    return this.firestore.collection("infobasica", ref => ref.where("correoPrincipal","==",correo)).snapshotChanges();
+  }  
+
   nombreActual(correo: string){
     return this.firestore.collection("infobasica", ref => ref.where("correoPrincipal","==",correo)).snapshotChanges();
   }
