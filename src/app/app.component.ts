@@ -74,8 +74,8 @@ export class AppComponent {
      ////////////////////////////////////77
     if(  true ){
     this.appPages = [
-        { title: 'Mis encuestas pendientes', url: '/pacienteEncuestas', icon: 'mail' },
-        { title: 'informacion', url: '/pacienteInformacion', icon: 'list' },
+        { title: 'Mi Perfil', url: '/pacienteInformacion', icon: 'person-circle' },
+        { title: 'Mis encuestas', url: '/pacienteEncuestas', icon: 'mail' },
       ];
     }
 

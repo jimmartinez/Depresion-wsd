@@ -31,6 +31,7 @@ try{
       this.menuCtrl.enable(true);
     }else{
       this.router.navigateByUrl('login');
+      this.menuCtrl.enable(false);
     }
   })
 

@@ -3,119 +3,274 @@
     <ion-buttons slot="start">
       <ion-menu-button color="secondary"></ion-menu-button>
     </ion-buttons>
-    <div class="center"><ion-title>tu informacion</ion-title></div>
-    
+    <div class="center"><ion-title>Mi perfil</ion-title></div>
   </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="top">
+        <ion-tab-button selected="{{mostrarBasica}}" on-click="goToBasica()">
+          <ion-label>Información Básica</ion-label>
+          <ion-icon name="musical-note"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button selected="{{mostrarSocio}}" on-click="goToSocio()">
+          <ion-label>Información Sociodemográfica</ion-label>
+          <ion-icon name="videocam"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+
+
+
 </ion-header>
 
-<ion-content>
 
-  <button type="button" class="btn btn-outline-dark" (click)="abrirEditarInfoSociodemografica()" >Editar mi informacion sociodemografica</button>
+
+<ion-content fullscreen class="ion-padding">
+
+
+
+
   
-  <div style="text-align: center;">
-    
-    <div id="id03" class="modal">
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" *ngIf="mostrar==true">
+
+    <ion-slide>
+
+      <div class="slide">
+
+
+        <div >
+              <div class="imgcontainer">
+                <div class="modal-header" class="center">
+                  <h4 class="modal-title" id="modal-basic-title">
+                    Actualizacion de datos Basicos <br> </h4>
+                </div>
+                
+              </div>
+          
+              <div class="container">        
+
       
+      <form>
+        <div class="form-group">
+          <form [formGroup]='registroForm'>
 
-      <form class="modal-content animate" action="/action_page.php" method="post">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <div class="modal-header" class="center">
-            <h4 class="modal-title" id="modal-basic-title">
-              Actualizacion de datos sociodemograficos <br> </h4>
-          </div>
-          
-        </div>
-    
-        <div class="container">
 
-          
-          <form>
+                    
             <div class="form-group">
-              <form [formGroup]='infosociodemograficaForm'>
-
-
-                        
-                <div class="form-group">
-                  <label >¿Actualmente trabajas?</label>
-                  <input type="checkbox" formControlName="trabaja" class="form-control" placeholder="Selecciona" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Trabajas en algo relacionado con tu perfil</label>
-                   <input type="checkbox" formControlName="trabajoRelacionado" class="form-control" placeholder="Selecciona" required>
-                   <label >¿Por qué motivo?</label>
-                   <input type="text" formControlName="motivoTrabajo" class="form-control" placeholder="Cuentanos el motivo" required>
-                 </div>
-
-                 <div class="form-group">
-                  <label >¿En que campo trabajas?</label>
-                  <input type="text" formControlName="campoTrabajo" class="form-control" placeholder="Digita tu segundo apellido" required>
-                </div>
-      
-                 <div class="form-group">
-                   <label >¿Trabajas como empleado?</label>
-                   <input type="checkbox" formControlName="empleado" class="form-control" placeholder="Selecciona" required>
-                 </div>
-
-                 <div class="form-group">
-                  <label >¿Trabajas en empresa publica</label>
-                  <input type="checkbox" formControlName="tipoEmpresa" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Cuantas horas semanales trabajas?</label>
-                   <input type="number" formControlName="horasTrabajo" class="form-control" placeholder="Digita tu genero" required>
-                 </div>
-
-<!--Ahora preguntas  personales-->
-                 <div class="form-group">
-                  <label >Estado civil</label>
-                  <input type="text" formControlName="estadoCivil" class="form-control" placeholder="Selecciona" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Con quien vives?</label>
-                   <input type="text" formControlName="conQuienVive" class="form-control" placeholder="Cuentanos con quien vives" required>
-                 </div>
-
-                 <div class="form-group">
-                  <label >¿En qué tipo de vivienda?</label>
-                  <input type="text" formControlName="tipoVivienda" class="form-control" placeholder="propia, familiar o arrendada" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Qué tipo de redes sociales usas? </label>
-                   <input type="text" formControlName="tipoRedSocial" class="form-control" placeholder="Selecciona" required>
-                   <label >¿Cual usas mas?</label>
-                  <input type="text" formControlName="redSocialFavorita" class="form-control" placeholder="Digita tu correo electrónico principal" required>
-                 </div>
-
-
-                 <div class="form-group">
-                  <label >¿Nos autorizas para contactarte por este medio?</label>
-                  <input type="checkbox" formControlName="autorizacionContacto" class="form-control" placeholder="" required>
-                </div>
-
-
-              </form>
+              <label >Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Digita tu nombre" required>
             </div>
-          </form>
-            
+  
+  
+             <div class="form-group">
+               <label >Primer Apellido</label>
+               <input type="text" formControlName="apellido1" class="form-control" placeholder="Digita tu primer apellido" required>
+             </div>
 
-          <button type="button" class="btn btn-outline-dark" (click)="actualizarInfoSociodemografica()" >Guardar cambios</button>
-        </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
+             <div class="form-group">
+              <label >Segundo Apellido</label>
+              <input type="text" formControlName="apellido2" class="form-control" placeholder="Digita tu segundo apellido" required>
+            </div>
+  
+             <div class="form-group">
+               <label >Fecha de nacimiento</label>
+               <input type="date" formControlName="fechaNacimiento" class="form-control" placeholder="selecciona tu fecha de nacimiento" required>
+             </div>
+
+             <div class="form-group">
+              <label >Lugar de nacimiento</label>
+              <input type="text" formControlName="lugarNacimiento" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
+            </div>
+  
+  
+             <div class="form-group">
+               <label >Genero</label>
+               <input type="text" formControlName="genero" class="form-control" placeholder="Digita tu genero" required>
+             </div>
+
+
+             <div class="form-group">
+              <label >Orientacion sexual</label>
+              <input type="text" formControlName="orientacionSexual" class="form-control" placeholder="Digita tu orientacion sexual" required>
+            </div>
+  
+  
+             <div class="form-group">
+               <label >Direccion de residencia</label>
+               <input type="text" formControlName="direccionResidencia" class="form-control" placeholder="Digita tu direccion de residencia" required>
+             </div>
+
+             <div class="form-group">
+              <label >Direccion laboral</label>
+              <input type="text" formControlName="direccionLaboral" class="form-control" placeholder="Digita tu direccion laboral" required>
+            </div>
+  
+  
+             <div class="form-group">
+               <label >Estrato</label>
+               <input type="number" formControlName="estrato" class="form-control" placeholder="Digita tu estrato" required>
+             </div>
+
+             <div class="form-group">
+              <label >Correo electrónico principal</label>
+              <input type="email" formControlName="correoPrincipal" class="form-control" placeholder="Digita tu correo electrónico principal" required>
+            </div>
+  
+            <div class="form-group">
+              <label >Contraseña</label>
+              <input type="password" formControlName="contra" class="form-control" placeholder="inventa tu contraseña" required>
+            </div>
+  
+  
+             <div class="form-group">
+               <label >Confirma tu contraseña</label>
+               <input type="password" formControlName="confirmaContra" class="form-control" placeholder="vuelve a escribir tu contraseña" required>
+             </div>
+  
+             <div class="form-group">
+               <label >Correo electrónico secundario</label>
+               <input type="email" formControlName="correoSecundario" class="form-control" placeholder="Digita tu correo electrónico secundario" required>
+             </div>
+
+
+             <div class="form-group">
+              <label >Nombre de contacto</label>
+              <input type="text" formControlName="nombreContacto" class="form-control" placeholder="Digita el nombre de un contacto tuyo" required>
+            </div>
+  
+  
+             <div class="form-group">
+               <label >Telefono de contacto</label>
+               <input type="tel" formControlName="telefonoContacto" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
+             </div>
+
+             <div class="form-group">
+              <label >Servicio de salud</label>
+              <input type="text" formControlName="servicioSalud" class="form-control" placeholder="Digita el nombre del servicio de salud que usas" required>
+            </div>
+
+          </form>
         </div>
       </form>
-    </div>
+        
 
+        <button type="button" class="btn btn-outline-dark" (click)="actualizarInfoBasica()" >Guardar cambios</button>
+      </div>
   
+      <div class="container" style="background-color:#f1f1f1">
+    </div>
   </div>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide">
+
+
+<div >
+      <div class="imgcontainer">
+        <div class="modal-header" class="center">
+          <h4 class="modal-title" id="modal-basic-title">
+            Actualizacion de datos sociodemograficos <br> </h4>
+        </div>
+        
+      </div>
+  
+      <div class="container">
+
+        
+        <form>
+          <div class="form-group">
+            <form [formGroup]='infosociodemograficaForm'>
+
+
+                      
+              <div class="form-group">
+                <label >¿Actualmente trabajas?</label>
+                <input type="checkbox" formControlName="trabaja" class="form-control" placeholder="Selecciona" required>
+              </div>
+    
+    
+               <div class="form-group">
+                 <label >¿Trabajas en algo relacionado con tu perfil</label>
+                 <input type="checkbox" formControlName="trabajoRelacionado" class="form-control" placeholder="Selecciona" required>
+                 <label >¿Por qué motivo?</label>
+                 <input type="text" formControlName="motivoTrabajo" class="form-control" placeholder="Cuentanos el motivo" required>
+               </div>
+
+               <div class="form-group">
+                <label >¿En que campo trabajas?</label>
+                <input type="text" formControlName="campoTrabajo" class="form-control" placeholder="Digita tu segundo apellido" required>
+              </div>
+    
+               <div class="form-group">
+                 <label >¿Trabajas como empleado?</label>
+                 <input type="checkbox" formControlName="empleado" class="form-control" placeholder="Selecciona" required>
+               </div>
+
+               <div class="form-group">
+                <label >¿Trabajas en empresa publica</label>
+                <input type="checkbox" formControlName="tipoEmpresa" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
+              </div>
+    
+    
+               <div class="form-group">
+                 <label >¿Cuantas horas semanales trabajas?</label>
+                 <input type="number" formControlName="horasTrabajo" class="form-control" placeholder="Digita tu genero" required>
+               </div>
+
+                       <!--Ahora preguntas  personales-->
+               <div class="form-group">
+                <label >Estado civil</label>
+                <input type="text" formControlName="estadoCivil" class="form-control" placeholder="Selecciona" required>
+              </div>
+    
+    
+               <div class="form-group">
+                 <label >¿Con quien vives?</label>
+                 <input type="text" formControlName="conQuienVive" class="form-control" placeholder="Cuentanos con quien vives" required>
+               </div>
+
+               <div class="form-group">
+                <label >¿En qué tipo de vivienda?</label>
+                <input type="text" formControlName="tipoVivienda" class="form-control" placeholder="propia, familiar o arrendada" required>
+              </div>
+    
+    
+               <div class="form-group">
+                 <label >¿Qué tipo de redes sociales usas? </label>
+                 <input type="text" formControlName="tipoRedSocial" class="form-control" placeholder="Selecciona" required>
+                 <label >¿Cual usas mas?</label>
+                <input type="text" formControlName="redSocialFavorita" class="form-control" placeholder="Digita tu correo electrónico principal" required>
+               </div>
+
+
+               <div class="form-group">
+                <label >¿Nos autorizas para contactarte por este medio?</label>
+                <input type="checkbox" formControlName="autorizacionContacto" class="form-control" placeholder="" required>
+              </div>
+
+
+            </form>
+          </div>
+        </form>
+          
+
+        <button type="button" class="btn btn-outline-dark" (click)="actualizarInfoSociodemografica()" >Guardar cambios</button>
+      </div>
+  
+      <div class="container" style="background-color:#f1f1f1">
+    </div>
+  </div>
+
+      </div>
+</ion-slide>
+</ion-slides>
+
+
+
 
 </ion-content>
