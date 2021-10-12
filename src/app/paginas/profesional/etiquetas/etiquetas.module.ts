@@ -16,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IonicModule,
     EtiquetasPageRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [EtiquetasPage]
 })

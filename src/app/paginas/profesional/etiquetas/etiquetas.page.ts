@@ -45,4 +45,20 @@ export class EtiquetasPage implements OnInit {
 
   }
 
+
+   
+  abrirFormulario() {
+
+    
+    //llenar el form
+    this.etiquetaForm.setValue({
+      titulo: '',
+
+    });
+  
+      //abrir modal
+      document.getElementById('etiqueta').style.display='block';
+
+    }
+
 }

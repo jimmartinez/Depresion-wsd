@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'etiquetas',
-    loadChildren: () => import('./profesional/etiquetas/etiquetas.module').then( m => m.EtiquetasPageModule)
+    loadChildren: () => import('./paginas/profesional/etiquetas/etiquetas.module').then( m => m.EtiquetasPageModule)
   }
 ];
 
