@@ -9,6 +9,7 @@ ion-menu-button {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    
   }
   
   #container strong {
@@ -25,6 +26,94 @@ ion-menu-button {
   
   #container a {
     text-decoration: none;
+  }
+
+  h1.uno{
+    font-size: 22px;
+    font-weight: 1000;
+    min-height: 20px;
+    color: #fafafa;
+    width: 100%; 
+  }
+  
+  
+  
+  h1.dos{
+    font-size: 22px;
+    font-weight: 1000;
+    min-height: 20px;
+    color: #ec640a;
+    width: 100%; 
+  
+  }
+
+
+  button.items{
+    width: 30%;
+    height: 50px;
+    background-color: #043575;
+    border-radius: 50px;
+    transition: all 0.5s ease-out;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    text-align: justify;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-align: center;
+  
+  }
+
+  button.itemsActive{
+    width: 30%;
+    height: 50px;
+    background-color: #043575;
+    border-radius: 50px;
+    transition: all 0.5s ease-out;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    text-align: justify;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-align: center;
+  
+  }
+  
+  
+  .items:hover {
+
+    background-color: #ffffff;
+    transition: all 0.7s ease-out;
+    color: #043575;
+  
+  }
+  
+  .items:active {
+
+    background-color: #ffffff;
+    transition: all 0.7s ease-out;
+    color: #043575;
+  }
+  
+  
+  .items:focus {
+
+    background-color: #ffffff;
+    transition: all 0.7s ease-out;
+    color: #043575;
+  }
+  
+  .items:target {
+
+    background-color: #ffffff;
+    transition: all 0.7s ease-out;
+    color: #043575;
+  }
+  
+  label{
+    width: 100%;
+    color: #ffffff;
   }
 
   img.logo {
@@ -57,14 +146,39 @@ ion-menu-button {
   body {font-family: Arial, Helvetica, sans-serif;}
     
   /* Full-width input fields */
-  input[type=text], input[type=password] {
-    width: 100%;
+  input[type=email], input[type=password],input[type=text],input[type=tel],input[type=number],input[type=date],[type=url] {
+    width: 60%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(66, 61, 61);
     box-sizing: border-box;
+    border-radius: 100px;
   }
+
+  input[type=checkbox]{
+    width: 4%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(66, 61, 61);
+    box-sizing: border-box;
+    border-radius: 100px;
+
+  }
+
+  form-control{
+    align-content: center;
+  }
+
+
+
+.vertical{
+}
+ 
+.vertical > div{
+
+}
   
   /* Set a style for all buttons */
   button {
@@ -141,14 +255,15 @@ ion-menu-button {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #043575;
+
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */

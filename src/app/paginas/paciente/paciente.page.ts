@@ -5,6 +5,8 @@ import { MenuController } from '@ionic/angular';
 import { AppComponent } from 'src/app/app.component';
 
 
+
+
 @Component({
   selector: 'app-paciente',
   templateUrl: './paciente.page.html',
@@ -14,11 +16,14 @@ export class PacientePage implements OnInit {
 
   constructor(
     private auth: AngularFireAuth,
+    private appComponent: AppComponent,
     public router: Router,
     public menuCtrl: MenuController,
+
   ) { }
 
   emailUsuario: string;
+  
 
   ngOnInit() {
 
@@ -27,8 +32,7 @@ export class PacientePage implements OnInit {
 try{
   this.auth.onAuthStateChanged(user=>{
     if(user){
-      this.emailUsuario = user.email;        
-      this.menuCtrl.enable(true);
+      this.emailUsuario = user.email;    
     }else{
       this.router.navigateByUrl('login');
       this.menuCtrl.enable(false);
@@ -43,11 +47,33 @@ try{
 
 
 
-  
+  }
+
+
+  irAPerfil(){
+    this.router.navigateByUrl('pacienteInformacion');
+    this.menuCtrl.enable(true);
 
   }
+
+  irAEncuestas(){
+    this.router.navigateByUrl('pacienteEncuestas');
+    this.menuCtrl.enable(true);
+  }
+
+  salir(){
+
+    this.appComponent.cerrarSesion();
+    
+  }
+
+  
+
+
   
 
 
 
 }
+
+

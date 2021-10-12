@@ -1,0 +1,159 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div><ion-title>Pacientes</ion-title></div>
+        </ion-col>
+        <ion-col>
+          <div> <h2>{{nombre}}<br> Modalidad {{rol}}</h2></div>
+        </ion-col>
+        <ion-col>
+          <div>  
+           
+            <ion-avatar slot="start">
+              <img src="https://imgs.globovision.com/41T1b5hiCk6bhh4IC5ag2FFeeTk=/847x0/smart/9578fca5d59845cf84546777e80164b1">
+            </ion-avatar>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <div style="text-align: center;">
+
+
+    <table class="table" id="tabla">
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Asignar encuesta/Ver</th>
+      </tr>
+    
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of collectionPacientes.data">
+          <td>{{item.nombre}}</td>
+          <td>{{item.correoPrincipal}}</td>
+          <td>
+            <button class="items" (click)="openEditar(item)">    
+                <img class="iconos" src="../../../../assets/icon/iconoFormulario.png">
+            </button>
+            <button class="items" (click)="eliminar(item)">
+              <img class="iconos" src="../../../../assets/icon/ver.png">
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    
+    
+
+        <!--Este es el modal de registro
+        <div style="text-align: center;">
+    
+          <div id="paciente" class="modal">
+            
+      
+            <form class="modal-content animate" action="/action_page.php" method="post">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('paciente').style.display='none'" class="close" title="Close Modal">&times;</span>
+                
+                <div class="center">
+                    <h1 class="uno">Registro para profesional </h1>
+                    <br> 
+                </div>
+                
+              </div>
+          
+              <div class="container">
+      
+                
+                <form>
+                  <div class="form-group">
+                    <form [formGroup]='profesionalForm'>
+      
+                              
+                      <div class="form-group">
+                        <label >Nombre</label>
+                        <input type="text" formControlName="nombre" class="form-control" placeholder="Digita el nombre del profesional" required>
+                      </div>
+            
+            
+                       <div class="form-group">
+                        <label >Tipo de documento</label>
+                        <input type="text" formControlName="tipoDoc" class="form-control" placeholder="digita el tipo de documento del profesional" required>
+                      </div>
+      
+                      <div class="form-group">
+                        <label >Documento de identidad</label>
+                        <input type="number" formControlName="documento" class="form-control" placeholder="Digita el documento de identidad del profesional" required>
+                      </div>
+      
+            
+                       <div class="form-group">
+                         <label >Especialidad</label>
+                         <input type="text" formControlName="especialidad" class="form-control" placeholder="Mencione la especialidad del profesional" required>
+                       </div>
+      
+                       <div class="form-group">
+                        <label >Numero de tarjeta de profesional</label>
+                        <input type="text" formControlName="tarjetaProfesional" class="form-control" placeholder="Digite el numero de la tarjeta de profesional" required>
+                      </div>
+            
+            
+                       <div class="form-group">
+                         <label >Tipo de contrato</label>
+                         <input type="text" formControlName="tipoContrato" class="form-control" placeholder="Mencione el tipo de contrato que tiene el profesional" required>
+                       </div>
+      
+      
+                       <div class="form-group">
+                        <label >¿El profesional es practicante?</label>
+                        <input type="checkbox" formControlName="practicante" class="form-control" placeholder="Seleccione " required>
+                      </div>
+            
+      
+                       <div class="form-group">
+                        <label >Correo electrónico principal</label>
+                        <input type="email" formControlName="correoPrincipal" class="form-control" placeholder="Digita el correo electrónico principal del profesional" required>
+                      </div>
+            
+      
+                    </form>
+                  </div>
+                </form>
+                  
+      
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="guardarProfesional()" *ngIf="!actualizar">Guardar</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="actualizarProfesional()" *ngIf="actualizar">Actualizar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      
+        
+        </div>
+      
+
+
+    
+
+    
+   
+
+-->
+
+</ion-content>
+

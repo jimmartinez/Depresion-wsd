@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formularios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <button class="items" (click)="crearFormulario()">Crear nuevo formulario</button>
+
+
+          <!--Este es el modal de registro-->
+          <div style="text-align: center;">
+    
+            <div id="creacionFormulario" class="modal">
+              
+        
+              <form class="modal-content animate" action="/action_page.php" method="post">
+                <div class="imgcontainer">
+                  <span onclick="document.getElementById('creacionFormulario').style.display='none'" class="close" title="Close Modal">&times;</span>
+                  
+                  <div class="center">
+                      <h1 class="uno">Registro para profesional </h1>
+                      <br> 
+                  </div>
+                  
+                </div>
+            
+                <div class="container">
+        
+                  
+                  <form>
+                    <div class="form-group">
+                      <form [formGroup]='formularioForm'>
+        
+                                
+                        <div class="form-group">
+                          <label >Nombre</label>
+                          <input type="text" formControlName="nombre" class="form-control" placeholder="Digita el nombre del profesional" required>
+                        </div>
+
+                                                        
+                        <div class="form-group">
+                          <label >Cantidad de opciones</label>
+                          <input type="number" formControlName="cantidadOpciones" class="form-control" placeholder="Digita el nombre del profesional" required>
+                        </div>
+              
+   
+        
+                      </form>
+                    </div>
+                  </form>
+                    
+        
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="guardarProfesional()" *ngIf="!actualizar">Guardar</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="actualizarProfesional()" *ngIf="actualizar">Actualizar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        
+          
+          </div>
+        
+  
+</ion-content>

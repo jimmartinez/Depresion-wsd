@@ -8,6 +8,10 @@ import { InformacionPageRoutingModule } from './informacion-routing.module';
 
 import { InformacionPage } from './informacion.page';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from 'src/app/loading/loading.component';
+
+
+
 
 @NgModule({
   imports: [
@@ -17,8 +21,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InformacionPageRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    
 
   ],
-  declarations: [InformacionPage]
+  declarations: [
+  InformacionPage,
+  LoadingComponent,
+]
 })
 export class InformacionPageModule {}

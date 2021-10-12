@@ -1,25 +1,27 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button color="secondary"></ion-menu-button>
-      </ion-buttons>
-      <div class="center"><ion-title>Mi perfil</ion-title></div>
-    </ion-toolbar>
-
-    <ion-toolbar>
-      <ion-tabs>
-        <ion-tab-bar slot="top">
-          <ion-tab-button selected="{{mostrarBasica}}" on-click="goToBasica()">
-            <ion-label>Información Básica</ion-label>
-            <ion-icon name="musical-note"></ion-icon>
-          </ion-tab-button>
-          <ion-tab-button selected="{{mostrarSocio}}" on-click="goToSocio()">
-            <ion-label>Información Sociodemográfica</ion-label>
-            <ion-icon name="videocam"></ion-icon>
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div><ion-title>Mis Encuestas</ion-title></div>
+        </ion-col>
+        <ion-col>
+          <div> <h2>{{nombre}} {{apellido}}<br> Modalidad {{rol}}</h2></div>
+        </ion-col>
+        <ion-col>
+          <div>  
+           
+            <ion-avatar slot="start">
+              <img src="https://imgs.globovision.com/41T1b5hiCk6bhh4IC5ag2FFeeTk=/847x0/smart/9578fca5d59845cf84546777e80164b1">
+            </ion-avatar>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
 
 
 
@@ -28,116 +30,36 @@
   
 <ion-content fullscreen class="ion-padding">
 
-
-  <ion-slides  ></ion-slides>
-
-
-  <ion-slides #slides (ionSlideDidChange)="slideChanged()">
-    <ion-slide>
-      trololol
-    </ion-slide>
-
-    <ion-slide>
-      <div class="slide">
-  
-        <div class="imgcontainer">
-          <div class="modal-header" class="center">
-            <h4 class="modal-title" id="modal-basic-title">
-              Actualizacion de datos sociodemograficos <br> </h4>
-          </div>
-          
-        </div>
-    
-        <div class="container">
-
-          
-          <form>
-            <div class="form-group">
-              <form [formGroup]='infosociodemograficaForm'>
-
-
-                        
-                <div class="form-group">
-                  <label >¿Actualmente trabajas?</label>
-                  <input type="checkbox" formControlName="trabaja" class="form-control" placeholder="Selecciona" required>
-                </div>
+  <body>
+    <div>
+      <h1 class="encuesta">Pure CSS Fancy Checkbox/Radio</h1>
       
-      
-                 <div class="form-group">
-                   <label >¿Trabajas en algo relacionado con tu perfil</label>
-                   <input type="checkbox" formControlName="trabajoRelacionado" class="form-control" placeholder="Selecciona" required>
-                   <label >¿Por qué motivo?</label>
-                   <input type="text" formControlName="motivoTrabajo" class="form-control" placeholder="Cuentanos el motivo" required>
-                 </div>
-
-                 <div class="form-group">
-                  <label >¿En que campo trabajas?</label>
-                  <input type="text" formControlName="campoTrabajo" class="form-control" placeholder="Digita tu segundo apellido" required>
-                </div>
-      
-                 <div class="form-group">
-                   <label >¿Trabajas como empleado?</label>
-                   <input type="checkbox" formControlName="empleado" class="form-control" placeholder="Selecciona" required>
-                 </div>
-
-                 <div class="form-group">
-                  <label >¿Trabajas en empresa publica</label>
-                  <input type="checkbox" formControlName="tipoEmpresa" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Cuantas horas semanales trabajas?</label>
-                   <input type="number" formControlName="horasTrabajo" class="form-control" placeholder="Digita tu genero" required>
-                 </div>
-
-                         <!--Ahora preguntas  personales-->
-                 <div class="form-group">
-                  <label >Estado civil</label>
-                  <input type="text" formControlName="estadoCivil" class="form-control" placeholder="Selecciona" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Con quien vives?</label>
-                   <input type="text" formControlName="conQuienVive" class="form-control" placeholder="Cuentanos con quien vives" required>
-                 </div>
-
-                 <div class="form-group">
-                  <label >¿En qué tipo de vivienda?</label>
-                  <input type="text" formControlName="tipoVivienda" class="form-control" placeholder="propia, familiar o arrendada" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >¿Qué tipo de redes sociales usas? </label>
-                   <input type="text" formControlName="tipoRedSocial" class="form-control" placeholder="Selecciona" required>
-                   <label >¿Cual usas mas?</label>
-                  <input type="text" formControlName="redSocialFavorita" class="form-control" placeholder="Digita tu correo electrónico principal" required>
-                 </div>
-
-
-                 <div class="form-group">
-                  <label >¿Nos autorizas para contactarte por este medio?</label>
-                  <input type="checkbox" formControlName="autorizacionContacto" class="form-control" placeholder="" required>
-                </div>
-
-
-              </form>
-            </div>
-          </form>
-            
-
-          <button type="button" class="btn btn-outline-dark" (click)="actualizarInfoSociodemografica()" >Guardar cambios</button>
-        </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
-        </div>
+      <h1>Radio Buttons</h1>
+      <div class="group">
+        <input type="radio" name="rb" id="rb1" />
+        <label for="rb1">0</label>
+        <input type="radio" name="rb" id="rb2" />
+        <label for="rb2">1</label>
+        <input type="radio" name="rb" id="rb3" />
+        <label for="rb3">2</label>
+        <input type="radio" name="rb" id="rb4" />
+        <label for="rb4">3</label>
       </div>
-    </ion-slide>
+      
+      <h1>Checkbox</h1>
+      <div class="group">
+        <input type="checkbox" name="cb" id="cb1" />
+        <label for="cb1">Check this</label>
+        <input type="checkbox" name="cb" id="cb2" />
+        <label for="cb2">... and this...</label>
+        <input type="checkbox" name="cb" id="cb3" />
+        <label for="cb3">and maybe this</label>
+      </div>
+    
+    </div>
 
-  </ion-slides>
-  
+    <button on-click="obtenerDesdeApp()">lol</button>
+  </body>
 
 
 

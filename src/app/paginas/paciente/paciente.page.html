@@ -1,15 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
-    </ion-buttons>
-    <div class="center"><ion-title>Inicio</ion-title></div>
-    
-  </ion-toolbar>
-</ion-header>
 
 
-<ion-content>
+<body>
+  <div class="background-one">
+    <div class="link-container">
+      <a class="link-one" on-click="irAPerfil()">Perfil</a>
+    </div>
+  </div>
+  <div class="background-two link-container">
+    <a class="link-two" on-click="irAEncuestas()">Encuestas</a>
+  </div>
+  <div class="background-three link-container">
+    <a class="link-three" on-click="salir()">Salir</a>
+  </div>
+</body>
 
-  <ion-button>get email </ion-button>
-</ion-content>
+
+

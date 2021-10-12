@@ -15,6 +15,9 @@ export class AppComponent {
 
   correo: any;
   nombre: any;
+  collectionUsuario = {count: 20, data: []};
+
+
   
   public appPages = [
     { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
@@ -39,23 +42,33 @@ export class AppComponent {
   ) {
 
 
-  auth.onAuthStateChanged(user=>{
-    if(user){
-      this.correo = user.email.toString();
-    }else{
-    }
-  })
 
-
-
-
-    
+    //verifica que este autenticado o si no lo devuelve al login
     setInterval(() => {
-      this.registroService.nombreActual(this.correo).subscribe(resp=>{
-        this.collectionCorreo.data = resp.map( (e:any)=>{
+
+      this.auth.onAuthStateChanged(user=>{
+        if(user){
+          this.correo = user.email;
+        }else{
+          this.router.navigateByUrl('login');
+        }
+      })
+    }, 1000);
+
+
+
+    //obtener rol de paciente si es el caso
+    setInterval(() => {
+
+      this.registroService.getInfoBasicaCorreo(this.correo).subscribe(resp=>{
+        this.collectionUsuario.data = resp.map( (e:any)=>{
           return{
-            nombre: e.payload.doc.data().nombre,
+      
+            correoPrincipal: e.payload.doc.data().correoPrincipal,
+            rol: e.payload.doc.data().rol,
+            
             idFirebase: e.payload.doc.id,
+  
           }
         })
       },
@@ -63,21 +76,106 @@ export class AppComponent {
         console.log(error);
       }
       );
-    }, 5000);
-
-
-
- 
+    
+    }, 2000);
 
     
+    //obtener rol de EPS si es el caso
+    setInterval(() => {
+try{
+  if(this.collectionUsuario.data[0].rol){
+  }else{
+  }
+}catch(error){
 
-     ////////////////////////////////////77
-    if(  true ){
-    this.appPages = [
-        { title: 'Mi Perfil', url: '/pacienteInformacion', icon: 'person-circle' },
-        { title: 'Mis encuestas', url: '/pacienteEncuestas', icon: 'mail' },
-      ];
-    }
+  this.registroService.getEPSCorreo(this.correo).subscribe(resp=>{
+    this.collectionUsuario.data = resp.map( (e:any)=>{
+      return{
+  
+        correoPrincipal: e.payload.doc.data().correoPrincipal,
+        rol: e.payload.doc.data().rol,
+        
+        idFirebase: e.payload.doc.id,
+
+      }
+    })
+  },
+  error=>{
+    console.log(error);
+  }
+  );}
+   
+ 
+    
+    }, 3000);
+
+        
+    //obtener rol de EPS si es el caso
+    setInterval(() => {
+      try{
+        if(this.collectionUsuario.data[0].rol){
+        }else{
+        }
+      }catch(error){
+      
+        this.registroService.getProfesionalCorreo(this.correo).subscribe(resp=>{
+          this.collectionUsuario.data = resp.map( (e:any)=>{
+            return{
+        
+              correoPrincipal: e.payload.doc.data().correoPrincipal,
+              rol: e.payload.doc.data().rol,
+              
+              idFirebase: e.payload.doc.id,
+      
+            }
+          })
+        },
+        error=>{
+          console.log(error);
+        }
+        );}
+         
+       
+          
+          }, 4000);
+
+
+     ////////////////////////////////////
+     setInterval(() => {
+
+      try{
+        if(this.collectionUsuario.data[0].rol=='paciente'){
+          this.appPages = [
+            { title: 'Mi Perfil', url: '/pacienteInformacion', icon: 'person-circle' },
+            { title: 'Mis Encuestas', url: '/pacienteEncuestas', icon: 'list' },
+          ];
+        }else{
+          if (this.collectionUsuario.data[0].rol=='eps') {
+
+            this.appPages = [
+              { title: 'Perfil EPS', url: '/informacionEps', icon: 'business' },
+              { title: 'Mis Profesionales', url: '/profesionales', icon: 'people' },
+            ];
+            
+          } else {
+            if (this.collectionUsuario.data[0].rol=='profesional') {
+              
+              this.appPages = [
+                { title: 'Formularios', url: '/formularios', icon: 'list' },
+                { title: 'Pacientes', url: '/pacientes', icon: 'people' },
+                { title: 'Etiquetas', url: '/etiquetas', icon: 'ticket' }
+              ];
+
+            } else {
+            }  
+          }
+        }
+      }catch(error){
+        
+      }
+
+     }, 5000);
+
 
   }
 
@@ -90,7 +188,11 @@ export class AppComponent {
   }
 
   getNombre(){
-    return this.collectionCorreo.data[0].nombre.toString();
+    return this.collectionUsuario.data[0].rol.toString();
+  }
+
+  getCorreo(){
+    return this.correo;
   }
 
 }

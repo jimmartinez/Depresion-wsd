@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>etiquetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+      <div style="text-align: center;">
+
+
+    <button class="items" (click)="abrirFormulario()">Crear nueva etiqueta</button>
+
+
+    <table class="table" id="tabla">
+      <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Opciones</th>
+      </tr>
+    
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of collectionEtiquetas.data">
+          <td>{{item.titulo}}</td>
+          <td>
+            <button class="items" (click)="openEditar(item)">Editar</button>
+            
+            <button class="items" (click)="eliminar(item)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+
+        <!--Este es el modal de registro-->
+        <div style="text-align: center;">
+    
+          <div id="etiqueta" class="modal">
+            
+      
+            <form class="modal-content animate" action="/action_page.php" method="post">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('etiqueta').style.display='none'" class="close" title="Close Modal">&times;</span>
+                
+                <div class="center">
+                    <h1 class="uno">Crea una nueva etiqueta</h1>
+                    <br> 
+                </div>
+                
+              </div>
+          
+              <div class="container">
+      
+                
+                <form>
+                  <div class="form-group">
+                    <form [formGroup]='etiquetaForm'>
+      
+                              
+                      <div class="form-group">
+                        <label >Titulo</label>
+                        <input type="text" formControlName="titulo" class="form-control" placeholder="Digita el titulo para esta etiqueta" required>
+                      </div>
+
+      
+                    </form>
+                  </div>
+                </form>
+                  
+      
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="guardarEtiqueta()">Guardar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      
+        
+        </div>
+      
+
+
+    
+
+    
+    
+    </div>
+
+
+</ion-content>

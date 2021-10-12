@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PacientePageRoutingModule } from './paciente-routing.module';
 
 import { PacientePage } from './paciente.page';
+import { LoadingComponent } from 'src/app/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { PacientePage } from './paciente.page';
     IonicModule,
     PacientePageRoutingModule
   ],
-  declarations: [PacientePage]
+  declarations: [
+    PacientePage,
+    LoadingComponent,
+  ]
 })
 export class PacientePageModule {}

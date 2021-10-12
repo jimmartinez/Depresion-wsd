@@ -20,21 +20,24 @@ export class AuthService {
 
     crearUsuario(email: any, contra: any){
 
-      this.auth.createUserWithEmailAndPassword(email,contra).then(cred =>{
-      });
+      this.auth.createUserWithEmailAndPassword(email,contra);
+
 
     }
 
     cerrarSesion(){
-      this.auth.signOut().then(()=> {
-
-        
+      this.auth.signOut().then(()=> {   
+        console.log('sesion finalizada')
       });
     }
 
     iniciarSesion(email: any, contra: any){
       this.auth.signInWithEmailAndPassword(email,contra).then(cred =>{
       });
+    }
+
+    cambiarContra(email: any){
+      this.auth.sendPasswordResetEmail(email);
     }
 
 

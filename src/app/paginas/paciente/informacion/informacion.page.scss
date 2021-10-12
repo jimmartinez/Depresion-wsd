@@ -1,6 +1,10 @@
-ion-menu-button {
-    color: var(--ion-color-primary);
-  }
+:root {
+  --ion-safe-area-top: 30px;
+  --ion-safe-area-bottom: 22px;
+}
+
+
+
   
   #container {
     text-align: center;
@@ -10,7 +14,10 @@ ion-menu-button {
     top: 50%;
     transform: translateY(-50%);
   }
+
+
   
+
   #container strong {
     font-size: 20px;
     line-height: 26px;
@@ -27,10 +34,95 @@ ion-menu-button {
     text-decoration: none;
   }
 
+
+
+
   img.logo {
     height: 30px;
     width: 30px;
   }
+
+
+  ion-title{
+
+    color: #0f0f79;
+    font-weight: 1000;
+    width: 100%;
+  }
+
+
+
+  ion-tab-bar{
+    -webkit-justify-content: left !important;
+    justify-content: left !important;
+
+
+  }
+
+button.tabinfo{
+
+  background-color: rgb(255, 255, 255);
+  width: 25%;
+  color: #0f0f79;
+  border-radius: 2px;
+
+}
+
+
+.tabinfo:hover {
+  -webkit-box-shadow: 0px 2px 0px #0f0f79;
+  -moz-box-shadow: 0px 2px 0px #0f0f79;
+  box-shadow: 0px 2px 0px #0f0f79;
+  transition: all 0.7s ease-out;
+}
+
+.tabinfo:active {
+  -webkit-box-shadow: 0px 2px 0px #0f0f79;
+  -moz-box-shadow: 0px 2px 0px #0f0f79;
+  box-shadow: 0px 2px 0px #0f0f79;
+  transition: all 0.7s ease-out;
+
+}
+.tabinfo:focus {
+  -webkit-box-shadow: 0px 2px 0px #0f0f79;
+  -moz-box-shadow: 0px 2px 0px #0f0f79;
+  box-shadow: 0px 2px 0px #0f0f79;
+  transition: all 0.7s ease-out;
+
+}
+.tabinfo:target {
+  -webkit-box-shadow: 0px 2px 0px #0f0f79;
+  -moz-box-shadow: 0px 2px 0px #0f0f79;
+  box-shadow: 0px 2px 0px #0f0f79;
+  transition: all 0.5s ease-out;
+
+}
+
+  h1{
+    font-size: 12px;
+    font-weight: 1000;
+    min-height: 20px;
+
+  }
+
+  h2{
+
+    font-size: 12px;
+    font-weight: 1000;
+    min-height: 20px;
+    text-align: end;
+    position: relative;
+    top: -15px; left: 80%;
+  }
+
+  ion-avatar{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 5%px; left: 80%;
+  }
+  
+
 
   .abs-center {
     display: flex;
@@ -57,22 +149,34 @@ ion-menu-button {
   body {font-family: Arial, Helvetica, sans-serif;}
     
   /* Full-width input fields */
-  input[type=text], input[type=password] {
-    width: 100%;
+  input[type=text], input[type=password], input[type=date],input[type=email],input[type=tel] {
+    width: 60%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
+    border-radius: 100px;
+    box-sizing: border-box;
+  }
+
+  input[type=number] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 100px;
     box-sizing: border-box;
   }
   
   /* Set a style for all buttons */
   button {
-    background-color: #04AA6D;
+    background-color: #0c0291;
     color: white;
     padding: 4px 8px;
     margin: 4px 0;
     border: none;
+    border-radius: 100px;
     cursor: pointer;
     width: 100%;
   }
@@ -241,4 +345,9 @@ ion-menu-button {
   .form {
     width: 450px;
   }
- 
+  div.center {
+    text-align: center;
+  }
+  label{
+    width: 100%;
+  }

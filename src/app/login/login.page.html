@@ -2,18 +2,19 @@
 <ion-content>
 
 
-  <!--Este es el modal de registrar-->
+  <!--Este es el modal de registrar paciente-->
   <div style="text-align: center;">
     
-    <div id="id01" class="modal">
+    <div id="registroPaciente" class="modal">
       
 
       <form class="modal-content animate" action="/action_page.php" method="post">
         <div class="imgcontainer">
           
-          <div class="modal-header" class="center">
-            <h4 class="modal-title" id="modal-basic-title">
-              Registrarse en Sistema WSD <br> </h4>
+          <div class="center">
+
+              <h1 class="uno">Registro para paciente </h1><button class="items" (click)="regToEPS()">Quiero registrarme como EPS</button>
+              <br> 
           </div>
           
         </div>
@@ -137,11 +138,8 @@
           </form>
             
 
-          <button type="button" class="btn btn-outline-dark" (click)="registrar()" >Registrarse</button>
-          <ion-button (click)="regToIn()">Ya tengo una cuenta</ion-button>
-        </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
+          <button class="items" (click)="registrar()" >Enviar registro</button>
+          <button class="items" (click)="regToIn()">Ya tengo una cuenta</button>
         </div>
       </form>
     </div>
@@ -154,16 +152,19 @@
   
   <div style="text-align: center;">
     
-    <div id="id02" class="modal">
+    <div id="login" class="modal">
       
 
       <form class="modal-content animate" action="/action_page.php" method="post">
         <div class="imgcontainer">
           
           <div class="modal-header" class="center">
-            <h4 class="modal-title" id="modal-basic-title">
-              Ingreso a Sistema WSD <br> </h4>
+     
+              <h1 class="uno">Sistema</h1><h1 class="dos">WSD</h1>
           </div>
+
+          <button class="items" (click)="cambiarContra()">Olvide mi contraseña!</button>
+
           
         </div>
     
@@ -175,7 +176,7 @@
               <form [formGroup]='loginForm'>
 
 
-                        
+                <div class="vertical">      
                 <div class="form-group">
                   <label >Nombre de usuario</label>
                   <input type="email" formControlName="nombre" class="form-control" placeholder="digita el nombre de usuario con que te registraste" required>
@@ -186,23 +187,162 @@
                    <label >Contraseña</label>
                    <input type="password" formControlName="contra" class="form-control" placeholder="digita aqui tu contraseña" required>
                  </div>
-
+                </div>
               </form>
             </div>
           </form>
             
 
-          <button type="button" class="btn btn-outline-dark" (click)="iniciarSesion()" >Iniciar Sesion</button>
-          <ion-button  on-click="inToReg()">Aun no tengo cuenta</ion-button>
+          <button class="items"  (click)="iniciarSesion()" >Iniciar Sesion</button>
+          <button class="items" on-click="inToReg()">Aun no tengo cuenta</button>
         </div>
-    
-        <div class="container" style="background-color:#f1f1f1">
-        </div>
+
       </form>
     </div>
 
   
   </div>
+
+
+    <!--Este es el modal de registrar eps-->
+    <div style="text-align: center;">
+    
+      <div id="registroEPS" class="modal">
+        
+  
+        <form class="modal-content animate" action="/action_page.php" method="post">
+          <div class="imgcontainer">
+            
+            <div class="center">
+                <h1 class="uno">Registro para EPS </h1><button class="items" (click)="EPSToReg()">Quiero registrarme como Paciente</button>
+                <br> 
+            </div>
+            
+          </div>
+      
+          <div class="container">
+  
+            
+            <form>
+              <div class="form-group">
+                <form [formGroup]='registroEPSForm'>
+  
+  
+                          
+                  <div class="form-group">
+                    <label >Nit</label>
+                    <input type="text" formControlName="nit" class="form-control" placeholder="Digita el NIT de la eps" required>
+                  </div>
+        
+        
+                   <div class="form-group">
+                     <label >Identificacion de administrador</label>
+                     <input type="number" formControlName="idAdministrador" class="form-control" placeholder="Digita la identificacion del administrador" required>
+                   </div>
+  
+                   <div class="form-group">
+                    <label >Nombre de administrador</label>
+                    <input type="text" formControlName="nombreAdmin" class="form-control" placeholder="Digita el nombre del administrador" required>
+                  </div>
+        
+                   <div class="form-group">
+                     <label >Nombre de sede principal</label>
+                     <input type="text" formControlName="sede1Nombre" class="form-control" placeholder="Digita el nombre de la sede principal de la EPS" required>
+                   </div>
+  
+                   <div class="form-group">
+                    <label >Numero Telefonico de sede principal</label>
+                    <input type="tel" formControlName="sede1Tel" class="form-control" placeholder="Digita el numero telefonico de la sede principal" required>
+                  </div>
+        
+        
+                   <div class="form-group">
+                     <label >URL de la pagina de la sede principal</label>
+                     <input type="url" formControlName="sede1Pag" class="form-control" placeholder="Copia y pega la URL" required>
+                   </div>
+
+
+
+                   <div class="form-group">
+                    <label >Nombre de sede 2</label>
+                    <input type="text" formControlName="sede2Nombre" class="form-control" placeholder="Digita el nombre de la sede 2 de la EPS" required>
+                  </div>
+ 
+                  <div class="form-group">
+                   <label >Numero Telefonico de sede 2</label>
+                   <input type="tel" formControlName="sede2Tel" class="form-control" placeholder="Digita el numero telefonico de la sede 2" required>
+                 </div>
+       
+       
+                  <div class="form-group">
+                    <label >URL de la pagina de la sede 2</label>
+                    <input type="url" formControlName="sede2Pag" class="form-control" placeholder="Copia y pega la URL" required>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label >Nombre de sede 3</label>
+                    <input type="text" formControlName="sede3Nombre" class="form-control" placeholder="Digita el nombre de la sede 3 de la EPS" required>
+                  </div>
+ 
+                  <div class="form-group">
+                   <label >Numero Telefonico de sede 3</label>
+                   <input type="tel" formControlName="sede3Tel" class="form-control" placeholder="Digita el numero telefonico de la sede 3" required>
+                 </div>
+       
+       
+                  <div class="form-group">
+                    <label >URL de la pagina de la sede 3</label>
+                    <input type="url" formControlName="sede3Pag" class="form-control" placeholder="Copia y pega la URL" required>
+                  </div>
+
+  
+                   <div class="form-group">
+                    <label >Correo electrónico principal</label>
+                    <input type="email" formControlName="correoPrincipal" class="form-control" placeholder="Digita tu correo electrónico principal" required>
+                  </div>
+        
+                  <div class="form-group">
+                    <label >Contraseña</label>
+                    <input type="password" formControlName="contra" class="form-control" placeholder="inventa tu contraseña" required>
+                  </div>
+        
+        
+                   <div class="form-group">
+                     <label >Confirma tu contraseña</label>
+                     <input type="password" formControlName="confirmaContra" class="form-control" placeholder="vuelve a escribir tu contraseña" required>
+                   </div>
+        
+                   <div class="form-group">
+                     <label >Correo electrónico secundario</label>
+                     <input type="email" formControlName="correoSecundario" class="form-control" placeholder="Digita tu correo electrónico secundario" required>
+                   </div>
+        
+                   <div class="form-group">
+                     <label >Acepto la politica de tratamiento de datos personales</label>
+                     <input type="checkbox" formControlName="politica" class="form-control" placeholder="¿Estas de acuerdo?" required>
+                   </div>
+  
+                   <div class="form-group">
+                    <label >Acepto los terminos y condiciones</label>
+                    <input type="checkbox" formControlName="terminos" class="form-control" placeholder="¿Estas de acuerdo?" required>
+                  </div>
+  
+  
+                </form>
+              </div>
+            </form>
+              
+  
+            <button class="items" (click)="registrarEPS()" >Enviar registro</button>
+            <button class="items" (click)="EPSToIn()">Ya tengo una cuenta</button>
+          </div>
+        </form>
+      </div>
+  
+    
+    </div>
+
 
   
 </ion-content>

@@ -10,16 +10,20 @@
 <ion-list-header><h1 class="uno">Sistema </h1> <h1 class="dos">WSD</h1> </ion-list-header>
           <ion-note></ion-note>
           <ion-note></ion-note>
+          <div class="listado">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+            <button class="items" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
+            </button>
           </ion-menu-toggle>
-          <ion-item lines="none" detail="false" routerLinkActive="selected" on-click="cerrarSesion()">
+          <button class="items" lines="none" detail="false" routerLinkActive="selected" on-click="cerrarSesion()">
+            
             <ion-icon name="exit" [ios]="exit + '-outline'"></ion-icon>
             <ion-label>Cerrar Sesion</ion-label>
-          </ion-item>
+          
+          </button>
+        </div>
         </ion-list>
 
 
