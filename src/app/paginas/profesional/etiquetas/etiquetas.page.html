@@ -29,9 +29,7 @@
 
         <tr *ngFor="let item of collectionEtiquetas.data">
           <td>{{item.titulo}}</td>
-          <td>
-            <button class="items" (click)="openEditar(item)">Editar</button>
-            
+          <td>            
             <button class="items" (click)="eliminar(item)">Eliminar</button>
           </td>
         </tr>
@@ -78,7 +76,7 @@
                   
       
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-dark" (click)="guardarEtiqueta()">Guardar</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="crearEtiqueta()">Guardar</button>
                 </div>
               </div>
             </form>

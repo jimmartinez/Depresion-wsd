@@ -135,4 +135,22 @@ deleteEtiqueta(id:any){
   return this.firestore.collection("etiquetas").doc(id).delete();
 }
 
+//para la gestion de formularios likert
+
+getFormulariosLikert(){
+  return this.firestore.collection("formularios").snapshotChanges();
+}
+
+createFormulario(formulario:any){
+  return this.firestore.collection("formularios").add(formulario);
+}
+
+updateFormulario(id:any, formulario:any){
+  return this.firestore.collection("formularios").doc(id).update(formulario);
+}
+
+deleteFormularios(id:any){
+  return this.firestore.collection("formularios").doc(id).delete();
+}
+
 }

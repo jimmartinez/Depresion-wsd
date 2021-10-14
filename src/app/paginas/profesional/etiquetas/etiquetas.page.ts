@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from 'src/app/services/registro.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-etiquetas',
@@ -60,5 +61,39 @@ export class EtiquetasPage implements OnInit {
       document.getElementById('etiqueta').style.display='block';
 
     }
+
+    crearEtiqueta(){
+      this.registroService.createEtiqueta(this.etiquetaForm.value).then(resp=>{
+      }).catch(error => {
+        console.log('error'); 
+      })
+
+      document.getElementById('etiqueta').style.display='none';
+
+    }
+
+    eliminar(item:any):void{
+      Swal.fire({
+        title:'¿Estas seguro que deseas eliminar esta etiqueta?',
+        text:'Esta accion no se podrá deshacer',
+        icon:'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'secondary',
+        cancelButtonColor:'#d33',
+        confirmButtonText: 'Si, Eliminar!'
+      }).then(result => {
+        if(result.value){
+          //quiere cancelar
+             //llenar el form
+             this.registroService.deleteEtiqueta(item.idFirebase)
+  
+      Swal.fire('Etiqueta eliminada!', ' La etiqueta se ha eliminado correctamente ','success');
+        }
+      })
+      return 
+  
+    }
+
+
 
 }

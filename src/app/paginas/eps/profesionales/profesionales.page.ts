@@ -154,18 +154,18 @@ export class ProfesionalesPage implements OnInit {
     guardarProfesional(){
 
 
-            //authservice
     this.registroService.createProfesional(this.profesionalForm.value).then(resp=>{
     }).catch(error => {
       console.log('error'); 
     })
 
+      //authservice
 
     setTimeout(() => {
       this.auth.crearUsuario(this.profesionalForm.value.correoPrincipal,'12345678');
     }, 2000);
     
-
+//aqui debo poner un cuadro que diga que se dirija a su correo para asignar la contraseña
     setTimeout(() => {
       this.auth.cambiarContra(this.profesionalForm.value.correoPrincipal);
     }, 3000);
@@ -178,6 +178,9 @@ export class ProfesionalesPage implements OnInit {
     
       document.getElementById('profesional').style.display='none';
     }
+
+
+
 
     actualizarProfesional(){
       this.registroService.updateProfesional( this.idFirebaseActualizar ,this.profesionalForm.value).then(resp=>{
