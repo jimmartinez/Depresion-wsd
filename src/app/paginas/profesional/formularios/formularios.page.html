@@ -5,8 +5,37 @@
 </ion-header>
 
 <ion-content>
-  <button class="items" (click)="abrirModal()">Crear nuevo formulario</button>
 
+
+  
+  <div style="text-align: center;">
+
+
+    <button class="items" (click)="abrirModal()">Crear nuevo formulario</button>
+
+
+    <table class="table" id="tabla">
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Opciones</th>
+      </tr>
+    
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of collectionFormularios.data">
+          <td>{{item.nombre}}</td>
+          <td>{{item.tipo}}</td>
+          <td>
+            <button class="items" (click)="openEditar(item)">Editar</button>
+            <button class="items" (click)="eliminar(item)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
 
           <!--Este es el modal de registro-->
           <div style="text-align: center;">
@@ -19,7 +48,7 @@
                   <span onclick="document.getElementById('creacionFormulario').style.display='none'" class="close" title="Close Modal">&times;</span>
                   
                   <div class="center">
-                      <h1 class="uno">Registro para profesional </h1>
+                      <h1 class="uno"> Crea a continuación un nuevo formulario  </h1>
                       <br> 
                   </div>
                   
@@ -35,33 +64,962 @@
                                 
                         <div class="form-group">
                           <label >Nombre</label>
-                          <input type="text" formControlName="nombre" class="form-control" placeholder="Digita el nombre del profesional" required>
+                          <input type="text" formControlName="nombre" class="items" placeholder="Digita el nombre del Formulario" required>
                         </div>
 
-                                                        
-                        <div class="form-group">
-                          <label >Cantidad de opciones</label>
-                          <input type="number" formControlName="cantidadOpciones" class="form-control" placeholder="Digita el nombre del profesional" required>
-                        </div>
 
                         <div class="form-group">
+                          <label >Cantidad de opciones del 0 al ... </label>
 
-                          <label >prueba</label>
-                          <select name="transporte" formControlName="prueba">
+                          <select class="items" type="number" formControlName="cantidadOpciones" >
 
-                            <option>Coche</option>
+                            <option class="items" >0</option>
+                            <option class="items" >1</option>
+                            <option class="items" >2</option>
+                            <option class="items" >3</option>
+                            <option class="items" >4</option>
+                            <option class="items" >5</option>
                             
-                            <option>Avión</option>
-                            
-                            <option>Tren</option>
-                            
-                            </select>
-
+                          </select>
                         </div>
 
 
+                        <div class="form-group" >
+                          <label >Cantidad de preguntas</label>
+                          <select on-click="actualizarPreguntas()" class="items" type="number" class="items" formControlName="cantidadPreguntas">
 
-   
+                            <option class="items" >1</option>
+                            <option class="items" >2</option>
+                            <option class="items" >3</option>
+                            <option class="items" >4</option>
+                            <option class="items" >5</option>
+                            <option class="items" >6</option>
+                            <option class="items" >7</option>
+                            <option class="items" >8</option>
+                            <option class="items" >9</option>
+                            <option class="items" >10</option>
+                            <option class="items" >11</option>
+                            <option class="items" >12</option>
+                            <option class="items" >13</option>
+                            <option class="items" >14</option>
+                            <option class="items" >15</option>
+                            <option class="items" >16</option>
+                            <option class="items" >17</option>
+                            <option class="items" >18</option>
+                            <option class="items" >19</option>
+                            <option class="items" >20</option>
+                            <option class="items" >21</option>
+                            <option class="items" >22</option>
+                            <option class="items" >23</option>
+                            <option class="items" >24</option>
+                            <option class="items" >25</option>
+                            <option class="items" >26</option>
+                            <option class="items" >27</option>
+                            <option class="items" >28</option>
+                            <option class="items" >29</option>
+                            <option class="items" >30</option>
+                            <option class="items" >31</option>
+                            <option class="items" >32</option>
+                            <option class="items" >33</option>
+                            <option class="items" >34</option>
+                            <option class="items" >35</option>
+                            <option class="items" >36</option>
+                            <option class="items" >37</option>
+                            <option class="items" >38</option>
+                            <option class="items" >39</option>
+                            <option class="items" >40</option>
+                            
+                          </select>
+                        </div>
+         
+
+                        <ion-grid>
+                          <ion-row *ngIf="mostrarPregunta[0]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta1" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria1" >
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[1]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta2" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria2">
+                                  
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[2]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta3" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria3">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[3]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta4" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria4">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[4]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta5" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria5">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[5]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta6" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria6">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[6]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta7" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria7">
+
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[7]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta8" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria8">
+
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[8]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta9" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria9">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[9]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta10" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria10">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[10]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta11" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria11">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[11]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta12" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria12">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[12]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                
+                                <input type="text" formControlName="pregunta13" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria13">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[13]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta14" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria14">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[14]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta15" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria15">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[15]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta16" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria16">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[16]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta17" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria17">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[17]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta18" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria18">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[18]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta19" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria19">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[19]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta20" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria20">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[20]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta21" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria21">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[21]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta22" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria22">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[22]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta23" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria23">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[23]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta24" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria24">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[24]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta25" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria25">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[25]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta26" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria26">
+    
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[26]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta27" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria27">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[27]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta28" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria28">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[28]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta29" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria29">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[29]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta30" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria30">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[30]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta31" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria31">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[31]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta32" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria32">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[32]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta33" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria33">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[33]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta34" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria34">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[34]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta35" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria35">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[35]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta36" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria36">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[36]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta37" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria37">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[37]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta38" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria38">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[38]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta39" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria39">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+
+                          <ion-row *ngIf="mostrarPregunta[39]">                                  
+                            <ion-col>
+                              <div class="form-group" >
+                                <label >Encabezado</label>
+                                <input type="text" formControlName="pregunta40" placeholder="Pregunta" class="form-control"  required>
+                              </div>
+                            </ion-col>
+                            <ion-col>
+
+                              <div class="form-group">
+                                <label >Etiquetas</label>
+      
+                                <select class="items" formControlName="categoria40">
+      
+                                  <option class="items" >--Elige--</option>
+                                  <option class="items" *ngFor="let item of collectionEtiquetas.data">{{item.titulo}}</option>
+                                  
+                                </select>
+                              </div>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+
+
+
+
+
         
                       </form>
                     </div>

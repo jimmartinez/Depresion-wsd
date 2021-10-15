@@ -149,7 +149,7 @@ updateFormulario(id:any, formulario:any){
   return this.firestore.collection("formularios").doc(id).update(formulario);
 }
 
-deleteFormularios(id:any){
+deleteFormulario(id:any){
   return this.firestore.collection("formularios").doc(id).delete();
 }
 
