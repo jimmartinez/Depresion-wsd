@@ -153,4 +153,42 @@ deleteFormulario(id:any){
   return this.firestore.collection("formularios").doc(id).delete();
 }
 
+
+//para la gestion de Respuestas de los formularios
+
+getFormularioRespuestas(){
+  return this.firestore.collection("formularioRespuestas").snapshotChanges();
+}
+
+createFormularioRespuestas(formularioRespuestas:any){
+  return this.firestore.collection("formularioRespuestas").add(formularioRespuestas);
+}
+
+updateFormularioRespuestas(id:any, formularioRespuestas:any){
+  return this.firestore.collection("formularioRespuestas").doc(id).update(formularioRespuestas);
+}
+
+deleteFormularioRespuestas(id:any){
+  return this.firestore.collection("formularioRespuestas").doc(id).delete();
+}
+
+
+//para la gestion de asignaciones de los formularios
+
+getAsignaciones(){
+  return this.firestore.collection("asignaciones").snapshotChanges();
+}
+
+createAsignacion(asignacion:any){
+  return this.firestore.collection("asignaciones").add(asignacion);
+}
+
+updateAsignacion(id:any, asignacion:any){
+  return this.firestore.collection("asignaciones").doc(id).update(asignacion);
+}
+
+deleteAsignacion(id:any){
+  return this.firestore.collection("asignaciones").doc(id).delete();
+}
+
 }

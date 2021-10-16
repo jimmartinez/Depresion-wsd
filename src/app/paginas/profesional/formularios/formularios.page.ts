@@ -451,6 +451,15 @@ eliminar(item:any):void{
 
 }
 
+actualizarFormularioLikert(){
+  this.registroService.updateFormulario( this.idFirebaseActualizar ,this.formularioForm.value).then(resp=>{
+    this.formularioForm.reset();
+    document.getElementById('creacionFormulario').style.display='none';
+  }).catch(error=>{
+    console.log(error);
+  })
+}
+
 
 
 }

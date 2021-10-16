@@ -112,6 +112,8 @@ export class InformacionPage implements OnInit {
   collectionInfoBasica = {count: 20, data: []};
 
   infosociodemograficaForm: FormGroup;
+  registroForm: FormGroup;
+
   correo: any;
   nombre: any;
   apellido: any;
@@ -120,7 +122,6 @@ export class InformacionPage implements OnInit {
   idFirebaseActualizarSocio: string;
   actualizar: boolean;
 
-  registroForm: FormGroup;
 
   
 
@@ -270,7 +271,6 @@ export class InformacionPage implements OnInit {
   
 
   }, 7000);
-
 
 
 //aqui pongo la informacion del header que 
