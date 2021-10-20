@@ -30,6 +30,954 @@
   
 <ion-content fullscreen class="ion-padding">
 
+
+  <div style="text-align: center;">
+  
+     <table class="table" id="tabla">
+      <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Formulario</th>
+        <th>Tipo</th>
+        <th>Opciones</th>
+      </tr>
+    
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of collectionAsignaciones.data">
+          <td>{{item.correoPaciente}}</td>
+          <td>{{item.nombreFormulario}}</td>
+          <td>{{item.tipoFormulario}}</td>
+          <td>            
+            <button class="items" (click)="openFormulario(item)">    
+              <img class="iconos" src="../../../../assets/icon/iconoFormulario.png">
+            </button>          
+        </td>
+        </tr>
+      </tbody>
+     </table>
+    
+        
+  </div>
+    
+        <!--Este es el modal de registro-->
+        <div style="text-align: center;">
+    
+          <div id="formulariolikert" class="modal">
+            
+      
+            <form class="modal-content animate" action="/action_page.php" method="post">
+
+              <div class="imgcontainer">
+
+                <span onclick="document.getElementById('formulariolikert').style.display='none'" class="close" title="Close Modal">&times;</span>
+                
+                <div class="center">
+                    <h1 class="uno">{{tituloEncuesta}}</h1>
+                    <br> 
+                </div>
+                
+              </div>
+
+              <div _ngcontent-orc-c60="" class="imgcontainer" >
+                <br _ngcontent-orc-c60="">
+                <br _ngcontent-orc-c60=""> {{instruccionesEncuesta}}
+                <br _ngcontent-orc-c60="">
+                <br _ngcontent-orc-c60="" ><h1 *ngIf="mostrarEnunciadoOpcion[0]"> 0:  {{enunciadoOpcion0}} </h1>
+                <br _ngcontent-orc-c60="" ><h1 *ngIf="mostrarEnunciadoOpcion[1]"> 1:  {{enunciadoOpcion1}} </h1>
+                <br _ngcontent-orc-c60="" ><h1 *ngIf="mostrarEnunciadoOpcion[2]"> 2:  {{enunciadoOpcion2}} </h1>
+                <br _ngcontent-orc-c60="" ><h1 *ngIf="mostrarEnunciadoOpcion[3]"> 3:  {{enunciadoOpcion3}} </h1>
+                <br _ngcontent-orc-c60="" ><h1 *ngIf="mostrarEnunciadoOpcion[4]"> 4:  {{enunciadoOpcion4}} </h1>
+                <br _ngcontent-orc-c60="" ><h1 *ngIf="mostrarEnunciadoOpcion[5]"> 5:  {{enunciadoOpcion5}} </h1>
+                <br _ngcontent-orc-c60=""><br _ngcontent-orc-c60="">
+
+              <img _ngcontent-orc-c60=""  src="{{linkImagenEncuesta}}"></div>
+          
+              <div class="container">
+    
+                
+                <form>
+                  <div class="form-group">
+                    <form [formGroup]='formularioLikertForm'>
+      
+                              <!--pregunta1-->
+                        <div class="trol" *ngIf="mostrarPregunta[0]" >
+                          <div >                            
+                            <h1 class="opciones">{{pregunta1}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb1" formControlName="respuesta1" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb1">0</label>
+                              <input type="radio"  id="rb2"  formControlName="respuesta1" name="respuesta1" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb2">1</label>
+                              <input type="radio"  id="rb3" formControlName="respuesta1" name="respuesta1" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb3">2</label>
+                              <input type="radio"  id="rb4" formControlName="respuesta1" name="respuesta1" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb4">3</label>
+                              <input type="radio"  id="rb5" formControlName="respuesta1" name="respuesta1" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb5">4</label>
+                              <input type="radio"  id="rb6" formControlName="respuesta1" name="respuesta1" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb6">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta2-->
+                        <div class="trol" *ngIf="mostrarPregunta[1]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta2}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb7" formControlName="respuesta2" name="respuesta2" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb7">0</label>
+                              <input type="radio"  id="rb8"  formControlName="respuesta2" name="respuesta2" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb8">1</label>
+                              <input type="radio"  id="rb9" formControlName="respuesta2" name="respuesta2" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb9">2</label>
+                              <input type="radio"  id="rb10" formControlName="respuesta2" name="respuesta2" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb10">3</label>
+                              <input type="radio"  id="rb11" formControlName="respuesta2" name="respuesta2" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb11">4</label>
+                              <input type="radio"  id="rb12" formControlName="respuesta2" name="respuesta2" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb12">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta3-->
+                        <div class="trol" *ngIf="mostrarPregunta[2]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta3}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb13" formControlName="respuesta3" name="respuesta3" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb13">0</label>
+                              <input type="radio"  id="rb14"  formControlName="respuesta3" name="respuesta3" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb14">1</label>
+                              <input type="radio"  id="rb15" formControlName="respuesta3" name="respuesta3" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb15">2</label>
+                              <input type="radio"  id="rb16" formControlName="respuesta3" name="respuesta3" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb16">3</label>
+                              <input type="radio"  id="rb17" formControlName="respuesta3" name="respuesta3" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb17">4</label>
+                              <input type="radio"  id="rb18" formControlName="respuesta3" name="respuesta3" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb18">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta4-->
+                        <div class="trol" *ngIf="mostrarPregunta[3]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta4}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb19" formControlName="respuesta4" name="respuesta4" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb19">0</label>
+                              <input type="radio"  id="rb20"  formControlName="respuesta4" name="respuesta4" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb20">1</label>
+                              <input type="radio"  id="rb21" formControlName="respuesta4" name="respuesta4" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb21">2</label>
+                              <input type="radio"  id="rb22" formControlName="respuesta4" name="respuesta4" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb22">3</label>
+                              <input type="radio"  id="rb23" formControlName="respuesta4" name="respuesta4" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb23">4</label>
+                              <input type="radio"  id="rb24" formControlName="respuesta4" name="respuesta4" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb24">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta5-->
+                        <div class="trol"*ngIf="mostrarPregunta[4]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta5}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb25" formControlName="respuesta5" name="respuesta5" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb25">0</label>
+                              <input type="radio"  id="rb26"  formControlName="respuesta5" name="respuesta5" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb26">1</label>
+                              <input type="radio"  id="rb27" formControlName="respuesta5" name="respuesta5" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb27">2</label>
+                              <input type="radio"  id="rb28" formControlName="respuesta5" name="respuesta5" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb28">3</label>
+                              <input type="radio"  id="rb29" formControlName="respuesta5" name="respuesta5" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb29">4</label>
+                              <input type="radio"  id="rb30" formControlName="respuesta5" name="respuesta5" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb30">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta6-->
+                        <div class="trol" *ngIf="mostrarPregunta[5]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta6}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb31" formControlName="respuesta6" name="respuesta6" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb31">0</label>
+                              <input type="radio"  id="rb32"  formControlName="respuesta6" name="respuesta6" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb32">1</label>
+                              <input type="radio"  id="rb33" formControlName="respuesta6" name="respuesta6" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb33">2</label>
+                              <input type="radio"  id="rb34" formControlName="respuesta6" name="respuesta6" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb34">3</label>
+                              <input type="radio"  id="rb35" formControlName="respuesta6" name="respuesta6" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb35">4</label>
+                              <input type="radio"  id="rb36" formControlName="respuesta6" name="respuesta6" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb36">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta7-->
+                        <div class="trol" *ngIf="mostrarPregunta[6]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta7}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb37" formControlName="respuesta7" name="respuesta7" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb37">0</label>
+                              <input type="radio"  id="rb38"  formControlName="respuesta7" name="respuesta7" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb38">1</label>
+                              <input type="radio"  id="rb39" formControlName="respuesta7" name="respuesta7" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb39">2</label>
+                              <input type="radio"  id="rb40" formControlName="respuesta7" name="respuesta7" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb40">3</label>
+                              <input type="radio"  id="rb41" formControlName="respuesta7" name="respuesta7" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb41">4</label>
+                              <input type="radio"  id="rb42" formControlName="respuesta7" name="respuesta7" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb42">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta8-->
+                        <div class="trol" *ngIf="mostrarPregunta[7]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta8}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb43" formControlName="respuesta8" name="respuesta8" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb43">0</label>
+                              <input type="radio"  id="rb44"  formControlName="respuesta8" name="respuesta8" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb44">1</label>
+                              <input type="radio"  id="rb45" formControlName="respuesta8" name="respuesta8" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb45">2</label>
+                              <input type="radio"  id="rb46" formControlName="respuesta8" name="respuesta8" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb46">3</label>
+                              <input type="radio"  id="rb47" formControlName="respuesta8" name="respuesta8" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb47">4</label>
+                              <input type="radio"  id="rb48" formControlName="respuesta8" name="respuesta8" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb48">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta9-->
+                        <div class="trol" *ngIf="mostrarPregunta[8]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta9}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb49" formControlName="respuesta9" name="respuesta9" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb49">0</label>
+                              <input type="radio"  id="rb50"  formControlName="respuesta9" name="respuesta9" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb50">1</label>
+                              <input type="radio"  id="rb51" formControlName="respuesta9" name="respuesta9" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb51">2</label>
+                              <input type="radio"  id="rb52" formControlName="respuesta9" name="respuesta9" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb52">3</label>
+                              <input type="radio"  id="rb53" formControlName="respuesta9" name="respuesta9" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb53">4</label>
+                              <input type="radio"  id="rb54" formControlName="respuesta9" name="respuesta9" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb54">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta10-->
+                        <div class="trol" *ngIf="mostrarPregunta[9]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta10}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb55" formControlName="respuesta10" name="respuesta10" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb55">0</label>
+                              <input type="radio"  id="rb56"  formControlName="respuesta10" name="respuesta10" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb56">1</label>
+                              <input type="radio"  id="rb57" formControlName="respuesta10" name="respuesta10" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb57">2</label>
+                              <input type="radio"  id="rb58" formControlName="respuesta10" name="respuesta10" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb58">3</label>
+                              <input type="radio"  id="rb59" formControlName="respuesta10" name="respuesta10" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb59">4</label>
+                              <input type="radio"  id="rb60" formControlName="respuesta10" name="respuesta10" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb60">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta11-->
+                        <div class="trol" *ngIf="mostrarPregunta[10]" >
+                          <div >                            
+                            <h1 class="opciones">{{pregunta11}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb61" formControlName="respuesta11" name="respuesta11" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb61">0</label>
+                              <input type="radio"  id="rb62"  formControlName="respuesta11" name="respuesta11" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb62">1</label>
+                              <input type="radio"  id="rb63" formControlName="respuesta11" name="respuesta11" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb63">2</label>
+                              <input type="radio"  id="rb64" formControlName="respuesta11" name="respuesta11" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb64">3</label>
+                              <input type="radio"  id="rb65" formControlName="respuesta11" name="respuesta11" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb65">4</label>
+                              <input type="radio"  id="rb66" formControlName="respuesta11" name="respuesta11" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb66">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta2-->
+                        <div class="trol" *ngIf="mostrarPregunta[11]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta12}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb67" formControlName="respuesta12" name="respuesta12" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb67">0</label>
+                              <input type="radio"  id="rb68"  formControlName="respuesta12" name="respuesta12" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb68">1</label>
+                              <input type="radio"  id="rb69" formControlName="respuesta12" name="respuesta12" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb69">2</label>
+                              <input type="radio"  id="rb70" formControlName="respuesta12" name="respuesta12" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb70">3</label>
+                              <input type="radio"  id="rb71" formControlName="respuesta12" name="respuesta12" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb71">4</label>
+                              <input type="radio"  id="rb72" formControlName="respuesta2" name="respuesta12" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb72">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta3-->
+                        <div class="trol" *ngIf="mostrarPregunta[12]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta13}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb73" formControlName="respuesta13" name="respuesta13" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb73">0</label>
+                              <input type="radio"  id="rb74"  formControlName="respuesta13" name="respuesta13" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb74">1</label>
+                              <input type="radio"  id="rb75" formControlName="respuesta13" name="respuesta13" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb75">2</label>
+                              <input type="radio"  id="rb76" formControlName="respuesta13" name="respuesta13" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb76">3</label>
+                              <input type="radio"  id="rb77" formControlName="respuesta13" name="respuesta13" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb77">4</label>
+                              <input type="radio"  id="rb78" formControlName="respuesta13" name="respuesta13" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb78">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta4-->
+                        <div class="trol" *ngIf="mostrarPregunta[13]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta14}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb79" formControlName="respuesta14" name="respuesta14" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb79">0</label>
+                              <input type="radio"  id="rb80"  formControlName="respuesta14" name="respuesta14" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb80">1</label>
+                              <input type="radio"  id="rb81" formControlName="respuesta14" name="respuesta14" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb81">2</label>
+                              <input type="radio"  id="rb82" formControlName="respuesta14" name="respuesta14" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb82">3</label>
+                              <input type="radio"  id="rb83" formControlName="respuesta14" name="respuesta14" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb83">4</label>
+                              <input type="radio"  id="rb84" formControlName="respuesta14" name="respuesta14" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb84">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta5-->
+                        <div class="trol"*ngIf="mostrarPregunta[14]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta15}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb85" formControlName="respuesta15" name="respuesta15" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb85">0</label>
+                              <input type="radio"  id="rb86"  formControlName="respuesta15" name="respuesta15" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb86">1</label>
+                              <input type="radio"  id="rb87" formControlName="respuesta15" name="respuesta15" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb87">2</label>
+                              <input type="radio"  id="rb88" formControlName="respuesta15" name="respuesta15" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb88">3</label>
+                              <input type="radio"  id="rb89" formControlName="respuesta15" name="respuesta15" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb89">4</label>
+                              <input type="radio"  id="rb90" formControlName="respuesta15" name="respuesta15" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb90">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta6-->
+                        <div class="trol" *ngIf="mostrarPregunta[15]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta16}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb91" formControlName="respuesta16" name="respuesta16" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb91">0</label>
+                              <input type="radio"  id="rb92"  formControlName="respuesta16" name="respuesta16" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb92">1</label>
+                              <input type="radio"  id="rb93" formControlName="respuesta16" name="respuesta16" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb93">2</label>
+                              <input type="radio"  id="rb94" formControlName="respuesta16" name="respuesta16" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb94">3</label>
+                              <input type="radio"  id="rb95" formControlName="respuesta16" name="respuesta16" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb95">4</label>
+                              <input type="radio"  id="rb96" formControlName="respuesta16" name="respuesta16" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb96">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta7-->
+                        <div class="trol" *ngIf="mostrarPregunta[16]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta17}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb97" formControlName="respuesta17" name="respuesta17" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb97">0</label>
+                              <input type="radio"  id="rb98"  formControlName="respuesta17" name="respuesta17" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb98">1</label>
+                              <input type="radio"  id="rb99" formControlName="respuesta17" name="respuesta17" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb99">2</label>
+                              <input type="radio"  id="rb100" formControlName="respuesta17" name="respuesta17" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb100">3</label>
+                              <input type="radio"  id="rb101" formControlName="respuesta17" name="respuesta17" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb101">4</label>
+                              <input type="radio"  id="rb102" formControlName="respuesta17" name="respuesta17" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb102">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta8-->
+                        <div class="trol" *ngIf="mostrarPregunta[7]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta8}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb103" formControlName="respuesta18" name="respuesta18" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb103">0</label>
+                              <input type="radio"  id="rb104"  formControlName="respuesta18" name="respuesta18" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb104">1</label>
+                              <input type="radio"  id="rb105" formControlName="respuesta18" name="respuesta18" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb105">2</label>
+                              <input type="radio"  id="rb106" formControlName="respuesta18" name="respuesta18" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb106">3</label>
+                              <input type="radio"  id="rb107" formControlName="respuesta18" name="respuesta18" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb107">4</label>
+                              <input type="radio"  id="rb108" formControlName="respuesta18" name="respuesta18" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb108">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta9-->
+                        <div class="trol" *ngIf="mostrarPregunta[18]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta19}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb109" formControlName="respuesta19" name="respuesta19" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb109">0</label>
+                              <input type="radio"  id="rb110"  formControlName="respuesta19" name="respuesta19" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb110">1</label>
+                              <input type="radio"  id="rb111" formControlName="respuesta19" name="respuesta19" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb111">2</label>
+                              <input type="radio"  id="rb112" formControlName="respuesta19" name="respuesta19" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb112">3</label>
+                              <input type="radio"  id="rb113" formControlName="respuesta19" name="respuesta19" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb113">4</label>
+                              <input type="radio"  id="rb114" formControlName="respuesta19" name="respuesta19" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb114">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta10-->
+                        <div class="trol" *ngIf="mostrarPregunta[19]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta20}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb115" formControlName="respuesta20" name="respuesta20" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb115">0</label>
+                              <input type="radio"  id="rb116"  formControlName="respuesta20" name="respuesta20" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb116">1</label>
+                              <input type="radio"  id="rb117" formControlName="respuesta20" name="respuesta20" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb117">2</label>
+                              <input type="radio"  id="rb118" formControlName="respuesta20" name="respuesta20" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb118">3</label>
+                              <input type="radio"  id="rb119" formControlName="respuesta20" name="respuesta20" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb119">4</label>
+                              <input type="radio"  id="rb120" formControlName="respuesta20" name="respuesta20" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb120">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta1-->
+                        <div class="trol" *ngIf="mostrarPregunta[20]" >
+                          <div >                            
+                            <h1 class="opciones">{{pregunta21}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb121" formControlName="respuesta21" name="respuesta21" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb121">0</label>
+                              <input type="radio"  id="rb122"  formControlName="respuesta21" name="respuesta21" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb122">1</label>
+                              <input type="radio"  id="rb123" formControlName="respuesta21" name="respuesta21" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb123">2</label>
+                              <input type="radio"  id="rb124" formControlName="respuesta21" name="respuesta21" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb124">3</label>
+                              <input type="radio"  id="rb125" formControlName="respuesta21" name="respuesta21" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb125">4</label>
+                              <input type="radio"  id="rb126" formControlName="respuesta21" name="respuesta21" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb126">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta2-->
+                        <div class="trol" *ngIf="mostrarPregunta[21]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta22}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb127" formControlName="respuesta22" name="respuesta22" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb127">0</label>
+                              <input type="radio"  id="rb128"  formControlName="respuesta22" name="respuesta22" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb128">1</label>
+                              <input type="radio"  id="rb129" formControlName="respuesta22" name="respuesta22" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb129">2</label>
+                              <input type="radio"  id="rb130" formControlName="respuesta22" name="respuesta22" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb130">3</label>
+                              <input type="radio"  id="rb131" formControlName="respuesta22" name="respuesta22" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb131">4</label>
+                              <input type="radio"  id="rb132" formControlName="respuesta22" name="respuesta22" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb132">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta3-->
+                        <div class="trol" *ngIf="mostrarPregunta[22]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta23}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb133" formControlName="respuesta23" name="respuesta23" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb133">0</label>
+                              <input type="radio"  id="rb134"  formControlName="respuesta23" name="respuesta23" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb134">1</label>
+                              <input type="radio"  id="rb135" formControlName="respuesta23" name="respuesta23" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb135">2</label>
+                              <input type="radio"  id="rb136" formControlName="respuesta23" name="respuesta23" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb136">3</label>
+                              <input type="radio"  id="rb137" formControlName="respuesta23" name="respuesta23" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb137">4</label>
+                              <input type="radio"  id="rb138" formControlName="respuesta23" name="respuesta23" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb138">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta4-->
+                        <div class="trol" *ngIf="mostrarPregunta[23]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta24}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb139" formControlName="respuesta24" name="respuesta24" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb139">0</label>
+                              <input type="radio"  id="rb140"  formControlName="respuesta24" name="respuesta24" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb140">1</label>
+                              <input type="radio"  id="rb141" formControlName="respuesta24" name="respuesta24" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb141">2</label>
+                              <input type="radio"  id="rb142" formControlName="respuesta24" name="respuesta24" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb142">3</label>
+                              <input type="radio"  id="rb143" formControlName="respuesta24" name="respuesta24" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb143">4</label>
+                              <input type="radio"  id="rb144" formControlName="respuesta24" name="respuesta24" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb144">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta5-->
+                        <div class="trol"*ngIf="mostrarPregunta[24]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta25}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb145" formControlName="respuesta25" name="respuesta25" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb145">0</label>
+                              <input type="radio"  id="rb146"  formControlName="respuesta25" name="respuesta25" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb146">1</label>
+                              <input type="radio"  id="rb147" formControlName="respuesta25" name="respuesta25" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb147">2</label>
+                              <input type="radio"  id="rb148" formControlName="respuesta25" name="respuesta25" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb148">3</label>
+                              <input type="radio"  id="rb149" formControlName="respuesta25" name="respuesta25" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb149">4</label>
+                              <input type="radio"  id="rb150" formControlName="respuesta25" name="respuesta25" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb150">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta6-->
+                        <div class="trol" *ngIf="mostrarPregunta[25]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta26}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb151" formControlName="respuesta26" name="respuesta26" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb151">0</label>
+                              <input type="radio"  id="rb152"  formControlName="respuesta26" name="respuesta26" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb152">1</label>
+                              <input type="radio"  id="rb153" formControlName="respuesta26" name="respuesta26" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb153">2</label>
+                              <input type="radio"  id="rb154" formControlName="respuesta26" name="respuesta26" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb154">3</label>
+                              <input type="radio"  id="rb155" formControlName="respuesta26" name="respuesta26" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb155">4</label>
+                              <input type="radio"  id="rb156" formControlName="respuesta26" name="respuesta26" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb156">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta7-->
+                        <div class="trol" *ngIf="mostrarPregunta[26]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta27}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb157" formControlName="respuesta27" name="respuesta27" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb157">0</label>
+                              <input type="radio"  id="rb158"  formControlName="respuesta27" name="respuesta27" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb158">1</label>
+                              <input type="radio"  id="rb159" formControlName="respuesta27" name="respuesta27" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb159">2</label>
+                              <input type="radio"  id="rb160" formControlName="respuesta27" name="respuesta27" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb160">3</label>
+                              <input type="radio"  id="rb161" formControlName="respuesta27" name="respuesta27" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb161">4</label>
+                              <input type="radio"  id="rb162" formControlName="respuesta27" name="respuesta27" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb162">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta8-->
+                        <div class="trol" *ngIf="mostrarPregunta[27]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta28}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb163" formControlName="respuesta28" name="respuesta28" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb163">0</label>
+                              <input type="radio"  id="rb164"  formControlName="respuesta28" name="respuesta28" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb164">1</label>
+                              <input type="radio"  id="rb165" formControlName="respuesta28" name="respuesta28" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb165">2</label>
+                              <input type="radio"  id="rb166" formControlName="respuesta28" name="respuesta28" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb166">3</label>
+                              <input type="radio"  id="rb167" formControlName="respuesta28" name="respuesta28" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb167">4</label>
+                              <input type="radio"  id="rb168" formControlName="respuesta28" name="respuesta28" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb168">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta9-->
+                        <div class="trol" *ngIf="mostrarPregunta[28]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta29}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb169" formControlName="respuesta29" name="respuesta29" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb169">0</label>
+                              <input type="radio"  id="rb170"  formControlName="respuesta29" name="respuesta29" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb170">1</label>
+                              <input type="radio"  id="rb171" formControlName="respuesta29" name="respuesta29" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb171">2</label>
+                              <input type="radio"  id="rb172" formControlName="respuesta29" name="respuesta29" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb172">3</label>
+                              <input type="radio"  id="rb173" formControlName="respuesta29" name="respuesta29" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb173">4</label>
+                              <input type="radio"  id="rb174" formControlName="respuesta29" name="respuesta29" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb174">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta10-->
+                        <div class="trol" *ngIf="mostrarPregunta[29]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta30}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb175" formControlName="respuesta30" name="respuesta30" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb175">0</label>
+                              <input type="radio"  id="rb176"  formControlName="respuesta30" name="respuesta30" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb176">1</label>
+                              <input type="radio"  id="rb177" formControlName="respuesta30" name="respuesta30" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb177">2</label>
+                              <input type="radio"  id="rb178" formControlName="respuesta30" name="respuesta30" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb178">3</label>
+                              <input type="radio"  id="rb179" formControlName="respuesta30" name="respuesta30" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb179">4</label>
+                              <input type="radio"  id="rb180" formControlName="respuesta30" name="respuesta30" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb180">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta1-->
+                        <div class="trol" *ngIf="mostrarPregunta[30]" >
+                          <div >                            
+                            <h1 class="opciones">{{pregunta31}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb181" formControlName="respuesta31" name="respuesta31" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb181">0</label>
+                              <input type="radio"  id="rb182"  formControlName="respuesta31" name="respuesta31" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb182">1</label>
+                              <input type="radio"  id="rb183" formControlName="respuesta31" name="respuesta31" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb183">2</label>
+                              <input type="radio"  id="rb184" formControlName="respuesta31" name="respuesta31" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb184">3</label>
+                              <input type="radio"  id="rb185" formControlName="respuesta31" name="respuesta31" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb185">4</label>
+                              <input type="radio"  id="rb186" formControlName="respuesta31" name="respuesta31" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb186">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta2-->
+                        <div class="trol" *ngIf="mostrarPregunta[31]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta32}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb187" formControlName="respuesta32" name="respuesta32" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb187">0</label>
+                              <input type="radio"  id="rb188"  formControlName="respuesta32" name="respuesta32" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb188">1</label>
+                              <input type="radio"  id="rb189" formControlName="respuesta32" name="respuesta32" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb189">2</label>
+                              <input type="radio"  id="rb190" formControlName="respuesta32" name="respuesta32" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb190">3</label>
+                              <input type="radio"  id="rb191" formControlName="respuesta32" name="respuesta32" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb191">4</label>
+                              <input type="radio"  id="rb192" formControlName="respuesta32" name="respuesta32" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb192">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta3-->
+                        <div class="trol" *ngIf="mostrarPregunta[32]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta33}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb193" formControlName="respuesta33" name="respuesta33" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb193">0</label>
+                              <input type="radio"  id="rb194"  formControlName="respuesta33" name="respuesta33" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb194">1</label>
+                              <input type="radio"  id="rb195" formControlName="respuesta33" name="respuesta33" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb195">2</label>
+                              <input type="radio"  id="rb196" formControlName="respuesta33" name="respuesta33" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb196">3</label>
+                              <input type="radio"  id="rb197" formControlName="respuesta33" name="respuesta33" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb197">4</label>
+                              <input type="radio"  id="rb198" formControlName="respuesta33" name="respuesta33" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb198">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta4-->
+                        <div class="trol" *ngIf="mostrarPregunta[33]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta34}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb199" formControlName="respuesta34" name="respuesta34" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb199">0</label>
+                              <input type="radio"  id="rb200"  formControlName="respuesta34" name="respuesta34" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb200">1</label>
+                              <input type="radio"  id="rb201" formControlName="respuesta34" name="respuesta34" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb201">2</label>
+                              <input type="radio"  id="rb202" formControlName="respuesta34" name="respuesta34" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb202">3</label>
+                              <input type="radio"  id="rb203" formControlName="respuesta34" name="respuesta34" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb203">4</label>
+                              <input type="radio"  id="rb204" formControlName="respuesta34" name="respuesta34" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb204">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta5-->
+                        <div class="trol"*ngIf="mostrarPregunta[34]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta35}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb205" formControlName="respuesta35" name="respuesta35" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb205">0</label>
+                              <input type="radio"  id="rb206"  formControlName="respuesta35" name="respuesta35" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb206">1</label>
+                              <input type="radio"  id="rb207" formControlName="respuesta35" name="respuesta35" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb207">2</label>
+                              <input type="radio"  id="rb208" formControlName="respuesta35" name="respuesta35" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb208">3</label>
+                              <input type="radio"  id="rb209" formControlName="respuesta35" name="respuesta35" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb209">4</label>
+                              <input type="radio"  id="rb210" formControlName="respuesta35" name="respuesta35" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb210">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta6-->
+                        <div class="trol" *ngIf="mostrarPregunta[35]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta36}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb211" formControlName="respuesta36" name="respuesta36" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb211">0</label>
+                              <input type="radio"  id="rb212"  formControlName="respuesta36" name="respuesta36" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb212">1</label>
+                              <input type="radio"  id="rb213" formControlName="respuesta36" name="respuesta36" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb213">2</label>
+                              <input type="radio"  id="rb214" formControlName="respuesta36" name="respuesta36" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb214">3</label>
+                              <input type="radio"  id="rb215" formControlName="respuesta36" name="respuesta36" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb215">4</label>
+                              <input type="radio"  id="rb216" formControlName="respuesta36" name="respuesta36" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb216">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta7-->
+                        <div class="trol" *ngIf="mostrarPregunta[36]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta37}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb217" formControlName="respuesta37" name="respuesta37" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb217">0</label>
+                              <input type="radio"  id="rb218"  formControlName="respuesta37" name="respuesta37" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb218">1</label>
+                              <input type="radio"  id="rb219" formControlName="respuesta37" name="respuesta37" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb219">2</label>
+                              <input type="radio"  id="rb220" formControlName="respuesta37" name="respuesta37" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb220">3</label>
+                              <input type="radio"  id="rb221" formControlName="respuesta37" name="respuesta37" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb221">4</label>
+                              <input type="radio"  id="rb222" formControlName="respuesta37" name="respuesta37" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb222">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta8-->
+                        <div class="trol" *ngIf="mostrarPregunta[37]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta38}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb223" formControlName="respuesta38" name="respuesta38" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb223">0</label>
+                              <input type="radio"  id="rb224"  formControlName="respuesta38" name="respuesta38" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb224">1</label>
+                              <input type="radio"  id="rb225" formControlName="respuesta38" name="respuesta38" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb225">2</label>
+                              <input type="radio"  id="rb226" formControlName="respuesta38" name="respuesta38" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb226">3</label>
+                              <input type="radio"  id="rb227" formControlName="respuesta38" name="respuesta38" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb227">4</label>
+                              <input type="radio"  id="rb228" formControlName="respuesta38" name="respuesta38" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb228">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta9-->
+                        <div class="trol" *ngIf="mostrarPregunta[38]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta39}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb229" formControlName="respuesta39" name="respuesta39" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb229">0</label>
+                              <input type="radio"  id="rb230"  formControlName="respuesta39" name="respuesta39" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb230">1</label>
+                              <input type="radio"  id="rb231" formControlName="respuesta39" name="respuesta39" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb231">2</label>
+                              <input type="radio"  id="rb232" formControlName="respuesta39" name="respuesta39" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb232">3</label>
+                              <input type="radio"  id="rb233" formControlName="respuesta39" name="respuesta39" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb233">4</label>
+                              <input type="radio"  id="rb234" formControlName="respuesta39" name="respuesta39" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb234">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+                                                      <!--pregunta10-->
+                        <div class="trol" *ngIf="mostrarPregunta[39]">
+                          <div >                            
+                            <h1 class="opciones">{{pregunta40}}</h1>
+                            <div class="group">
+                              <input type="radio"  id="rb235" formControlName="respuesta40" name="respuesta40" value="0" *ngIf="mostrarEnunciadoOpcion[0]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[0]" for="rb235">0</label>
+                              <input type="radio"  id="rb236"  formControlName="respuesta40" name="respuesta40" value="1" *ngIf="mostrarEnunciadoOpcion[1]"/>
+                              <label *ngIf="mostrarEnunciadoOpcion[1]" for="rb236">1</label>
+                              <input type="radio"  id="rb237" formControlName="respuesta40" name="respuesta40" value="2" *ngIf="mostrarEnunciadoOpcion[2]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[2]" for="rb237">2</label>
+                              <input type="radio"  id="rb238" formControlName="respuesta40" name="respuesta40" value="3" *ngIf="mostrarEnunciadoOpcion[3]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[3]" for="rb238">3</label>
+                              <input type="radio"  id="rb239" formControlName="respuesta40" name="respuesta40" value="4" *ngIf="mostrarEnunciadoOpcion[4]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[4]" for="rb239">4</label>
+                              <input type="radio"  id="rb240" formControlName="respuesta40" name="respuesta40" value="5" *ngIf="mostrarEnunciadoOpcion[5]" />
+                              <label *ngIf="mostrarEnunciadoOpcion[5]" for="rb240">5</label>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+      
+
+
+                    </form>
+                  </div>
+                </form>
+                  
+      
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="crearFormulario()">Guardar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      
+        
+        </div>
+      
+
+
+    
+
+    
+
+
+<!--
   <body>
     <div>
       <h1 class="encuesta">Pure CSS Fancy Checkbox/Radio</h1>
@@ -60,7 +1008,7 @@
 
     <button on-click="obtenerDesdeApp()">lol</button>
   </body>
-
+-->
 
 
 </ion-content>

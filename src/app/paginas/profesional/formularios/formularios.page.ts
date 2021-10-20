@@ -16,6 +16,8 @@ export class FormulariosPage implements OnInit {
   collectionEtiquetas = {count: 20, data: []};
 
   mostrarPregunta= {};
+  mostrarEnunciadoOpcion= {};
+
   idFirebaseActualizar: string;
 
 
@@ -35,12 +37,26 @@ export class FormulariosPage implements OnInit {
 
   ngOnInit() {
 
+    this.mostrarPregunta[0]=false;
     
     this.formularioForm = this.fb.group({
 
       nombre: ['',Validators.required],
 
+
+      //es un tope maximo de 6 es decir 0 a 5
       cantidadOpciones: ['',Validators.required],
+      instrucciones: ['',Validators.required],
+      linkImagen: ['',Validators.required],
+
+      enunciadoOpcion0: ['',Validators.required],
+      enunciadoOpcion1: ['',Validators.required],
+      enunciadoOpcion2: ['',Validators.required],
+      enunciadoOpcion3: ['',Validators.required],
+      enunciadoOpcion4: ['',Validators.required],
+      enunciadoOpcion5: ['',Validators.required],
+
+
       cantidadPreguntas: [1,Validators.required],
 
 //sera un tope maximo de 40 preguntas
@@ -147,7 +163,7 @@ export class FormulariosPage implements OnInit {
     );
 
 
-    this.registroService.getFormulariosLikert().subscribe(resp=>{
+    this.registroService.getFormularios().subscribe(resp=>{
       this.collectionFormularios.data = resp.map( (e:any)=>{
         return{
           
@@ -156,6 +172,19 @@ export class FormulariosPage implements OnInit {
 
       cantidadOpciones: e.payload.doc.data().cantidadOpciones,
       cantidadPreguntas: e.payload.doc.data().cantidadPreguntas,
+
+      instrucciones: e.payload.doc.data().instrucciones,
+      linkImagen: e.payload.doc.data().linkImagen,
+
+      
+      enunciadoOpcion0: e.payload.doc.data().enunciadoOpcion0,
+      enunciadoOpcion1: e.payload.doc.data().enunciadoOpcion1,
+      enunciadoOpcion2: e.payload.doc.data().enunciadoOpcion2,
+      enunciadoOpcion3: e.payload.doc.data().enunciadoOpcion3,
+      enunciadoOpcion4: e.payload.doc.data().enunciadoOpcion4,
+      enunciadoOpcion5: e.payload.doc.data().enunciadoOpcion5,
+
+
 //sera un tope maximo de 40 preguntas
 
       pregunta1: e.payload.doc.data().pregunta1,
@@ -255,20 +284,7 @@ export class FormulariosPage implements OnInit {
   }
 
   abrirModal(){
-    /*  //llenar el form
-      this.profesionalForm.setValue({
-        nombre: '',
-        documento: 0,
-        tipoDoc: '',
-        especialidad: '',
-        tarjetaProfesional: '',
-        tipoContrato: '',
-        practicante: false,
-        correoPrincipal: '',
-        entidadDeSalud: this.appComponent.getCorreo(),
-        rol: 'profesional'
-      });
-    */
+ 
         this.actualizar = false;
         //abrir modal
         document.getElementById('creacionFormulario').style.display='block';
@@ -302,22 +318,22 @@ export class FormulariosPage implements OnInit {
 
   }
 
-  actualizarPreguntasEditar(cantidad:any){
-
-
+  actualizarOpciones(){
 
     
-    
-    for (let i = 0; i < 40; i++) {
-      this.mostrarPregunta[i]=false;
+    for (let i = 0; i < 6; i++) {
+      this.mostrarEnunciadoOpcion[i]=false;
     }
 
     
-
-    for (let i = 0; i < cantidad; i++) {
-      this.mostrarPregunta[i]=true;
+    for (let i = 0; i <= this.formularioForm.value.cantidadOpciones; i++) {
+      this.mostrarEnunciadoOpcion[i]=true;
     }
+
+
   }
+
+  
 
 
   
@@ -332,6 +348,17 @@ export class FormulariosPage implements OnInit {
 
       cantidadOpciones: item.cantidadOpciones,
       cantidadPreguntas: item.cantidadPreguntas,
+      instrucciones: item.instrucciones,
+      linkImagen: item.linkImagen,
+
+
+      enunciadoOpcion0:  item.enunciadoOpcion0,
+      enunciadoOpcion1:  item.enunciadoOpcion1,
+      enunciadoOpcion2:  item.enunciadoOpcion2,
+      enunciadoOpcion3:  item.enunciadoOpcion3,
+      enunciadoOpcion4:  item.enunciadoOpcion4,
+      enunciadoOpcion5:  item.enunciadoOpcion5,
+
 
 
       pregunta1: item.pregunta1,
@@ -429,9 +456,23 @@ export class FormulariosPage implements OnInit {
 
 }
 
+actualizarPreguntasEditar(cantidad:any){
+
+
+  for (let i = 0; i < 40; i++) {
+    this.mostrarPregunta[i]=false;
+  }
+
+  
+
+  for (let i = 0; i < cantidad; i++) {
+    this.mostrarPregunta[i]=true;
+  }
+}
+
 eliminar(item:any):void{
  Swal.fire({
-   title:'¿Estas seguro que deseas eliminar este usuario?',
+   title:'¿Estas seguro que deseas eliminar este formulario?',
    text:'Esta accion no se podrá deshacer',
    icon:'warning',
    showCancelButton: true,
@@ -444,7 +485,7 @@ eliminar(item:any):void{
         //llenar el form
         this.registroService.deleteFormulario(item.idFirebase)
 
- Swal.fire('¡Usuario eliminado!', ' El usuario se ha eliminado correctamente ','success');
+ Swal.fire('Formulario eliminado!', ' El formulario se ha eliminado correctamente ','success');
    }
  })
  return 

@@ -30,18 +30,18 @@
                         
                 <div class="form-group">
                   <label >Nombre</label>
-                  <input type="text" formControlName="nombre" class="form-control" placeholder="Digita tu nombre" required>
+                  <input type="text" formControlName="nombre" maxlength="90" class="form-control" placeholder="Digita tu nombre" required>
                 </div>
       
       
                  <div class="form-group">
                    <label >Primer Apellido</label>
-                   <input type="text" formControlName="apellido1" class="form-control" placeholder="Digita tu primer apellido" required>
+                   <input type="text" formControlName="apellido1" maxlength="45" class="form-control" placeholder="Digita tu primer apellido" required>
                  </div>
 
                  <div class="form-group">
                   <label >Segundo Apellido</label>
-                  <input type="text" formControlName="apellido2" class="form-control" placeholder="Digita tu segundo apellido" required>
+                  <input type="text" formControlName="apellido2" maxlength="45" class="form-control" placeholder="Digita tu segundo apellido" required>
                 </div>
       
                  <div class="form-group">
@@ -51,37 +51,77 @@
 
                  <div class="form-group">
                   <label >Lugar de nacimiento</label>
-                  <input type="text" formControlName="lugarNacimiento" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
+                  <input type="text" formControlName="lugarNacimiento" maxlength="45" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
                 </div>
-      
-      
+
+                 
                  <div class="form-group">
-                   <label >Genero</label>
-                   <input type="text" formControlName="genero" class="form-control" placeholder="Digita tu genero" required>
-                 </div>
+                  <label >Genero </label>
+
+                  <select class="items" type="text" formControlName="genero" placeholder="--Elige--" required>
+
+                    <option class="items" >Masculino</option>
+                    <option class="items" >Femenino</option>
+
+                    
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label >Orientacion sexual </label>
+
+                  <select class="items" type="text" formControlName="orientacionSexual" value="--Elige--" required>
+
+                    <option class="items" >Heterosexual</option>
+                    <option class="items" >Homosexual</option>
+                    <option class="items" >Bisexual</option>
+                    <option class="items" >Transexual</option>
+                    <option class="items" >Asexual</option>
+                    <option class="items" >Pansexual</option>
+                    <option class="items" >Androsexual</option>
+                    <option class="items" >Demisexual</option>
+                    <option class="items" >Sapiosexual</option>
+                    <option class="items" >Graysexual</option>
+                    <option class="items" >Metrosexual</option>
+                    <option class="items" >Lumbersexual</option>
+                    <option class="items" >Spornosexual</option>
+                    <option class="items" >Queer</option>
+                    <option class="items" >Arromantico</option>
+                    <option class="items" >Poliamoroso</option>
+
+                    
+                  </select>
+                </div>
 
 
-                 <div class="form-group">
-                  <label >Orientacion sexual</label>
-                  <input type="text" formControlName="orientacionSexual" class="form-control" placeholder="Digita tu orientacion sexual" required>
-                </div>
-      
-      
                  <div class="form-group">
                    <label >Direccion de residencia</label>
-                   <input type="text" formControlName="direccionResidencia" class="form-control" placeholder="Digita tu direccion de residencia" required>
+                   <input type="text" formControlName="direccionResidencia" maxlength="30" class="form-control" placeholder="Digita tu direccion de residencia" required>
                  </div>
 
                  <div class="form-group">
                   <label >Direccion laboral</label>
-                  <input type="text" formControlName="direccionLaboral" class="form-control" placeholder="Digita tu direccion laboral" required>
+                  <input type="text" formControlName="direccionLaboral" maxlength="30" class="form-control" placeholder="Digita tu direccion laboral" required>
                 </div>
       
-      
+
+                                  
                  <div class="form-group">
-                   <label >Estrato</label>
-                   <input type="number" formControlName="estrato" class="form-control" placeholder="Digita tu estrato" required>
-                 </div>
+                  <label >Estrato </label>
+
+                  <select class="items" type="number" formControlName="estrato" placeholder="--Elige--" required>
+
+                    <option class="items" >0</option>
+                    <option class="items" >1</option>
+                    <option class="items" >2</option>
+                    <option class="items" >3</option>
+                    <option class="items" >4</option>
+                    <option class="items" >5</option>
+                    <option class="items" >6</option>
+
+                    
+                  </select>
+                </div>
 
                  <div class="form-group">
                   <label >Correo electrónico principal</label>
@@ -107,20 +147,20 @@
 
                  <div class="form-group">
                   <label >Nombre de contacto</label>
-                  <input type="text" formControlName="nombreContacto" class="form-control" placeholder="Digita el nombre de un contacto tuyo" required>
+                  <input type="text" formControlName="nombreContacto" maxlength="100" class="form-control" placeholder="Digita el nombre de un contacto tuyo" required>
                 </div>
       
       
                  <div class="form-group">
                    <label >Telefono de contacto</label>
-                   <input type="tel" formControlName="telefonoContacto" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
+                   <input type="number" formControlName="telefonoContacto" min="0" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
                  </div>
 
                  <div class="form-group">
                   <label >Servicio de salud</label>
-                  <input type="text" formControlName="servicioSalud" class="form-control" placeholder="Digita el nombre del servicio de salud que usas" required>
+                  <input type="text" formControlName="servicioSalud" maxlength="30" class="form-control" placeholder="Digita el nombre del servicio de salud que usas" required>
                 </div>
-      
+    
       
                  <div class="form-group">
                    <label >Acepto la politica de tratamiento de datos personales</label>
@@ -171,7 +211,7 @@
     
         <div class="container">
 
-          
+        
           <form>
             <div class="form-group">
               <form [formGroup]='loginForm'>
@@ -179,14 +219,14 @@
 
                 <div class="vertical">      
                 <div class="form-group">
-                  <label >Nombre de usuario</label>
-                  <input type="email" formControlName="nombre" class="form-control" placeholder="digita el nombre de usuario con que te registraste" required>
+                  <label >Correo Electrónico</label>
+                  <input type="email" formControlName="nombre" class="form-control" placeholder="Digita el correo con que te registraste" required>
                 </div>
       
       
                  <div class="form-group">
                    <label >Contraseña</label>
-                   <input type="password" formControlName="contra" class="form-control" placeholder="digita aqui tu contraseña" required>
+                   <input type="password" formControlName="contra" class="form-control" placeholder="Digita aqui tu contraseña" required>
                  </div>
                 </div>
               </form>
@@ -232,28 +272,28 @@
                           
                   <div class="form-group">
                     <label >Nit</label>
-                    <input type="text" formControlName="nit" class="form-control" placeholder="Digita el NIT de la eps" required>
+                    <input type="text" formControlName="nit" maxlength="11" class="form-control" placeholder="Digita el NIT de la eps" required>
                   </div>
         
         
                    <div class="form-group">
                      <label >Identificacion de administrador</label>
-                     <input type="number" formControlName="idAdministrador" class="form-control" placeholder="Digita la identificacion del administrador" required>
+                     <input type="number" formControlName="idAdministrador" min="1" max="99999999999" class="form-control" placeholder="Digita la identificacion del administrador" required>
                    </div>
   
                    <div class="form-group">
                     <label >Nombre de administrador</label>
-                    <input type="text" formControlName="nombreAdmin" class="form-control" placeholder="Digita el nombre del administrador" required>
+                    <input type="text" formControlName="nombreAdmin" maxlength="100" class="form-control" placeholder="Digita el nombre del administrador" required>
                   </div>
         
                    <div class="form-group">
                      <label >Nombre de sede principal</label>
-                     <input type="text" formControlName="sede1Nombre" class="form-control" placeholder="Digita el nombre de la sede principal de la EPS" required>
+                     <input type="text" formControlName="sede1Nombre" maxlength="30" class="form-control" placeholder="Digita el nombre de la sede principal de la EPS" required>
                    </div>
   
                    <div class="form-group">
                     <label >Numero Telefonico de sede principal</label>
-                    <input type="tel" formControlName="sede1Tel" class="form-control" placeholder="Digita el numero telefonico de la sede principal" required>
+                    <input type="number" formControlName="sede1Tel" min="0" max="9999999999" class="form-control" placeholder="Digita el numero telefonico de la sede principal" required>
                   </div>
         
         
@@ -266,12 +306,12 @@
 
                    <div class="form-group">
                     <label >Nombre de sede 2</label>
-                    <input type="text" formControlName="sede2Nombre" class="form-control" placeholder="Digita el nombre de la sede 2 de la EPS" required>
+                    <input type="text" formControlName="sede2Nombre" maxlength="30" class="form-control" placeholder="Digita el nombre de la sede 2 de la EPS" required>
                   </div>
  
                   <div class="form-group">
                    <label >Numero Telefonico de sede 2</label>
-                   <input type="tel" formControlName="sede2Tel" class="form-control" placeholder="Digita el numero telefonico de la sede 2" required>
+                   <input type="number" formControlName="sede2Tel" min="0" max="9999999999" class="form-control" placeholder="Digita el numero telefonico de la sede 2" required>
                  </div>
        
        
@@ -283,12 +323,12 @@
 
                   <div class="form-group">
                     <label >Nombre de sede 3</label>
-                    <input type="text" formControlName="sede3Nombre" class="form-control" placeholder="Digita el nombre de la sede 3 de la EPS" required>
+                    <input type="text" formControlName="sede3Nombre" maxlength="30" class="form-control" placeholder="Digita el nombre de la sede 3 de la EPS" required>
                   </div>
  
                   <div class="form-group">
                    <label >Numero Telefonico de sede 3</label>
-                   <input type="tel" formControlName="sede3Tel" class="form-control" placeholder="Digita el numero telefonico de la sede 3" required>
+                   <input type="number" formControlName="sede3Tel" min="0" max="9999999999" class="form-control" placeholder="Digita el numero telefonico de la sede 3" required>
                  </div>
        
        

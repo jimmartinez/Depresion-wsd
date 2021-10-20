@@ -167,7 +167,7 @@ export class PacientesPage implements OnInit {
 
     setTimeout(() => {
 
-      this.registroService.getFormulariosLikert().subscribe(resp=>{
+      this.registroService.getFormularios().subscribe(resp=>{
         this.collectionFormularios.data = resp.map( (e:any)=>{
           return{
             

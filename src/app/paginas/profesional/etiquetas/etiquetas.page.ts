@@ -29,7 +29,7 @@ export class EtiquetasPage implements OnInit {
       titulo: ['',Validators.required],
       
     })
-
+    
 
     this.registroService.getEtiquetas().subscribe(resp=>{
       this.collectionEtiquetas.data = resp.map( (e:any)=>{

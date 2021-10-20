@@ -36,7 +36,6 @@ export class RegistroService {
   }
 
   getInfoBasicaCorreo(correo: string){
-    console.log(correo);
     return this.firestore.collection("infobasica", ref => ref.where("correoPrincipal","==",correo)).snapshotChanges();
   }  
 
@@ -62,7 +61,6 @@ export class RegistroService {
   }
 
   getInfoSociodemograficaCorreo(correo: string){
-    console.log(correo);
     return this.firestore.collection("infoSociodemografica", ref => ref.where("correoPrincipal","==",correo)).snapshotChanges();
   }  
 
@@ -86,7 +84,6 @@ export class RegistroService {
   }
 
   getEPSCorreo(correo: string){
-    console.log(correo);
     return this.firestore.collection("eps", ref => ref.where("correoPrincipal","==",correo)).snapshotChanges();
   }
 //para la gestion de profesionales
@@ -108,12 +105,10 @@ deleteProfesional(id:any){
 }
 
 getProfesionalCorreoEntidad(correo: string){
-  console.log(correo);
   return this.firestore.collection("profesional", ref => ref.where("entidadDeSalud","==",correo)).snapshotChanges();
 }
 
 getProfesionalCorreo(correo: string){
-  console.log(correo+'llega bien aqui');
   return this.firestore.collection("profesional", ref => ref.where("correoPrincipal","==",correo)).snapshotChanges();
 }
 
@@ -137,7 +132,7 @@ deleteEtiqueta(id:any){
 
 //para la gestion de formularios likert
 
-getFormulariosLikert(){
+getFormularios(){
   return this.firestore.collection("formularios").snapshotChanges();
 }
 
@@ -151,6 +146,11 @@ updateFormulario(id:any, formulario:any){
 
 deleteFormulario(id:any){
   return this.firestore.collection("formularios").doc(id).delete();
+}
+
+getFormularioNombre(nombre: string){
+  console.log(nombre);
+  return this.firestore.collection("formularios", ref => ref.where("nombre","==",nombre)).snapshotChanges();
 }
 
 
@@ -189,6 +189,10 @@ updateAsignacion(id:any, asignacion:any){
 
 deleteAsignacion(id:any){
   return this.firestore.collection("asignaciones").doc(id).delete();
+}
+
+getAsignacionesPaciente(correo: string){
+  return this.firestore.collection("asignaciones", ref => ref.where("correoPaciente","==",correo)).snapshotChanges();
 }
 
 }
