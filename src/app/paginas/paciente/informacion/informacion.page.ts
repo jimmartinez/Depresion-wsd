@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroService } from 'src/app/services/registro.service';
 
@@ -110,6 +111,8 @@ export class InformacionPage implements OnInit {
 
   collectionInfoSociodemografica = {count: 20, data: []};
   collectionInfoBasica = {count: 20, data: []};
+  collectionEPS = {count: 20, data: []};
+
 
   infosociodemograficaForm: FormGroup;
   registroForm: FormGroup;
@@ -136,11 +139,25 @@ export class InformacionPage implements OnInit {
     public fb: FormBuilder,
     public auth: AngularFireAuth,
     public router: Router,
+    private app: AppComponent
 
 
   ) {}
 
   ngOnInit() {
+
+    this.registroService.getEPS().subscribe(resp=>{
+      this.collectionEPS.data = resp.map( (e:any)=>{
+        return{
+          correoPrincipal: e.payload.doc.data().correoPrincipal,
+          idFirebase: e.payload.doc.id
+        }
+      })
+    },
+    error=>{
+      console.log(error);
+    }
+    );
 
 
     
@@ -175,8 +192,6 @@ export class InformacionPage implements OnInit {
       estrato: ['',Validators.required],
       correoPrincipal: ['',Validators.required],
       correoSecundario: ['',Validators.required],
-      contra: ['',Validators.required],
-      confirmaContra: ['',Validators.required],
       nombreContacto: ['',Validators.required],
       telefonoContacto: ['',Validators.required],
       servicioSalud: ['',Validators.required],
@@ -186,20 +201,17 @@ export class InformacionPage implements OnInit {
 
 
     //este si debe ir porque verifica que si este autenticado
-    setInterval(() => {
-        this.auth.onAuthStateChanged(user=>{
-          if(user){
-            this.correo = user.email;
-          }else{
-            this.router.navigateByUrl('login');
-          }
-        })
-      }, 7000);
+    setTimeout(() => {
+      this.correo = this.app.getCorreo();
+      console.log(this.correo)
+    }, 4000);
+          
+    
 
 
 
   
-      setInterval(() => {
+      setTimeout(() => {
         this.registroService.getInfoBasicaCorreo(this.correo).subscribe(resp=>{
           this.collectionInfoBasica.data = resp.map( (e:any)=>{
             return{
@@ -216,8 +228,6 @@ export class InformacionPage implements OnInit {
               estrato: e.payload.doc.data().estrato,
               correoPrincipal: e.payload.doc.data().correoPrincipal,
               correoSecundario: e.payload.doc.data().correoSecundario,
-              contra: e.payload.doc.data().contra,
-              confirmaContra: e.payload.doc.data().confirmaContra,
               nombreContacto: e.payload.doc.data().nombreContacto,
               telefonoContacto: e.payload.doc.data().telefonoContacto,
               servicioSalud: e.payload.doc.data().servicioSalud,
@@ -236,12 +246,11 @@ export class InformacionPage implements OnInit {
         }
         );
       
-      }, 7000);
+      }, 4500);
 
-    setInterval(() => {
+    setTimeout(() => {
     
-        
-      this.cargando = false;
+      
       this.registroService.getInfoSociodemograficaCorreo(this.correo).subscribe(resp=>{
         this.collectionInfoSociodemografica.data = resp.map( (e:any)=>{
           return{
@@ -270,12 +279,14 @@ export class InformacionPage implements OnInit {
       );
   
 
-  }, 7000);
+  }, 5000);
 
 
 //aqui pongo la informacion del header que 
     setTimeout(() => {
       try {
+        this.cargando = false;
+
         this.mostrar=true;
         this.abrirEditarInfoSociodemografica();
         this.abrirEditarInfoBasica();
@@ -283,10 +294,9 @@ export class InformacionPage implements OnInit {
         this.apellido = this.collectionInfoBasica.data[0].apellido1.toString();
         this.rol = this.collectionInfoBasica.data[0].rol.toString();
       } catch (error) {
-        this.router.navigateByUrl('login');
       }
 
-    }, 7500);
+    }, 5500);
 
 
 /* *ngIf="mostrar==true" */
@@ -360,8 +370,6 @@ export class InformacionPage implements OnInit {
       estrato: this.collectionInfoBasica.data[0].estrato,
       correoPrincipal: this.collectionInfoBasica.data[0].correoPrincipal,
       correoSecundario: this.collectionInfoBasica.data[0].correoSecundario,
-      contra: this.collectionInfoBasica.data[0].contra,
-      confirmaContra: this.collectionInfoBasica.data[0].confirmaContra,
       nombreContacto: this.collectionInfoBasica.data[0].nombreContacto,
       telefonoContacto: this.collectionInfoBasica.data[0].telefonoContacto,
       servicioSalud: this.collectionInfoBasica.data[0].servicioSalud,
@@ -393,6 +401,10 @@ export class InformacionPage implements OnInit {
   }
 
   actualizarInfoBasica(){
+
+
+    this.registroForm.controls['servicioSalud'].setValue(this.collectionInfoBasica.data[0].servicioSalud);
+
     
 
     if(this.idFirebaseActualizarBasica!=null){

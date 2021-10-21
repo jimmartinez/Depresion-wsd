@@ -8,6 +8,7 @@ import { MisEncuestasPageRoutingModule } from './mis-encuestas-routing.module';
 
 import { MisEncuestasPage } from './mis-encuestas.page';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from 'src/app/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ReactiveFormsModule,
   ],
-  declarations: [MisEncuestasPage]
+  declarations: [
+    MisEncuestasPage,
+    LoadingComponent,
+]
 })
 export class MisEncuestasPageModule {}

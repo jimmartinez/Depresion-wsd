@@ -30,7 +30,7 @@
           <ion-label><h1>Datos Personales</h1></ion-label>
         </button>
         <button class="tabinfo"  on-click="goToSocio()">
-          <ion-label><h1>Informacion Sociodemográfica</h1></ion-label>
+          <ion-label><h1>Información Sociodemográfica</h1></ion-label>
         </button>
       </ion-tab-bar>
     </ion-tabs>
@@ -60,7 +60,7 @@
                       <div class="imgcontainer">
                         <div class="modal-header" class="center">
                           <h4 class="modal-title" id="modal-basic-title">
-                            Actualizacion de datos Basicos <br> </h4>
+                            Actualización de datos Básicos <br> </h4>
                         </div>
                         
                       </div>
@@ -100,49 +100,80 @@
                     </div>
           
           
-                     <div class="form-group">
-                       <label >Genero</label>
-                       <input type="text" formControlName="genero" class="form-control" placeholder="Digita tu genero" required>
-                     </div>
+                 
+                    <div class="form-group">
+                      <label >Genero </label>
+    
+                      <select class="items" type="text" formControlName="genero" placeholder="--Elige--" required>
+    
+                        <option class="items" >Masculino</option>
+                        <option class="items" >Femenino</option>
+    
+                        
+                      </select>
+                    </div>
         
         
-                     <div class="form-group">
-                      <label >Orientacion sexual</label>
-                      <input type="text" formControlName="orientacionSexual" class="form-control" placeholder="Digita tu orientacion sexual" required>
+                    <div class="form-group">
+                      <label >Orientación sexual </label>
+    
+                      <select class="items" type="text" formControlName="orientacionSexual" value="--Elige--" required>
+    
+                        <option class="items" >Heterosexual</option>
+                        <option class="items" >Homosexual</option>
+                        <option class="items" >Bisexual</option>
+                        <option class="items" >Transexual</option>
+                        <option class="items" >Asexual</option>
+                        <option class="items" >Pansexual</option>
+                        <option class="items" >Androsexual</option>
+                        <option class="items" >Demisexual</option>
+                        <option class="items" >Sapiosexual</option>
+                        <option class="items" >Graysexual</option>
+                        <option class="items" >Metrosexual</option>
+                        <option class="items" >Lumbersexual</option>
+                        <option class="items" >Spornosexual</option>
+                        <option class="items" >Queer</option>
+                        <option class="items" >Arromantico</option>
+                        <option class="items" >Poliamoroso</option>
+    
+                        
+                      </select>
                     </div>
           
           
                      <div class="form-group">
-                       <label >Direccion de residencia</label>
+                       <label >Dirección de residencia</label>
                        <input type="text" formControlName="direccionResidencia" class="form-control" placeholder="Digita tu direccion de residencia" required>
                      </div>
         
                      <div class="form-group">
-                      <label >Direccion laboral</label>
+                      <label >Dirección laboral</label>
                       <input type="text" formControlName="direccionLaboral" class="form-control" placeholder="Digita tu direccion laboral" required>
                     </div>
           
           
-                     <div class="form-group">
-                       <label >Estrato</label>
-                       <input type="number" formControlName="estrato" class="form-control" placeholder="Digita tu estrato" required>
-                     </div>
+                    <div class="form-group">
+                      <label >Estrato </label>
+    
+                      <select class="items" type="number" formControlName="estrato" placeholder="--Elige--" required>
+    
+                        <option class="items" >0</option>
+                        <option class="items" >1</option>
+                        <option class="items" >2</option>
+                        <option class="items" >3</option>
+                        <option class="items" >4</option>
+                        <option class="items" >5</option>
+                        <option class="items" >6</option>
+    
+                        
+                      </select>
+                    </div>
         
                      <div class="form-group">
                       <label >Correo electrónico principal</label>
                       <input type="email" formControlName="correoPrincipal" class="form-control" placeholder="Digita tu correo electrónico principal" required>
                     </div>
-          
-                    <div class="form-group">
-                      <label >Contraseña</label>
-                      <input type="password" formControlName="contra" class="form-control" placeholder="inventa tu contraseña" required>
-                    </div>
-          
-          
-                     <div class="form-group">
-                       <label >Confirma tu contraseña</label>
-                       <input type="password" formControlName="confirmaContra" class="form-control" placeholder="vuelve a escribir tu contraseña" required>
-                     </div>
+
           
                      <div class="form-group">
                        <label >Correo electrónico secundario</label>
@@ -154,17 +185,13 @@
                       <label >Nombre de contacto</label>
                       <input type="text" formControlName="nombreContacto" class="form-control" placeholder="Digita el nombre de un contacto tuyo" required>
                     </div>
-          
+        
           
                      <div class="form-group">
-                       <label >Telefono de contacto</label>
-                       <input type="tel" formControlName="telefonoContacto" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
+                       <label >Teléfono de contacto</label>
+                       <input type="number" formControlName="telefonoContacto" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
                      </div>
         
-                     <div class="form-group">
-                      <label >Servicio de salud</label>
-                      <input type="text" formControlName="servicioSalud" class="form-control" placeholder="Digita el nombre del servicio de salud que usas" required>
-                    </div>
         
                   </form>
                 </div>
@@ -186,14 +213,14 @@
               <div class="imgcontainer">
                 <div class="modal-header" class="center">
                   <h4 class="modal-title" id="modal-basic-title">
-                    Actualizacion de datos sociodemograficos <br> </h4>
+                    Actualización de datos sociodemográficos <br> </h4>
                 </div>
                 
               </div>
           
               <div class="container">
         
-                
+              
                 <form>
                   <div class="form-group">
                     <form [formGroup]='infosociodemograficaForm'>
@@ -215,7 +242,7 @@
         
                        <div class="form-group">
                         <label >¿En que campo trabajas?</label>
-                        <input type="text" formControlName="campoTrabajo" class="form-control" placeholder="Digita tu segundo apellido" required>
+                        <input type="text" formControlName="campoTrabajo" class="form-control" placeholder="agroindutria, tecnologia..." required>
                       </div>
             
                        <div class="form-group">
@@ -224,14 +251,14 @@
                        </div>
         
                        <div class="form-group">
-                        <label >¿Trabajas en empresa publica</label>
+                        <label >¿Trabajas en empresa pública</label>
                         <input type="checkbox" formControlName="tipoEmpresa" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
                       </div>
             
             
                        <div class="form-group">
                          <label >¿Cuantas horas semanales trabajas?</label>
-                         <input type="number" formControlName="horasTrabajo" class="form-control" placeholder="Digita tu genero" required>
+                         <input type="number" formControlName="horasTrabajo" class="form-control" placeholder="20,30,0" required>
                        </div>
         
                                <!--Ahora preguntas  personales-->
@@ -242,21 +269,21 @@
             
             
                        <div class="form-group">
-                         <label >¿Con quien vives?</label>
+                         <label >¿Con quién vives?</label>
                          <input type="text" formControlName="conQuienVive" class="form-control" placeholder="Cuentanos con quien vives" required>
                        </div>
         
                        <div class="form-group">
                         <label >¿En qué tipo de vivienda?</label>
-                        <input type="text" formControlName="tipoVivienda" class="form-control" placeholder="propia, familiar o arrendada" required>
+                        <input type="text" formControlName="tipoVivienda" class="form-control" placeholder="propia, familiar, arrendada..." required>
                       </div>
             
             
                        <div class="form-group">
                          <label >¿Qué tipo de redes sociales usas? </label>
-                         <input type="text" formControlName="tipoRedSocial" class="form-control" placeholder="Selecciona" required>
-                         <label >¿Cual usas mas?</label>
-                        <input type="text" formControlName="redSocialFavorita" class="form-control" placeholder="Digita tu correo electrónico principal" required>
+                         <input type="text" formControlName="tipoRedSocial" class="form-control" placeholder="Nombralas" required>
+                         <label >¿Cuál usas mas?</label>
+                        <input type="text" formControlName="redSocialFavorita" class="form-control" placeholder="cuentanos :D" required>
                        </div>
         
         

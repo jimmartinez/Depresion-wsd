@@ -15,22 +15,19 @@ export class AppComponent {
 
   correo: any;
   nombre: any;
+  rol: 'N/A';
   collectionUsuario = {count: 20, data: []};
 
 
   
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Cargando', url: '/', icon: 'loading' },
+
   ];
 
   public paciente = true;
   collectionCorreo = {count: 20, data: []};
-  
+  empezar = false;
 
   constructor(
     private auth: AngularFireAuth,
@@ -43,8 +40,12 @@ export class AppComponent {
 
 
 
-    //verifica que este autenticado o si no lo devuelve al login
+
+          //verifica que este autenticado o si no lo devuelve al login
     setInterval(() => {
+
+
+
 
       this.auth.onAuthStateChanged(user=>{
         if(user){
@@ -53,7 +54,9 @@ export class AppComponent {
           this.router.navigateByUrl('login');
         }
       })
-    }, 1000);
+
+    
+    }, 2500);
 
 
 
@@ -65,7 +68,10 @@ export class AppComponent {
           return{
       
             correoPrincipal: e.payload.doc.data().correoPrincipal,
+            nombre: e.payload.doc.data().nombre,
+
             rol: e.payload.doc.data().rol,
+
             
             idFirebase: e.payload.doc.id,
   
@@ -110,7 +116,7 @@ try{
     }, 3000);
 
         
-    //obtener rol de EPS si es el caso
+    //obtener rol de profesional si es el caso
     setInterval(() => {
       try{
         if(this.collectionUsuario.data[0].rol){
@@ -171,10 +177,23 @@ try{
           }
         }
       }catch(error){
+
+        console.log('ocurrio algo!')
         
       }
 
      }, 5000);
+
+
+     setInterval(() => {
+
+      this.rol = this.collectionUsuario.data[0].rol;
+      
+    }, 8000);
+
+
+
+    
 
 
   }
@@ -188,11 +207,19 @@ try{
   }
 
   getNombre(){
-    return this.collectionUsuario.data[0].rol.toString();
+    return this.collectionUsuario.data[0].nombre;
   }
 
   getCorreo(){
     return this.correo;
+  }
+
+  getRol(){
+    return this.rol;
+  }
+
+  correrAutenticacion(){
+    this.empezar = true;
   }
 
 }

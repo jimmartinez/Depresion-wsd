@@ -9,7 +9,7 @@
           <div><ion-title>Mis Encuestas</ion-title></div>
         </ion-col>
         <ion-col>
-          <div> <h2>{{nombre}} {{apellido}}<br> Modalidad {{rol}}</h2></div>
+          <div> <h2>{{nombrePaciente}} <br> Modalidad {{rol}}</h2></div>
         </ion-col>
         <ion-col>
           <div>  
@@ -23,12 +23,14 @@
     </ion-grid>
   </ion-toolbar>
 
+  <app-loading *ngIf="cargando == true"></app-loading>
+
 
 
 </ion-header>
 
   
-<ion-content fullscreen class="ion-padding">
+<ion-content *ngIf="cargando == false" fullscreen class="ion-padding">
 
 
   <div style="text-align: center;">
@@ -59,7 +61,7 @@
       </tbody>
      </table>
     
-        
+      
   </div>
     
         <!--Este es el modal de registro-->

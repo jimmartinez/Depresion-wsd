@@ -20,12 +20,15 @@ export class DireccionamientoPage implements OnInit {
     public router: Router,
     private registroService: RegistroService
     ) {
+
     
    }
 
 
 
   ngOnInit() {
+
+
 
 
     //verifica que este autenticado o si no lo devuelve al login

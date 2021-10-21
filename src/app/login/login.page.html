@@ -13,7 +13,7 @@
           
           <div class="center">
 
-              <h1 class="uno">Registro para paciente </h1><button class="items" (click)="regToEPS()">Quiero registrarme como EPS</button>
+              <h1 class="uno">Registro para paciente </h1><button class="items" (click)="regToEPS()">Quiero registrarme como EPS!</button>
               <br> 
           </div>
           
@@ -55,8 +55,8 @@
                 </div>
 
                  
-                 <div class="form-group">
-                  <label >Genero </label>
+                <div class="form-group">
+                  <label >Género </label>
 
                   <select class="items" type="text" formControlName="genero" placeholder="--Elige--" required>
 
@@ -95,18 +95,18 @@
 
 
                  <div class="form-group">
-                   <label >Direccion de residencia</label>
+                   <label >Dirección de residencia</label>
                    <input type="text" formControlName="direccionResidencia" maxlength="30" class="form-control" placeholder="Digita tu direccion de residencia" required>
                  </div>
 
                  <div class="form-group">
-                  <label >Direccion laboral</label>
+                  <label >Dirección laboral</label>
                   <input type="text" formControlName="direccionLaboral" maxlength="30" class="form-control" placeholder="Digita tu direccion laboral" required>
                 </div>
       
 
                                   
-                 <div class="form-group">
+                <div class="form-group">
                   <label >Estrato </label>
 
                   <select class="items" type="number" formControlName="estrato" placeholder="--Elige--" required>
@@ -128,16 +128,6 @@
                   <input type="email" formControlName="correoPrincipal" class="form-control" placeholder="Digita tu correo electrónico principal" required>
                 </div>
       
-                <div class="form-group">
-                  <label >Contraseña</label>
-                  <input type="password" formControlName="contra" class="form-control" placeholder="inventa tu contraseña" required>
-                </div>
-      
-      
-                 <div class="form-group">
-                   <label >Confirma tu contraseña</label>
-                   <input type="password" formControlName="confirmaContra" class="form-control" placeholder="vuelve a escribir tu contraseña" required>
-                 </div>
       
                  <div class="form-group">
                    <label >Correo electrónico secundario</label>
@@ -152,23 +142,30 @@
       
       
                  <div class="form-group">
-                   <label >Telefono de contacto</label>
+                   <label >Teléfono de contacto</label>
                    <input type="number" formControlName="telefonoContacto" min="0" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
                  </div>
 
-                 <div class="form-group">
-                  <label >Servicio de salud</label>
-                  <input type="text" formControlName="servicioSalud" maxlength="30" class="form-control" placeholder="Digita el nombre del servicio de salud que usas" required>
+
+                <div class="form-group">
+                  <label >Servicio de salud </label>
+
+                  <select class="items" type="text" formControlName="servicioSalud" placeholder="--Elige--" required>
+                    
+                    <option class="items" >--Elige--</option>
+                    <option class="items" *ngFor="let item of collectionEPS.data">{{item.correoPrincipal}}</option>
+
+                  </select>
                 </div>
     
       
                  <div class="form-group">
-                   <label >Acepto la politica de tratamiento de datos personales</label>
+                   <label >Acepto la política de tratamiento de datos personales <a  href="https://www.ucatolica.edu.co/portal/habeas-data/" target="_blank">Habeas data</a>.</label>
                    <input type="checkbox" formControlName="politica" class="form-control" placeholder="¿Estas de acuerdo?" required>
                  </div>
 
                  <div class="form-group">
-                  <label >Acepto los terminos y condiciones</label>
+                  <label >Acepto los <a  href="https://www.ucatolica.edu.co/portal/terminos-y-condiciones/" target="_blank">términos y condiciones</a>.</label>
                   <input type="checkbox" formControlName="terminos" class="form-control" placeholder="¿Estas de acuerdo?" required>
                 </div>
 
@@ -204,7 +201,7 @@
               <h1 class="uno">Sistema</h1><h1 class="dos">WSD</h1>
           </div>
 
-          <button class="items" (click)="cambiarContra()">Olvide mi contraseña!</button>
+          <button class="items" (click)="cambiarContra()">Olvidé mi contraseña!</button>
 
           
         </div>
@@ -234,8 +231,8 @@
           </form>
             
 
-          <button class="items"  (click)="iniciarSesion()" >Iniciar Sesion</button>
-          <button class="items" on-click="inToReg()">Aun no tengo cuenta</button>
+          <button class="items"  (click)="iniciarSesion()" >Iniciar Sesión</button>
+          <button class="items" on-click="inToReg()">Aún no tengo cuenta</button>
         </div>
 
       </form>
@@ -277,7 +274,7 @@
         
         
                    <div class="form-group">
-                     <label >Identificacion de administrador</label>
+                     <label >Identificación de administrador</label>
                      <input type="number" formControlName="idAdministrador" min="1" max="99999999999" class="form-control" placeholder="Digita la identificacion del administrador" required>
                    </div>
   
@@ -292,13 +289,13 @@
                    </div>
   
                    <div class="form-group">
-                    <label >Numero Telefonico de sede principal</label>
+                    <label >Número Telefónico de sede principal</label>
                     <input type="number" formControlName="sede1Tel" min="0" max="9999999999" class="form-control" placeholder="Digita el numero telefonico de la sede principal" required>
                   </div>
         
         
                    <div class="form-group">
-                     <label >URL de la pagina de la sede principal</label>
+                     <label >URL de la página de la sede principal</label>
                      <input type="url" formControlName="sede1Pag" class="form-control" placeholder="Copia y pega la URL" required>
                    </div>
 
@@ -310,13 +307,13 @@
                   </div>
  
                   <div class="form-group">
-                   <label >Numero Telefonico de sede 2</label>
+                   <label >Número Telefónico de sede 2</label>
                    <input type="number" formControlName="sede2Tel" min="0" max="9999999999" class="form-control" placeholder="Digita el numero telefonico de la sede 2" required>
                  </div>
        
        
                   <div class="form-group">
-                    <label >URL de la pagina de la sede 2</label>
+                    <label >URL de la página de la sede 2</label>
                     <input type="url" formControlName="sede2Pag" class="form-control" placeholder="Copia y pega la URL" required>
                   </div>
 
@@ -327,13 +324,13 @@
                   </div>
  
                   <div class="form-group">
-                   <label >Numero Telefonico de sede 3</label>
+                   <label >Número Telefónico de sede 3</label>
                    <input type="number" formControlName="sede3Tel" min="0" max="9999999999" class="form-control" placeholder="Digita el numero telefonico de la sede 3" required>
                  </div>
        
        
                   <div class="form-group">
-                    <label >URL de la pagina de la sede 3</label>
+                    <label >URL de la página de la sede 3</label>
                     <input type="url" formControlName="sede3Pag" class="form-control" placeholder="Copia y pega la URL" required>
                   </div>
 
@@ -345,7 +342,7 @@
         
                   <div class="form-group">
                     <label >Contraseña</label>
-                    <input type="password" formControlName="contra" class="form-control" placeholder="inventa tu contraseña" required>
+                    <input type="password" formControlName="contra" class="form-control" placeholder="Inventa tu contraseña" required>
                   </div>
         
         
@@ -360,12 +357,12 @@
                    </div>
         
                    <div class="form-group">
-                     <label >Acepto la politica de tratamiento de datos personales</label>
+                     <label >Acepto la política de tratamiento de datos personales</label>
                      <input type="checkbox" formControlName="politica" class="form-control" placeholder="¿Estas de acuerdo?" required>
                    </div>
   
                    <div class="form-group">
-                    <label >Acepto los terminos y condiciones</label>
+                    <label >Acepto los términos y condiciones</label>
                     <input type="checkbox" formControlName="terminos" class="form-control" placeholder="¿Estas de acuerdo?" required>
                   </div>
   

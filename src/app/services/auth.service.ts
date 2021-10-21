@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   userEmail: string;
+  creado=false;
+
   constructor(
     private auth: AngularFireAuth,
     public router:Router
@@ -20,7 +22,9 @@ export class AuthService {
 
     crearUsuario(email: any, contra: any){
 
-      this.auth.createUserWithEmailAndPassword(email,contra);
+
+     this.auth.createUserWithEmailAndPassword(email,contra);
+
 
 
     }

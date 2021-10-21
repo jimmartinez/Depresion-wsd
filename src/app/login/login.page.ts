@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import Swal from 'sweetalert2';
+import { AppComponent } from '../app.component';
 import { AuthService } from '../services/auth.service';
 import { RegistroService } from '../services/registro.service';
 
@@ -19,16 +21,37 @@ export class LoginPage implements OnInit {
   registroEPSForm: FormGroup;
   socioForm: FormGroup;
 
+  collectionUsuario = {count: 20, data: []};
+
+  collectionEPS = {count: 20, data: []};
+
+
   constructor(    
     public fb: FormBuilder,
     public menuCtrl: MenuController,
     public router: Router,
     private authService: AuthService,
-    private registroService: RegistroService,    
+    private registroService: RegistroService,   
+    private auth: AngularFireAuth,
+    private app: AppComponent 
     ) { }
 
   ngOnInit() {
 
+    this.app.cerrarSesion();
+
+    this.registroService.getEPS().subscribe(resp=>{
+      this.collectionEPS.data = resp.map( (e:any)=>{
+        return{
+          correoPrincipal: e.payload.doc.data().correoPrincipal,
+          idFirebase: e.payload.doc.id
+        }
+      })
+    },
+    error=>{
+      console.log(error);
+    }
+    );
 
 
     this.menuCtrl.enable(false);
@@ -37,6 +60,7 @@ export class LoginPage implements OnInit {
       nombre: ['',Validators.required],
       contra: ['',Validators.required],
     })
+
 
     this.registroForm = this.fb.group({
       
@@ -52,8 +76,6 @@ export class LoginPage implements OnInit {
       estrato: ['',Validators.required],
       correoPrincipal: ['',Validators.required],
       correoSecundario: ['',Validators.required],
-      contra: ['',Validators.required],
-      confirmaContra: ['',Validators.required],
       nombreContacto: ['',Validators.required],
       telefonoContacto: ['',Validators.required],
       servicioSalud: ['',Validators.required],
@@ -183,21 +205,21 @@ export class LoginPage implements OnInit {
             } else {
               if ((this.registroForm.value.correoPrincipal.includes('@') &&
               this.registroForm.value.correoSecundario.includes('@')) == false
-                ) {       
+                ) {
 
               Swal.fire('el formato de correo no es correcto', 'Recuerda que todo correo lleva una @' ,'error');
               return
                 
               } else {
 
-                if (this.registroForm.value.contra.length < 8) {
+                if (false) {
 
                   Swal.fire('La contraseña no se acepta ', 'Debe contener minimo 8 caracteres ' ,'error');
                   return
 
                 } else {
 
-                  if (this.registroForm.value.contra != this.registroForm.value.confirmaContra ) {
+                  if (false ) {
 
                     Swal.fire('Las contraseñas no coinciden', 'los campos contraseña y confirmar contraseña deben ser exactamente iguales ' ,'error');
                     return
@@ -235,6 +257,7 @@ export class LoginPage implements OnInit {
                             this.registroForm.value.nombreContacto == ''||
                             this.registroForm.value.telefonoContacto == ''||
                             this.registroForm.value.servicioSalud == ''
+
                          ) {
 
                           Swal.fire(' Campos vacios ', ' No deben quedar campos vacios' ,'error');
@@ -262,28 +285,79 @@ export class LoginPage implements OnInit {
             
           }
 
-                
-          this.registroService.createInfoBasica(this.registroForm.value).then(resp=>{
-            this.authService.crearUsuario(this.registroForm.value.correoPrincipal,this.registroForm.value.contra);
-          }).catch(error => {
-            console.log('error'); 
-          })
 
-             
-
-    this.registroService.createInfoSociodemografica(this.socioForm.value).then(resp=>{
-      document.getElementById('registroPaciente').style.display='none';
-      this.router.navigateByUrl('paciente');
-    }).catch(error => {
-      console.log('error'); 
-    })
+          
+          this.authService.crearUsuario(this.registroForm.value.correoPrincipal,'12345678');
 
 
+          var created = false;
 
+    
+Swal.fire({
+  position: 'center',
+  icon: 'warning',
+  title: 'Un momento por favor',
+  showConfirmButton: false,
+  timer: 5000
+})
+
+
+this.auth.onAuthStateChanged(user=>{
+  if(user){
+
+    created = true;
+    
+
+  }else{
+    created = false;
+
+  }
+})
+
+
+  setTimeout(() => {
+
+    if (created == true) {
+
+
+
+
+      this.registroService.createInfoBasica(this.registroForm.value).then(resp=>{
+
+      }).catch(error => {
+        console.log('error'); 
+      })
+  
+        
+  
+      this.registroService.createInfoSociodemografica(this.socioForm.value).then(resp=>{
+        document.getElementById('registroPaciente').style.display='none';
+        this.router.navigateByUrl('paciente');
+      }).catch(error => {
+        console.log('error'); 
+      })
+  
+  
+      
+    }else{
+
+      if (created == false) {
+
+        Swal.fire('Ingreso Denegado', 'Algo ocurrio' ,'error');
+        
+      }
+
+    }
+  }, 5000);
 
         }
    
-    Swal.fire('El usuario fue creado satisfactoriamente', this.loginForm.value.correoPrincipal ,'success');
+        setTimeout(() => {
+
+          Swal.fire('El usuario fue creado con contraseña 12345678, si deseas cambiarla da clic en olvide contraseña y la cambiarás en el correo: ' + this.loginForm.value.correoPrincipal , this.loginForm.value.correoPrincipal ,'success');
+
+          
+        }, 7000);
       }
     })
     return 
@@ -385,37 +459,25 @@ export class LoginPage implements OnInit {
           
         }
 
-   
+        this.registroService.createEPS(this.registroEPSForm.value).then(resp=>{
+          this.authService.crearUsuario(this.registroEPSForm.value.correoPrincipal,this.registroEPSForm.value.contra);
+          document.getElementById('registroEPS').style.display='none';
+          this.router.navigateByUrl('eps');
+        }).catch(error => {
+          console.log('error'); 
+        })
+        
     Swal.fire('Usuario de EPS creado!', ' El formulario se ha creado correctamente ','success');
       }
     })
     return 
    
-    this.registroService.createEPS(this.registroEPSForm.value).then(resp=>{
-      this.authService.crearUsuario(this.registroEPSForm.value.correoPrincipal,this.registroEPSForm.value.contra);
-      document.getElementById('registroEPS').style.display='none';
-      this.router.navigateByUrl('eps');
-    }).catch(error => {
-      console.log('error'); 
-    })
-    
+
   }
 
 
-  cerrarSesion(){
-    this.authService.cerrarSesion();
-  }
 
-  iniciarSesion(){
-    try{
-      this.authService.iniciarSesion(this.loginForm.value.nombre,this.loginForm.value.contra);
-      this.router.navigateByUrl('direccionamiento');
-    }catch(error){
-      this.router.navigateByUrl('login');
-      this.menuCtrl.enable(false);
-    }
-    
-  }
+
 
   iniciarSesionEPS(){
     try{
@@ -480,6 +542,69 @@ export class LoginPage implements OnInit {
 
 
   }
+
+
+  iniciarSesion(){
+
+
+   this.authService.iniciarSesion(this.loginForm.value.nombre,this.loginForm.value.contra);
+
+
+   var creado = false;
+
+    
+Swal.fire({
+  position: 'center',
+  icon: 'warning',
+  title: 'Un momento por favor',
+  showConfirmButton: false,
+  timer: 5000
+})
+
+
+   this.auth.onAuthStateChanged(user=>{
+
+    console.log(user);
+    if(user){
+
+      creado = true;
+      this.app.correrAutenticacion();
+      
+
+    }else{
+      creado = false;
+
+    }
+  })
+
+
+  setTimeout(() => {
+
+    if (creado == true) {
+
+      Swal.fire('Ingreso Correcto', 'Bienvenido' ,'success');
+      this.router.navigateByUrl('direccionamiento');
+
+      
+      
+    }else{
+
+      if (creado == false) {
+
+        Swal.fire('Ingreso Denegado', 'Comprueba tu correo y contraseña' ,'error');
+        
+      }
+
+    }
+  }, 3000);
+
+
+  }
+
+
+
+
+  
 
 
 

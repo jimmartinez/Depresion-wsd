@@ -11,6 +11,9 @@ import { RegistroService } from 'src/app/services/registro.service';
 })
 export class MisEncuestasPage implements OnInit {
 
+  cargando = true;
+
+
 
   collectionAsignaciones = {count: 20, data: []};
   collectionFormularioLikert = {count: 20, data: []};
@@ -84,13 +87,13 @@ export class MisEncuestasPage implements OnInit {
   puntajes:any;
   paciente:any;
   cantidadPreguntas:any;
-
-
-
-
-
-
   
+  nombrePaciente = 'Cargando';
+  apellidoPaciente = 'Cargando';
+  rol = 'Cargando';
+
+
+
  
 
   constructor(
@@ -101,6 +104,9 @@ export class MisEncuestasPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.nombrePaciente = this.app.getNombre();
+    this.rol = this.app.getRol();
 
     this.registroService.getEtiquetas().subscribe(resp=>{
       this.collectionEtiquetas.data = resp.map( (e:any)=>{
@@ -118,6 +124,9 @@ export class MisEncuestasPage implements OnInit {
 
 
   setTimeout(() => {
+
+    this.cargando = false;
+
 
     this.registroService.getAsignacionesPaciente(this.app.getCorreo()).subscribe(resp=>{
       this.collectionAsignaciones.data = resp.map( (e:any)=>{

@@ -51,6 +51,8 @@ try{
 
 
   irAPerfil(){
+
+
     this.router.navigateByUrl('pacienteInformacion');
     this.menuCtrl.enable(true);
 
