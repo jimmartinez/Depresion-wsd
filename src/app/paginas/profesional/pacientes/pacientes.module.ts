@@ -8,6 +8,9 @@ import { PacientesPageRoutingModule } from './pacientes-routing.module';
 
 import { PacientesPage } from './pacientes.page';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchComponent } from 'src/app/search/search.component';
+import { SearchPipe } from 'src/app/pipes/search.pipe';
+
 
 @NgModule({
   imports: [
@@ -18,6 +21,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ReactiveFormsModule,
   ],
-  declarations: [PacientesPage]
+  declarations: [
+    PacientesPage,
+    SearchComponent,
+    SearchPipe,
+  ]
 })
 export class PacientesPageModule {}

@@ -15,7 +15,7 @@ export class AppComponent {
 
   correo: any;
   nombre: any;
-  rol: 'N/A';
+  rol: any;
   collectionUsuario = {count: 20, data: []};
 
 
@@ -97,7 +97,7 @@ try{
   this.registroService.getEPSCorreo(this.correo).subscribe(resp=>{
     this.collectionUsuario.data = resp.map( (e:any)=>{
       return{
-  
+        sede1Nombre: e.payload.doc.data().sede1Nombre,
         correoPrincipal: e.payload.doc.data().correoPrincipal,
         rol: e.payload.doc.data().rol,
         
@@ -127,7 +127,7 @@ try{
         this.registroService.getProfesionalCorreo(this.correo).subscribe(resp=>{
           this.collectionUsuario.data = resp.map( (e:any)=>{
             return{
-        
+              nombre: e.payload.doc.data().nombre,
               correoPrincipal: e.payload.doc.data().correoPrincipal,
               rol: e.payload.doc.data().rol,
               
@@ -169,7 +169,8 @@ try{
               this.appPages = [
                 { title: 'Formularios', url: '/formularios', icon: 'list' },
                 { title: 'Pacientes', url: '/pacientes', icon: 'people' },
-                { title: 'Etiquetas', url: '/etiquetas', icon: 'ticket' }
+                { title: 'Etiquetas', url: '/etiquetas', icon: 'ticket' },
+                { title: 'Puntajes', url: '/puntajes', icon: 'trophy' }
               ];
 
             } else {
@@ -208,6 +209,10 @@ try{
 
   getNombre(){
     return this.collectionUsuario.data[0].nombre;
+  }
+
+  getNombreEPS(){
+    return this.collectionUsuario.data[0].sede1Nombre;
   }
 
   getCorreo(){

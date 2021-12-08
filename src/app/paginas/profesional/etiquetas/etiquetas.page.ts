@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppComponent } from 'src/app/app.component';
 import { RegistroService } from 'src/app/services/registro.service';
 import Swal from 'sweetalert2';
 
@@ -16,13 +17,24 @@ export class EtiquetasPage implements OnInit {
 
   etiquetaForm: FormGroup;
 
+  nombreProfesional ='cargando';
+
+
 
   constructor(
     public fb: FormBuilder,
     private registroService: RegistroService,
+    public app: AppComponent
+
   ) { }
 
   ngOnInit() {
+
+      setInterval(() => {
+        this.nombreProfesional = this.app.getNombre();
+      }, 1000);
+
+
 
     this.etiquetaForm = this.fb.group({
 

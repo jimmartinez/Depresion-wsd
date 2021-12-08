@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { RegistroService } from '../services/registro.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -22,8 +23,10 @@ export class LoginPage implements OnInit {
   socioForm: FormGroup;
 
   collectionUsuario = {count: 20, data: []};
-
   collectionEPS = {count: 20, data: []};
+
+  value = '';
+
 
 
   constructor(    
@@ -81,6 +84,7 @@ export class LoginPage implements OnInit {
       servicioSalud: ['',Validators.required],
       politica: ['',Validators.required],
       terminos: ['',Validators.required],
+      entidadSalud: ['',Validators.required],
       rol: ['paciente',Validators.required],
 
     })
@@ -104,8 +108,6 @@ export class LoginPage implements OnInit {
       sede3Dir: ['',Validators.required],
       correoPrincipal: ['',Validators.required],
       correoSecundario: ['',Validators.required],
-      contra: ['',Validators.required],
-      confirmaContra: ['',Validators.required],
       politica: ['',Validators.required],
       terminos: ['',Validators.required],
       rol: ['eps',Validators.required],
@@ -127,9 +129,18 @@ export class LoginPage implements OnInit {
       conQuienVive: ['',Validators.required],
       tipoVivienda: ['',Validators.required],
       tipoRedSocial: ['',Validators.required],
+      autorizacionContacto: [false,Validators.required],
+      usaReddit: [false,Validators.required],
+      usuarioReddit: ['',Validators.required],
+      usaInstagram: [false,Validators.required],
+      usuarioInstagram: ['',Validators.required],
+      usaFacebook: [false,Validators.required],
+      usuarioFacebook: ['',Validators.required],
+      usaTwitter: [false,Validators.required],
+      usuarioTwitter: ['',Validators.required],
+      usaTiktok: [false,Validators.required],
+      usuarioTiktok: ['',Validators.required],
       redSocialFavorita: ['',Validators.required],
-      autorizacionContacto: ['paciente',Validators.required]
-      
 
     })
 
@@ -156,6 +167,16 @@ export class LoginPage implements OnInit {
       tipoRedSocial: '',
       redSocialFavorita: '',
       autorizacionContacto: '',
+      usaReddit: false,
+      usuarioReddit: '',
+      usaInstagram: false,
+      usuarioInstagram: '',
+      usaFacebook: false,
+      usuarioFacebook: '',
+      usaTwitter: false,
+      usuarioTwitter: '',
+      usaTiktok: false,
+      usuarioTiktok: '',
     })
 
     Swal.fire({
@@ -185,7 +206,9 @@ export class LoginPage implements OnInit {
           this.registroForm.value.direccionLaboral.length > 45||
           this.registroForm.value.nombreContacto.length > 45||
           this.registroForm.value.telefonoContacto.length > 45||
-          this.registroForm.value.servicioSalud.length > 45
+          this.registroForm.value.servicioSalud.length > 45||
+          this.registroForm.value.entidadSalud.length > 45
+
 
           ) {
             Swal.fire('Excede limite', 'Parece que excediste el limite de caracteres (45) en alguna celda ' ,'error');
@@ -256,7 +279,8 @@ export class LoginPage implements OnInit {
                             this.registroForm.value.correoSecundario == ''||
                             this.registroForm.value.nombreContacto == ''||
                             this.registroForm.value.telefonoContacto == ''||
-                            this.registroForm.value.servicioSalud == ''
+                            this.registroForm.value.servicioSalud == ''||
+                            this.registroForm.value.entidadSalud == ''
 
                          ) {
 
@@ -336,6 +360,14 @@ this.auth.onAuthStateChanged(user=>{
       }).catch(error => {
         console.log('error'); 
       })
+
+
+      this.authService.cambiarContra(this.registroForm.value.correoPrincipal);
+
+
+      Swal.fire('El usuario fue creado con contraseña 12345678, te enviamos un correo para que reasignes tu contraseña por seguridad: ' + this.registroForm.value.correoPrincipal , this.registroForm.value.correoPrincipal ,'success');
+
+
   
   
       
@@ -343,8 +375,8 @@ this.auth.onAuthStateChanged(user=>{
 
       if (created == false) {
 
-        Swal.fire('Ingreso Denegado', 'Algo ocurrio' ,'error');
-        
+        Swal.fire('Ingreso Denegado', 'este correo ya esta registrado' ,'error');
+        return
       }
 
     }
@@ -352,12 +384,7 @@ this.auth.onAuthStateChanged(user=>{
 
         }
    
-        setTimeout(() => {
 
-          Swal.fire('El usuario fue creado con contraseña 12345678, si deseas cambiarla da clic en olvide contraseña y la cambiarás en el correo: ' + this.loginForm.value.correoPrincipal , this.loginForm.value.correoPrincipal ,'success');
-
-          
-        }, 7000);
       }
     })
     return 
@@ -414,7 +441,7 @@ this.auth.onAuthStateChanged(user=>{
                 
               } else {
 
-                if (this.registroEPSForm.value.contra != this.registroEPSForm.value.confirmaContra ) {
+                if (false ) {
 
                   Swal.fire('Las contraseñas no coinciden', 'los campos contraseña y confirmar contraseña deben ser exactamente iguales ' ,'error');
                   return
@@ -422,19 +449,20 @@ this.auth.onAuthStateChanged(user=>{
                 } else {
 
 
-                  if (this.registroEPSForm.value.contra.length < 8) {
+                  if (false) {
 
                     Swal.fire('La contraseña no se acepta ', 'Debe contener minimo 8 caracteres ' ,'error');
                     return
                     
                   } else {
 
-                    if (this.registroEPSForm.value.sede1Tel<0||
+                    if (this.registroEPSForm.value.sede1Tel<=0||
                       this.registroEPSForm.value.sede1Tel>9999999999||
                       this.registroEPSForm.value.sede2Tel<0||
                       this.registroEPSForm.value.sede2Tel>9999999999||
                       this.registroEPSForm.value.sede3Tel<0||
                       this.registroEPSForm.value.sede3Tel>9999999999
+
                       
                       ) {
 
@@ -442,6 +470,26 @@ this.auth.onAuthStateChanged(user=>{
                         return
                       
                     } else {
+
+                      if (
+                        this.registroEPSForm.value.nit == ''||
+                        this.registroEPSForm.value.nombreAdmin == ''||
+                        this.registroEPSForm.value.sede1Nombre == ''||
+                        this.registroEPSForm.value.sede1Pag == ''||
+                        this.registroEPSForm.value.correoPrincipal == ''||
+                        this.registroEPSForm.value.correoSecundario == ''
+                        
+                      ) {
+
+                        Swal.fire('Campos obligatorioss ', 'Nit, Administrador, Datos de una sede y correos  ' ,'error');
+
+
+
+                        
+                        
+                      } else {
+                        
+                      }
 
 
                       
@@ -458,17 +506,73 @@ this.auth.onAuthStateChanged(user=>{
           }
           
         }
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.authService.crearUsuario(this.registroEPSForm.value.correoPrincipal,'12345678');
 
-        this.registroService.createEPS(this.registroEPSForm.value).then(resp=>{
-          this.authService.crearUsuario(this.registroEPSForm.value.correoPrincipal,this.registroEPSForm.value.contra);
-          document.getElementById('registroEPS').style.display='none';
-          this.router.navigateByUrl('eps');
-        }).catch(error => {
-          console.log('error'); 
-        })
-        
-    Swal.fire('Usuario de EPS creado!', ' El formulario se ha creado correctamente ','success');
-      }
+var creat = false;
+
+    
+Swal.fire({
+  position: 'center',
+  icon: 'warning',
+  title: 'Un momento por favor',
+  showConfirmButton: false,
+  timer: 5000
+})
+
+
+
+this.auth.onAuthStateChanged(user=>{
+  if(user){
+
+    creat = true;
+    
+
+  }else{
+    creat = false;
+
+  }
+})
+
+
+
+setTimeout(() => {
+
+  if (creat == true) {
+
+
+
+
+    this.registroService.createEPS(this.registroEPSForm.value).then(resp=>{
+
+      document.getElementById('registroEPS').style.display='none';
+      this.router.navigateByUrl('direccionamiento');
+
+    }).catch(error => {
+      console.log('error'); 
+    })
+
+    this.authService.cambiarContra(this.registroEPSForm.value.correoPrincipal);
+
+    Swal.fire('El usuario fue creado con contraseña 12345678, te enviamos un correo para que reasignes tu contraseña por seguridad: ' + this.registroEPSForm.value.correoPrincipal , this.registroEPSForm.value.correoPrincipal ,'success');
+
+    
+  }else{
+
+    if (creat == false) {
+
+      Swal.fire('Ingreso Denegado', 'Este correo ya esta registrado' ,'error');
+      return
+    }
+
+  }
+}, 5000);
+
+
+
+
+
+  }
     })
     return 
    
@@ -602,7 +706,12 @@ Swal.fire({
   }
 
 
+  prueba(){
+    console.log('dyrt')
 
+  }
+
+  onEnter(value: string) { this.value = value; }
 
   
 

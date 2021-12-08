@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from 'src/app/services/registro.service';
+import { AppComponent } from 'src/app/app.component';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -20,7 +22,7 @@ export class FormulariosPage implements OnInit {
 
   idFirebaseActualizar: string;
 
-
+  nombreProfesional ='cargando';
 
 
 
@@ -32,10 +34,16 @@ export class FormulariosPage implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private registroService: RegistroService
+    private registroService: RegistroService,
+    public app: AppComponent
+
   ) { }
 
   ngOnInit() {
+
+    setInterval(() => {
+      this.nombreProfesional = this.app.getNombre();
+    }, 1000);
 
     this.mostrarPregunta[0]=false;
     

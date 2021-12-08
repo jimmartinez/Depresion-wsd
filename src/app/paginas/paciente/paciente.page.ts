@@ -15,38 +15,15 @@ import { AppComponent } from 'src/app/app.component';
 export class PacientePage implements OnInit {
 
   constructor(
-    private auth: AngularFireAuth,
     private appComponent: AppComponent,
     public router: Router,
     public menuCtrl: MenuController,
 
   ) { }
 
-  emailUsuario: string;
   
 
   ngOnInit() {
-
-
-    setInterval(() => {
-try{
-  this.auth.onAuthStateChanged(user=>{
-    if(user){
-      this.emailUsuario = user.email;    
-    }else{
-      this.router.navigateByUrl('login');
-      this.menuCtrl.enable(false);
-    }
-  })
-
-}catch(e){
-  this.router.navigateByUrl('login');
-
-}
-}, 5000);
-
-
-
   }
 
 

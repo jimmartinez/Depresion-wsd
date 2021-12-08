@@ -102,7 +102,11 @@ export class PacientesPage implements OnInit {
 
   @ViewChild('slides') slides: IonSlides;
 
+  handleSearch(value:string){
+    this.filtro_valor = value; 
+  }
 
+  filtro_valor='';
   
   
 
@@ -118,9 +122,7 @@ export class PacientesPage implements OnInit {
   registroForm: FormGroup;
 
 
-  nombre:any;
-  apellido:any;
-  correo:any;
+  nombreProfesional ='cargando';
 
   
   mostrarBasica = true;
@@ -133,13 +135,15 @@ export class PacientesPage implements OnInit {
   constructor(
     public fb: FormBuilder,
     private registroService: RegistroService,
-    private appComponent: AppComponent,
-    private auth: AuthService
+    public app: AppComponent
   ) { }
 
   ngOnInit() {
     this.mostrar=true;
 
+    setInterval(() => {
+      this.nombreProfesional = this.app.getNombre();
+    }, 1000);
 
 
     setTimeout(() => {
@@ -229,11 +233,10 @@ export class PacientesPage implements OnInit {
       estrato: ['',Validators.required],
       correoPrincipal: ['',Validators.required],
       correoSecundario: ['',Validators.required],
-      contra: ['',Validators.required],
-      confirmaContra: ['',Validators.required],
       nombreContacto: ['',Validators.required],
       telefonoContacto: ['',Validators.required],
       servicioSalud: ['',Validators.required],
+      entidadSalud: ['',Validators.required],
 
 
     })
@@ -296,12 +299,11 @@ export class PacientesPage implements OnInit {
             estrato: e.payload.doc.data().estrato,
             correoPrincipal: e.payload.doc.data().correoPrincipal,
             correoSecundario: e.payload.doc.data().correoSecundario,
-            contra: e.payload.doc.data().contra,
-            confirmaContra: e.payload.doc.data().confirmaContra,
             nombreContacto: e.payload.doc.data().nombreContacto,
             telefonoContacto: e.payload.doc.data().telefonoContacto,
             servicioSalud: e.payload.doc.data().servicioSalud,
-            autorizacionContacto: e.payload.doc.data().servicioSalud,
+            entidadSalud: e.payload.doc.data().entidadSalud,
+            autorizacionContacto: e.payload.doc.data().autorizacionContacto,
             rol: e.payload.doc.data().rol,
             
   
@@ -383,11 +385,11 @@ setTimeout(() => {
     estrato: this.collectionInfoBasica.data[0].estrato,
     correoPrincipal: this.collectionInfoBasica.data[0].correoPrincipal,
     correoSecundario: this.collectionInfoBasica.data[0].correoSecundario,
-    contra: this.collectionInfoBasica.data[0].contra,
-    confirmaContra: this.collectionInfoBasica.data[0].confirmaContra,
     nombreContacto: this.collectionInfoBasica.data[0].nombreContacto,
     telefonoContacto: this.collectionInfoBasica.data[0].telefonoContacto,
     servicioSalud: this.collectionInfoBasica.data[0].servicioSalud,
+    entidadSalud: this.collectionInfoBasica.data[0].entidadSalud,
+
     
 
   });

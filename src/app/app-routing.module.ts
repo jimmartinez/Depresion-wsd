@@ -58,6 +58,10 @@ const routes: Routes = [
   {
     path: 'etiquetas',
     loadChildren: () => import('./paginas/profesional/etiquetas/etiquetas.module').then( m => m.EtiquetasPageModule)
+  },
+  {
+    path: 'puntajes',
+    loadChildren: () => import('./paginas/profesional/puntajes/puntajes.module').then( m => m.PuntajesPageModule)
   }
 ];
 

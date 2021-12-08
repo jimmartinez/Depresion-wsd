@@ -6,6 +6,7 @@ import { IonSlides } from '@ionic/angular';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistroService } from 'src/app/services/registro.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -173,8 +174,18 @@ export class InformacionPage implements OnInit {
       conQuienVive: ['',Validators.required],
       tipoVivienda: ['',Validators.required],
       tipoRedSocial: ['',Validators.required],
-      redSocialFavorita: ['',Validators.required],
-      autorizacionContacto: ['',Validators.required]
+      autorizacionContacto: [false,Validators.required],
+      usaReddit: [false,Validators.required],
+      usuarioReddit: ['',Validators.required],
+      usaInstagram: [false,Validators.required],
+      usuarioInstagram: ['',Validators.required],
+      usaFacebook: [false,Validators.required],
+      usuarioFacebook: ['',Validators.required],
+      usaTwitter: [false,Validators.required],
+      usuarioTwitter: ['',Validators.required],
+      usaTiktok: [false,Validators.required],
+      usuarioTiktok: ['',Validators.required],
+      redSocialFavorita: ['',Validators.required]
     })
 
     
@@ -195,6 +206,7 @@ export class InformacionPage implements OnInit {
       nombreContacto: ['',Validators.required],
       telefonoContacto: ['',Validators.required],
       servicioSalud: ['',Validators.required],
+      entidadSalud: ['',Validators.required],
 
 
     })
@@ -231,7 +243,8 @@ export class InformacionPage implements OnInit {
               nombreContacto: e.payload.doc.data().nombreContacto,
               telefonoContacto: e.payload.doc.data().telefonoContacto,
               servicioSalud: e.payload.doc.data().servicioSalud,
-              autorizacionContacto: e.payload.doc.data().servicioSalud,
+              entidadSalud: e.payload.doc.data().entidadSalud,
+              autorizacionContacto: e.payload.doc.data().autorizacionContacto,
               rol: e.payload.doc.data().rol,
               
     
@@ -267,7 +280,17 @@ export class InformacionPage implements OnInit {
             tipoRedSocial: e.payload.doc.data().tipoRedSocial,
             redSocialFavorita: e.payload.doc.data().redSocialFavorita,
             autorizacionContacto: e.payload.doc.data().autorizacionContacto,
-  
+            usaReddit: e.payload.doc.data().usaReddit,
+            usuarioReddit: e.payload.doc.data().usuarioReddit,
+            usaInstagram: e.payload.doc.data().usaInstagram,
+            usuarioInstagram: e.payload.doc.data().usuarioInstagram,
+            usaFacebook: e.payload.doc.data().usaFacebook,
+            usuarioFacebook: e.payload.doc.data().usuarioFacebook,
+            usaTwitter: e.payload.doc.data().usaTwitter,
+            usuarioTwitter: e.payload.doc.data().usuarioTwitter,
+            usaTiktok: e.payload.doc.data().usaTiktok,
+            usuarioTiktok: e.payload.doc.data().usuarioTiktok,
+            
             idFirebase: e.payload.doc.id,
   
           }
@@ -345,6 +368,18 @@ export class InformacionPage implements OnInit {
       redSocialFavorita: this.collectionInfoSociodemografica.data[0].redSocialFavorita,
       autorizacionContacto: this.collectionInfoSociodemografica.data[0].autorizacionContacto,
       
+
+      usaReddit: this.collectionInfoSociodemografica.data[0].usaReddit,
+      usuarioReddit: this.collectionInfoSociodemografica.data[0].usuarioReddit,
+      usaInstagram: this.collectionInfoSociodemografica.data[0].usaInstagram,
+      usuarioInstagram: this.collectionInfoSociodemografica.data[0].usuarioInstagram,
+      usaFacebook: this.collectionInfoSociodemografica.data[0].usaFacebook,
+      usuarioFacebook: this.collectionInfoSociodemografica.data[0].usuarioFacebook,
+      usaTwitter: this.collectionInfoSociodemografica.data[0].usaTwitter,
+      usuarioTwitter: this.collectionInfoSociodemografica.data[0].usuarioTwitter,
+      usaTiktok: this.collectionInfoSociodemografica.data[0].usaTiktok,
+      usuarioTiktok: this.collectionInfoSociodemografica.data[0].usuarioTiktok,
+
     });
 
     
@@ -373,7 +408,7 @@ export class InformacionPage implements OnInit {
       nombreContacto: this.collectionInfoBasica.data[0].nombreContacto,
       telefonoContacto: this.collectionInfoBasica.data[0].telefonoContacto,
       servicioSalud: this.collectionInfoBasica.data[0].servicioSalud,
-      
+      entidadSalud: this.collectionInfoBasica.data[0].entidadSalud,
 
     });
 
@@ -393,6 +428,14 @@ export class InformacionPage implements OnInit {
              try{
 
               this.registroService.updateInfoSociodemografica( this.idFirebaseActualizarSocio ,this.infosociodemograficaForm.value).then(resp=>{
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Cambios Realizados',
+                  showConfirmButton: false,
+                  timer: 3000
+                })
+                
               }).catch(error=>{
                 console.log(error);
               })
@@ -413,6 +456,14 @@ export class InformacionPage implements OnInit {
              try{
 
               this.registroService.updateInfoBasica( this.idFirebaseActualizarBasica ,this.registroForm.value).then(resp=>{
+
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Cambios Realizados',
+                  showConfirmButton: false,
+                  timer: 3000
+                })
               }).catch(error=>{
                 console.log(error);
               })

@@ -19,7 +19,11 @@ const routes: Routes = [
   {
     path: 'etiquetas',
     loadChildren: () => import('./etiquetas/etiquetas.module').then( m => m.EtiquetasPageModule)
+  },  {
+    path: 'puntajes',
+    loadChildren: () => import('./puntajes/puntajes.module').then( m => m.PuntajesPageModule)
   }
+
 ];
 
 @NgModule({

@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div><ion-title>Puntajes</ion-title></div>
+        </ion-col>
+        <ion-col>
+          <div> <h2>{{nombreProfesional}}<br> Modalidad Profesional</h2></div>
+        </ion-col>
+        <ion-col>
+          
+          <div>  
+           
+            <ion-avatar slot="start">
+              <img src="https://imgs.globovision.com/41T1b5hiCk6bhh4IC5ag2FFeeTk=/847x0/smart/9578fca5d59845cf84546777e80164b1">
+            </ion-avatar>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div style="text-align: center;" id="div1">
+
+    <button type="button" class="btn btn-success" (click)="descargarPDF()">Descargar PDF</button>
+
+    
+
+
+    <table class="table" id="tabla">
+      <thead>
+      <tr>
+        <th>Encuesta</th>
+        <th>Paciente</th>
+        <th>Puntajes</th>
+      </tr>
+    
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of collectionPuntajes.data">
+          <td>{{item.nombre}}</td>
+          <td>{{item.paciente}}</td>
+          <td>{{item.puntaje}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+    
+    
+    <script src="sweetalert2.all.min.js"></script>
+    
+    
+    
+  </div>
+
+</ion-content>

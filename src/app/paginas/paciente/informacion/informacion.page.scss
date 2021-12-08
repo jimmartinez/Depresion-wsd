@@ -150,7 +150,7 @@ button.tabinfo{
     
   /* Full-width input fields */
   input[type=text], input[type=password], input[type=date],input[type=email],input[type=tel] {
-    width: 60%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -159,8 +159,17 @@ button.tabinfo{
     box-sizing: border-box;
   }
 
-  input[type=number] {
-    width: 30%;
+  input[type=number],[type=checkbox] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+    box-sizing: border-box;
+  }
+  input.redes[type=number],[type=checkbox] {
+    width: 20%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -349,5 +358,27 @@ button.tabinfo{
     text-align: center;
   }
   label{
-    width: 100%;
+    width: 36%;
+  }
+  label.redes{
+    width: 20%;
+  }
+  select.items{
+    width: 50%;
+    height: 50px;
+    background-color: #ec640a;
+    border-radius: 50px;
+    transition: all 0.5s ease-out;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    text-align: justify;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    background-size: 30px,30px;
+  }
+
+  select{
+    background-size: 30px,30px;
   }

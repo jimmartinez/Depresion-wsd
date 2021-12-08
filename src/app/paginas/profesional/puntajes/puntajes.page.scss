@@ -1,3 +1,12 @@
+#div1 {
+    overflow:scroll;
+    height:auto;
+    width:auto;
+}
+#div1 table {
+   width:100%;
+}
+
 :root {
     --ion-safe-area-top: 30px;
     --ion-safe-area-bottom: 22px;
@@ -99,7 +108,7 @@
   }
   
     h1{
-      font-size: 24px;
+      font-size: 14px;
       font-weight: 1000;
       min-height: 20px;
   
@@ -150,7 +159,7 @@
       
     /* Full-width input fields */
     input[type=text], input[type=password], input[type=date],input[type=email],input[type=tel] {
-      width: 100%;
+      width: 60%;
       padding: 12px 20px;
       margin: 8px 0;
       display: inline-block;
@@ -171,7 +180,7 @@
     
     /* Set a style for all buttons */
     button {
-      background-color: #ec640a;
+      background-color: #0c0291;
       color: white;
       padding: 4px 8px;
       margin: 4px 0;
@@ -255,7 +264,7 @@
       background-color: #fefefe;
       margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
+      width: 95%; /* Could be more or less, depending on screen size */
     }
     
     /* The Close Button (x) */
@@ -353,7 +362,7 @@
     }
   
     button.items{
-      width: 30%;
+      width: 40%;
       height: 50px;
       background-color: #043575;
       border-radius: 50px;
@@ -368,44 +377,15 @@
     
     }
 
-    select.items{
-      width: 30%;
-      height: 50px;
-      background-color: #ffffff;
-      border-radius: 50px;
-      border-color: rgb(156, 161, 161);
-      transition: all 0.5s ease-out;
-      font-family: 'Poppins', sans-serif;
-      color: #2f2f31;
-      text-align: justify;
-      font-size: 15px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      text-align: center;
-    
-    }
 
-  
-    option.items{
-      width: 40%;
-      height: 50px;
-      background-color: #ec640a;
-      border-radius: 50px;
-      transition: all 0.5s ease-out;
-      font-family: 'Poppins', sans-serif;
-      color: #ffffff;
-      text-align: justify;
-      font-size: 15px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      text-align: center;
-    
-    }
-
-    
     .iconos{
       
       width: auto;
       height: 50%;
     }
 
+    div.center {
+      text-align: center;
+    }
+  
+  
