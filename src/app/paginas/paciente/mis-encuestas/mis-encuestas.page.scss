@@ -152,14 +152,14 @@ button.tabinfo{
   /* Full-width input fields */
   input[type=text], input[type=password], input[type=date],input[type=email],input[type=tel] {
     width: 60%;
-    padding: 12px 20px;
+    padding: 40px 70px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 100px;
     box-sizing: border-box;
   }
-
+ 
   input[type=number] {
     width: 30%;
     padding: 12px 20px;
@@ -168,6 +168,15 @@ button.tabinfo{
     border: 1px solid #ccc;
     border-radius: 100px;
     box-sizing: border-box;
+  }
+
+  .narra{
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #000;
+    height: 200px;
   }
   
   /* Set a style for all buttons */
@@ -384,7 +393,6 @@ button.tabinfo{
   $wisteria: #041b66;
   
   .trol {
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -464,3 +472,5 @@ button.tabinfo{
     border-radius: 100px;
 
   }
+
+

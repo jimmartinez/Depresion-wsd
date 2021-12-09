@@ -19,6 +19,13 @@ export class PuntajesPage implements OnInit {
 
   nombreProfesional ='cargando';
 
+  
+  handleSearch(value:string){
+    this.filtro_valor = value; 
+  }
+
+  filtro_valor='';
+  
 
   constructor(   
     private registroService: RegistroService,

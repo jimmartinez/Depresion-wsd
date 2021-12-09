@@ -3,6 +3,8 @@ import { Form, FormBuilder, FormControl, FormControlName, FormGroup, Validators 
 import { MenuController } from '@ionic/angular';
 import { AppComponent } from 'src/app/app.component';
 import { RegistroService } from 'src/app/services/registro.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-mis-encuestas',
@@ -25,6 +27,8 @@ export class MisEncuestasPage implements OnInit {
 
   formularioLikertForm: FormGroup;
 
+
+  tipo = 'likert';
   tituloEncuesta = 'Cargando';
   instruccionesEncuesta = 'Cargando';
   linkImagenEncuesta = 'loading';
@@ -325,6 +329,9 @@ export class MisEncuestasPage implements OnInit {
     );
 
     setTimeout(() => {
+
+      this.tipo = this.collectionFormularioLikert.data[0].tipo;
+
       this.tituloEncuesta = this.collectionFormularioLikert.data[0].nombre;
       this.instruccionesEncuesta = this.collectionFormularioLikert.data[0].instrucciones;
       this.linkImagenEncuesta = this.collectionFormularioLikert.data[0].linkImagen;
@@ -427,15 +434,25 @@ export class MisEncuestasPage implements OnInit {
       this.formularioLikertForm.controls['paciente'].setValue(this.app.getCorreo());
 
 
-  
 
       this.registroService.createFormularioRespuestas(this.formularioLikertForm.value).then(resp=>{
       }).catch(error => {
         console.log('error'); 
       })
 
+
+
   
       document.getElementById('formulariolikert').style.display='none';
+
+            
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Formulario enviado!',
+        showConfirmButton: false,
+        timer: 3000
+      })
   
     }
 

@@ -435,7 +435,7 @@ export class InformacionPage implements OnInit {
                   showConfirmButton: false,
                   timer: 3000
                 })
-                
+               
               }).catch(error=>{
                 console.log(error);
               })

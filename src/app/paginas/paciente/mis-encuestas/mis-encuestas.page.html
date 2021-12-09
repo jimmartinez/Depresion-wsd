@@ -97,13 +97,13 @@
 
               <img _ngcontent-orc-c60=""  src="{{linkImagenEncuesta}}"></div>
           
-              <div class="container">
+              <div class="container" *ngIf="tipo==='likert'">
     
                 
                 <form>
                   <div class="form-group">
                     <form [formGroup]='formularioLikertForm'>
-      
+    
                               <!--pregunta1-->
                         <div class="trol" *ngIf="mostrarPregunta[0]" >
                           <div >                            
@@ -966,6 +966,467 @@
                   <button type="button" class="btn btn-outline-dark" (click)="crearFormulario()">Guardar</button>
                 </div>
               </div>
+
+              
+              <div class="container" *ngIf="tipo==='narrativas'">
+    
+                
+                <form>
+                  <div class="form-group">
+                    <form [formGroup]='formularioLikertForm'>
+    
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[0]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta1}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta1" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+    
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[1]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta2}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta2" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[2]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta3}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta3" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[3]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta4}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta4" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[4]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta5}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta5" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[5]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta6}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta6" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[6]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta7}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta7" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[7]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta8}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta8" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[8]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta9}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta9" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[9]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta10}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta10" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[10]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta11}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta11" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+    
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[11]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta12}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta12" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[12]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta13}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta13" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[13]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta14}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta14" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[14]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta15}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta15" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[15]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta16}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta16" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[16]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta17}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta17" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[17]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta18}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta18" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[18]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta19}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta19" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[19]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta20}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta20" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[20]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta21}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta21" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+    
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[21]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta22}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta22" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[22]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta23}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta23" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[23]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta24}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta24" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[24]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta25}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta25" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[25]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta26}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta26" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[26]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta27}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta27" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[27]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta28}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta28" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[28]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta29}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta29" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[29]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta30}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta30" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+
+                                                      <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[30]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta31}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta31" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+    
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[31]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta32}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta32" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[32]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta33}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta33" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[33]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta34}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta34" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[34]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta35}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta35" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[35]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta36}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta36" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[36]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta37}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta37" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[37]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta38}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta38" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[38]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta39}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta39" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                            
+                              <!--pregunta1-->
+                        <div  *ngIf="mostrarPregunta[39]" >
+                          <div class="trol">                            
+                            <h1 class="opciones">{{pregunta40}}</h1>
+                            <div>
+                              <textarea class="narra" type="text"  formControlName="respuesta40" name="respuesta1" value="0" *ngIf="mostrarEnunciadoOpcion[0]" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                    </form>
+                  </div>
+                </form>
+                  
+      
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="crearFormulario()">Guardar</button>
+                </div>
+              </div>
+
+
             </form>
           </div>
       

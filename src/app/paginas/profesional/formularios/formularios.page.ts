@@ -30,6 +30,9 @@ export class FormulariosPage implements OnInit {
 
   actualizar: boolean;
 
+  likert = true;
+  narrativas = false;
+
 
 
   constructor(
@@ -150,7 +153,7 @@ export class FormulariosPage implements OnInit {
       pregunta40: ['',Validators.required],
       categoria40: ['',Validators.required],
 
-      tipo:['likert',Validators.required]
+      tipo:['',Validators.required]
 
 
     })
@@ -507,6 +510,21 @@ actualizarFormularioLikert(){
   }).catch(error=>{
     console.log(error);
   })
+}
+
+
+actualizarTipoFormulario(){
+
+  if(this.formularioForm.value.tipo == 'narrativas'){
+    this.narrativas = true;
+    this.likert = false;
+  }else{
+    if (this.formularioForm.value.tipo == 'likert') {
+      this.narrativas = false;
+      this.likert = true;
+    }
+  }
+
 }
 
 

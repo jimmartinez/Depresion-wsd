@@ -45,7 +45,8 @@
     
       </thead>
       <tbody>
-        <tr *ngFor="let item of collectionPuntajes.data">
+        <tr *ngFor="let item of collectionPuntajes.data
+        | search: filtro_valor">
           <td>{{item.nombre}}</td>
           <td>{{item.paciente}}</td>
           <td>{{item.puntaje}}</td>
@@ -64,3 +65,6 @@
   </div>
 
 </ion-content>
+
+<app-search (search)="handleSearch($event)"></app-search>
+
