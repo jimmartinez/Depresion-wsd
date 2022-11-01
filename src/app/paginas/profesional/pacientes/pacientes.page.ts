@@ -123,6 +123,7 @@ export class PacientesPage implements OnInit {
 
 
   nombreProfesional ='cargando';
+  correoProfesional ='Cargando'
 
   
   mostrarBasica = true;
@@ -143,6 +144,7 @@ export class PacientesPage implements OnInit {
 
     setInterval(() => {
       this.nombreProfesional = this.app.getNombre();
+      this.correoProfesional = this.app.getCorreo();
     }, 1000);
 
 
@@ -196,6 +198,7 @@ export class PacientesPage implements OnInit {
       nombreFormulario: [,Validators.required],
       tipoFormulario: ['',Validators.required],
       correoPaciente: ['',Validators.required],
+      correoProfesional: ['',Validators.required]
 
 
     })
@@ -267,6 +270,7 @@ export class PacientesPage implements OnInit {
       
       nombreFormulario: formulario.nombre,
       tipoFormulario: formulario.tipo,
+      correoProfesional: this.correoProfesional,
       correoPaciente: this.correoPacienteSeleccionado,
 
     });
