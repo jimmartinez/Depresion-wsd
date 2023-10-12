@@ -51,7 +51,7 @@ ion-menu-button {
   button.items{
     width: 100%;
     height: 50px;
-    background-color: #043575;
+    background-color: #1455ab;
     border-radius: 50px;
     transition: all 0.5s ease-out;
     font-family: 'Poppins', sans-serif;
@@ -192,7 +192,7 @@ ion-menu-button {
     
   /* Full-width input fields */
   input[type=email], input[type=password],input[type=text],input[type=tel],input[type=number],input[type=date],[type=url] {
-    width: 50%;
+    width: 90%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -419,5 +419,34 @@ ion-menu-button {
     border-radius: 10%;
 
   }
+
+div.form-group{
+  label{
+    width: 100%;
+  }
+
+}
+
+.items{
+  background-color: #1455ab;
+}
+
+.checks{
+  display: inherit;
+}
+
+
+  @media (max-width:1023px)  { 
+    
+    .columnaImagen{ 
+      display: none;
+      visibility: hidden;
+     }
+
+        /* Full-width input fields */
+    input[type=email], input[type=password],input[type=text],input[type=tel],input[type=number],input[type=date],[type=url] {
+      width: 90%;
+    }
+   }
 
   

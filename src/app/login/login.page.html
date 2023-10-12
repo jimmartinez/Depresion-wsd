@@ -60,8 +60,8 @@
 
                   <select class="items" type="text" formControlName="genero" placeholder="--Elige--" required>
 
-                    <option class="items" >Masculino</option>
-                    <option class="items" >Femenino</option>
+                    <option class="items" >Cisgénero</option>
+                    <option class="items" >Transgénero</option>
 
                     
                   </select>
@@ -75,19 +75,9 @@
                     <option class="items" >Heterosexual</option>
                     <option class="items" >Homosexual</option>
                     <option class="items" >Bisexual</option>
-                    <option class="items" >Transexual</option>
-                    <option class="items" >Asexual</option>
                     <option class="items" >Pansexual</option>
-                    <option class="items" >Androsexual</option>
-                    <option class="items" >Demisexual</option>
-                    <option class="items" >Sapiosexual</option>
-                    <option class="items" >Graysexual</option>
-                    <option class="items" >Metrosexual</option>
-                    <option class="items" >Lumbersexual</option>
-                    <option class="items" >Spornosexual</option>
-                    <option class="items" >Queer</option>
-                    <option class="items" >Arromantico</option>
-                    <option class="items" >Poliamoroso</option>
+                    <option class="items" >Prefiero no responder</option>
+
 
                     
                   </select>
@@ -102,7 +92,7 @@
                  <div class="form-group">
                   <label >Dirección laboral</label>
                   <input type="text" formControlName="direccionLaboral" maxlength="30" class="form-control" placeholder="Digita tu direccion laboral" required>
-                </div>
+                 </div>
       
 
                                   
@@ -247,7 +237,7 @@
       
               </div>
             </ion-col>
-            <ion-col>
+            <ion-col class = "columnaImagen">
               <div><img src="./assets/login.jpg" ></div>
             </ion-col>
           </ion-row>
@@ -369,14 +359,28 @@
                      <input type="email" formControlName="correoSecundario" class="form-control" placeholder="Digita tu correo electrónico secundario" required>
                    </div>
         
+
+
+
+
                    <div class="form-group">
-                     <label >Acepto la política de tratamiento de datos personales</label>
-                     <input type="checkbox" formControlName="politica" class="form-control" placeholder="¿Estas de acuerdo?" required>
+
+                          <input type="checkbox" formControlName="politica" class="form-control" placeholder="¿Estas de acuerdo?" required>
+
+                          <label >Acepto la política de tratamiento de datos personales</label>
+
                    </div>
+
+
+
+
   
                    <div class="form-group">
-                    <label >Acepto los términos y condiciones</label>
-                    <input type="checkbox" formControlName="terminos" class="form-control" placeholder="¿Estas de acuerdo?" required>
+
+                          <label >Acepto los términos y condiciones</label>
+
+                          <input type="checkbox" formControlName="terminos" class="form-control" placeholder="¿Estas de acuerdo?" required>
+
                   </div>
   
   
