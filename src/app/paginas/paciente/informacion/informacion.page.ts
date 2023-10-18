@@ -194,20 +194,19 @@ export class InformacionPage implements OnInit {
       nombre: ['',Validators.required],
       apellido1: ['',Validators.required],
       apellido2: ['',Validators.required],
-      fechaNacimiento: ['',Validators.required],
+      tipoDoc: ['',Validators.required],
+      numDoc: ['',Validators.required],
       lugarNacimiento: ['',Validators.required],
-      genero: ['',Validators.required],
-      orientacionSexual: ['',Validators.required],
-      direccionResidencia: ['',Validators.required],
-      direccionLaboral: ['',Validators.required],
-      estrato: ['',Validators.required],
+      telefonoContacto: ['',Validators.required],
       correoPrincipal: ['',Validators.required],
       correoSecundario: ['',Validators.required],
-      nombreContacto: ['',Validators.required],
-      telefonoContacto: ['',Validators.required],
-      servicioSalud: ['',Validators.required],
-      entidadSalud: ['',Validators.required],
-
+      edad: ['',Validators.required],
+      sexo: ['',Validators.required],
+      identidadGenero: ['',Validators.required],
+      orientacionSexual: ['',Validators.required],
+      estrato: ['',Validators.required],
+      estadoCivil: ['',Validators.required],
+      
 
     })
 
@@ -216,6 +215,7 @@ export class InformacionPage implements OnInit {
     setTimeout(() => {
       this.correo = this.app.getCorreo();
       console.log(this.correo)
+      console.log(this.collectionInfoBasica.data[0].nombre)
     }, 4000);
           
     
@@ -231,24 +231,21 @@ export class InformacionPage implements OnInit {
               nombre: e.payload.doc.data().nombre,
               apellido1: e.payload.doc.data().apellido1,
               apellido2: e.payload.doc.data().apellido2,
-              fechaNacimiento: e.payload.doc.data().fechaNacimiento,
+              tipoDoc: e.payload.doc.data().tipoDoc,
+              numDoc: e.payload.doc.data().numDoc,
               lugarNacimiento: e.payload.doc.data().lugarNacimiento,
-              genero: e.payload.doc.data().genero,
-              orientacionSexual: e.payload.doc.data().orientacionSexual,
-              direccionResidencia: e.payload.doc.data().direccionResidencia,
-              direccionLaboral: e.payload.doc.data().direccionLaboral,
-              estrato: e.payload.doc.data().estrato,
+              telefonoContacto: e.payload.doc.data().telefonoContacto,
               correoPrincipal: e.payload.doc.data().correoPrincipal,
               correoSecundario: e.payload.doc.data().correoSecundario,
-              nombreContacto: e.payload.doc.data().nombreContacto,
-              telefonoContacto: e.payload.doc.data().telefonoContacto,
-              servicioSalud: e.payload.doc.data().servicioSalud,
-              entidadSalud: e.payload.doc.data().entidadSalud,
-              autorizacionContacto: e.payload.doc.data().autorizacionContacto,
-              rol: e.payload.doc.data().rol,
+              edad: e.payload.doc.data().edad,
+              sexo: e.payload.doc.data().sexo,
+              identidadGenero: e.payload.doc.data().identidadGenero,
+              orientacionSexual: e.payload.doc.data().orientacionSexual,
+              estrato: e.payload.doc.data().estrato,
+              estadoCivil: e.payload.doc.data().estadoCivil,
               
-    
-    
+
+              rol: e.payload.doc.data().rol,
               idFirebase: e.payload.doc.id,
     
             }
@@ -314,6 +311,8 @@ export class InformacionPage implements OnInit {
         this.abrirEditarInfoSociodemografica();
         this.abrirEditarInfoBasica();
         this.nombre = this.collectionInfoBasica.data[0].nombre.toString();
+        console.log(this.collectionInfoBasica.data[0].nombre)
+        console.log('this.collectionInfoBasica.data[0].nombre')
         this.apellido = this.collectionInfoBasica.data[0].apellido1.toString();
         this.rol = this.collectionInfoBasica.data[0].rol.toString();
       } catch (error) {
@@ -396,21 +395,22 @@ export class InformacionPage implements OnInit {
       nombre: this.collectionInfoBasica.data[0].nombre,      
       apellido1: this.collectionInfoBasica.data[0].apellido1,
       apellido2: this.collectionInfoBasica.data[0].apellido2,
-      fechaNacimiento: this.collectionInfoBasica.data[0].fechaNacimiento,
+      tipoDoc: this.collectionInfoBasica.data[0].tipoDoc,
+      numDoc: this.collectionInfoBasica.data[0].numDoc,
       lugarNacimiento: this.collectionInfoBasica.data[0].lugarNacimiento,
-      genero: this.collectionInfoBasica.data[0].genero,
-      orientacionSexual: this.collectionInfoBasica.data[0].orientacionSexual,
-      direccionResidencia: this.collectionInfoBasica.data[0].direccionResidencia,
-      direccionLaboral: this.collectionInfoBasica.data[0].direccionLaboral,
-      estrato: this.collectionInfoBasica.data[0].estrato,
+      telefonoContacto: this.collectionInfoBasica.data[0].telefonoContacto,
       correoPrincipal: this.collectionInfoBasica.data[0].correoPrincipal,
       correoSecundario: this.collectionInfoBasica.data[0].correoSecundario,
-      nombreContacto: this.collectionInfoBasica.data[0].nombreContacto,
-      telefonoContacto: this.collectionInfoBasica.data[0].telefonoContacto,
-      servicioSalud: this.collectionInfoBasica.data[0].servicioSalud,
-      entidadSalud: this.collectionInfoBasica.data[0].entidadSalud,
+      edad: this.collectionInfoBasica.data[0].edad,
+      sexo: this.collectionInfoBasica.data[0].sexo,
+      identidadGenero: this.collectionInfoBasica.data[0].identidadGenero,
+      orientacionSexual: this.collectionInfoBasica.data[0].orientacionSexual,
+      estrato: this.collectionInfoBasica.data[0].estrato,
+      estadoCivil: this.collectionInfoBasica.data[0].estadoCivil
+
 
     });
+
 
     
     this.idFirebaseActualizarBasica = this.collectionInfoBasica.data[0].idFirebase;

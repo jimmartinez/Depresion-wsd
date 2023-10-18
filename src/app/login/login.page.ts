@@ -70,21 +70,21 @@ export class LoginPage implements OnInit {
       nombre: ['',Validators.required],
       apellido1: ['',Validators.required],
       apellido2: ['',Validators.required],
-      fechaNacimiento: ['',Validators.required],
+      tipoDoc: ['',Validators.required],
+      numDoc: ['',Validators.required],
       lugarNacimiento: ['',Validators.required],
-      genero: ['',Validators.required],
-      orientacionSexual: ['',Validators.required],
-      direccionResidencia: ['',Validators.required],
-      direccionLaboral: ['',Validators.required],
-      estrato: ['',Validators.required],
+      telefonoContacto: ['',Validators.required],
       correoPrincipal: ['',Validators.required],
       correoSecundario: ['',Validators.required],
-      nombreContacto: ['',Validators.required],
-      telefonoContacto: ['',Validators.required],
+      edad: ['',Validators.required],
+      sexo: ['',Validators.required],
+      identidadGenero: ['',Validators.required],
+      orientacionSexual: ['',Validators.required],
+      estrato: ['',Validators.required],
       servicioSalud: ['',Validators.required],
       politica: ['',Validators.required],
       terminos: ['',Validators.required],
-      entidadSalud: ['',Validators.required],
+      
       rol: ['paciente',Validators.required],
 
     })
@@ -179,6 +179,8 @@ export class LoginPage implements OnInit {
       usuarioTiktok: '',
     })
 
+    
+
     Swal.fire({
       title:'¿Estas seguro que deseas crear este usuario? '+ this.registroForm.value.correoPrincipal + ' ?',
       text:'Esta accion no se podrá deshacer',
@@ -202,12 +204,8 @@ export class LoginPage implements OnInit {
           this.registroForm.value.nombre.length > 45 ||
           this.registroForm.value.apellido2.length > 45 ||
           this.registroForm.value.lugarNacimiento.length > 45||
-          this.registroForm.value.direccionResidencia.length > 45||
-          this.registroForm.value.direccionLaboral.length > 45||
-          this.registroForm.value.nombreContacto.length > 45||
           this.registroForm.value.telefonoContacto.length > 45||
-          this.registroForm.value.servicioSalud.length > 45||
-          this.registroForm.value.entidadSalud.length > 45
+          this.registroForm.value.servicioSalud.length > 45
 
 
           ) {
@@ -268,19 +266,15 @@ export class LoginPage implements OnInit {
                         if (this.registroForm.value.nombre == '' ||
                             this.registroForm.value.apellido1 == ''||
                             this.registroForm.value.apellido2 == ''||
-                            this.registroForm.value.fechaNacimiento == ''||
-                            this.registroForm.value.lugarNacimiento == ''||
-                            this.registroForm.value.genero == ''||
+                            this.registroForm.value.identidadGenero == ''||
                             this.registroForm.value.orientacionSexual == ''||
-                            this.registroForm.value.direccionResidencia == ''||
-                            this.registroForm.value.direccionLaboral == ''||
                             this.registroForm.value.estrato == ''||
                             this.registroForm.value.correoPrincipal == ''||
                             this.registroForm.value.correoSecundario == ''||
-                            this.registroForm.value.nombreContacto == ''||
                             this.registroForm.value.telefonoContacto == ''||
-                            this.registroForm.value.servicioSalud == ''||
-                            this.registroForm.value.entidadSalud == ''
+                            this.registroForm.value.servicioSalud == ''
+                            
+
 
                          ) {
 

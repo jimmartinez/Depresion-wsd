@@ -88,86 +88,36 @@
                       <label >Segundo Apellido</label>
                       <input type="text" formControlName="apellido2" class="form-control" placeholder="Digita tu segundo apellido" required>
                     </div>
+
+                    <div class="form-group">
+                      <label >Tipo de documento </label>
+    
+                      <select class="items" type="text" formControlName="tipoDoc" placeholder="--Elige--" required>
+    
+                        <option class="items" >CC</option>
+                        <option class="items" >CE</option>
+                        <option class="items" >PASAPORTE</option>
+                        
+                      </select>
+                    </div>
           
-                     <div class="form-group">
-                       <label >Fecha de nacimiento</label>
-                       <input type="date" formControlName="fechaNacimiento" class="form-control" placeholder="selecciona tu fecha de nacimiento" required>
+                    <div class="form-group">
+                      <label >Numero de documento</label>
+                      <input type="number" formControlName="numDoc" min=0 max=9999999999999 class="form-control" placeholder="Digita tu direccion laboral" required>
                      </div>
-        
+    
+    
                      <div class="form-group">
-                      <label >Lugar de nacimiento</label>
-                      <input type="text" formControlName="lugarNacimiento" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
+                      <label >Ciudad de residencia</label>
+                      <input type="text" formControlName="lugarNacimiento" maxlength="45" class="form-control" placeholder="Digita tu lugar de nacimiento" required>
                     </div>
-          
-          
-                 
+    
                     <div class="form-group">
-                      <label >Genero </label>
-    
-                      <select class="items" type="text" formControlName="genero" placeholder="--Elige--" required>
-    
-                        <option class="items" >Masculino</option>
-                        <option class="items" >Femenino</option>
-    
-                        
-                      </select>
-                    </div>
-        
-        
-                    <div class="form-group">
-                      <label >Orientación sexual </label>
-    
-                      <select class="items" type="text" formControlName="orientacionSexual" value="--Elige--" required>
-    
-                        <option class="items" >Heterosexual</option>
-                        <option class="items" >Homosexual</option>
-                        <option class="items" >Bisexual</option>
-                        <option class="items" >Transexual</option>
-                        <option class="items" >Asexual</option>
-                        <option class="items" >Pansexual</option>
-                        <option class="items" >Androsexual</option>
-                        <option class="items" >Demisexual</option>
-                        <option class="items" >Sapiosexual</option>
-                        <option class="items" >Graysexual</option>
-                        <option class="items" >Metrosexual</option>
-                        <option class="items" >Lumbersexual</option>
-                        <option class="items" >Spornosexual</option>
-                        <option class="items" >Queer</option>
-                        <option class="items" >Arromantico</option>
-                        <option class="items" >Poliamoroso</option>
-    
-                        
-                      </select>
+                      <label >Teléfono de contacto</label>
+                      <input type="number" formControlName="telefonoContacto" min="0" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
                     </div>
           
-          
-                     <div class="form-group">
-                       <label >Dirección de residencia</label>
-                       <input type="text" formControlName="direccionResidencia" class="form-control" placeholder="Digita tu direccion de residencia" required>
-                     </div>
-        
-                     <div class="form-group">
-                      <label >Dirección laboral</label>
-                      <input type="text" formControlName="direccionLaboral" class="form-control" placeholder="Digita tu direccion laboral" required>
-                    </div>
-          
-          
-                    <div class="form-group">
-                      <label >Estrato </label>
-    
-                      <select class="items" type="number" formControlName="estrato" placeholder="--Elige--" required>
-    
-                        <option class="items" >0</option>
-                        <option class="items" >1</option>
-                        <option class="items" >2</option>
-                        <option class="items" >3</option>
-                        <option class="items" >4</option>
-                        <option class="items" >5</option>
-                        <option class="items" >6</option>
-    
-                        
-                      </select>
-                    </div>
+      
         
                      <div class="form-group">
                       <label >Correo electrónico principal</label>
@@ -179,23 +129,94 @@
                        <label >Correo electrónico secundario</label>
                        <input type="email" formControlName="correoSecundario" class="form-control" placeholder="Digita tu correo electrónico secundario" required>
                      </div>
-        
-        
-                     <div class="form-group">
-                      <label >Nombre de contacto</label>
-                      <input type="text" formControlName="nombreContacto" class="form-control" placeholder="Digita el nombre de un contacto tuyo" required>
-                    </div>
-        
-          
-                     <div class="form-group">
-                       <label >Teléfono de contacto</label>
-                       <input type="number" formControlName="telefonoContacto" class="form-control" placeholder="Digita aqui el telefono de tu contacto" required>
-                     </div>
+
 
                      <div class="form-group">
-                      <label >¿A que entidad de salud estas afiliado?</label>
-                      <input type="text" formControlName="entidadSalud"  class="form-control" placeholder="Digita tu EPS" required>
+                      <label >Edad</label>
+                      <input type="number" formControlName="edad" min=0 max=120 class="form-control" placeholder="selecciona tu fecha de nacimiento" required>
                     </div>
+
+                    <div class="form-group">
+                      <label >Sexo </label>
+    
+                      <select class="items" type="text" formControlName="sexo" placeholder="--Elige--" required>
+    
+                        <option class="items" >Masculino</option>
+                        <option class="items" >Femenino</option>
+    
+                        
+                      </select>
+                    </div>
+
+
+                                     
+                <div class="form-group">
+                  <label >Identidad de Género </label>
+
+                  <select class="items" type="text" formControlName="identidadGenero" placeholder="--Elige--" required>
+
+                    <option class="items" >Cisgénero</option>
+                    <option class="items" >Transgénero</option>
+
+                    
+                  </select>
+                </div>
+
+
+
+                <div class="form-group">
+                  <label >Orientacion sexual </label>
+
+                  <select class="items" type="text" formControlName="orientacionSexual" value="--Elige--" required>
+
+                    <option class="items" >Heterosexual</option>
+                    <option class="items" >Homosexual</option>
+                    <option class="items" >Bisexual</option>
+                    <option class="items" >Pansexual</option>
+                    <option class="items" >Prefiero no responder</option>
+
+
+                    
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label >Estrato Socioeconómico</label>
+
+                  <select class="items" type="number" formControlName="estrato" placeholder="--Elige--" required>
+
+                    <option class="items" >0</option>
+                    <option class="items" >1</option>
+                    <option class="items" >2</option>
+                    <option class="items" >3</option>
+                    <option class="items" >4</option>
+                    <option class="items" >5</option>
+                    <option class="items" >6</option>
+
+                    
+                  </select>
+                </div>
+
+
+                
+                <div class="form-group">
+                  <label >Estado civil </label>
+
+                  <select class="items" type="text" formControlName="estadoCivil" value="--Elige--" required>
+
+                    <option class="items" >Soltero</option>
+                    <option class="items" >Casado</option>
+                    <option class="items" >Union Libre</option>
+                    <option class="items" >Viudo</option>
+                    <option class="items" >Divorciado</option>
+
+
+                    
+                  </select>
+                </div>
+
+
+
     
         
         
@@ -214,7 +235,7 @@
             <ion-slide>
               <div class="slide">
         
-        
+      
         <div >
               <div class="imgcontainer">
                 <div class="modal-header" class="center">
