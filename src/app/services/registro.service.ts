@@ -195,4 +195,13 @@ getAsignacionesPaciente(correo: string){
   return this.firestore.collection("asignaciones", ref => ref.where("correoPaciente","==",correo)).snapshotChanges();
 }
 
+
+
+//para obtener los datos de respuestas android
+getPromedioAndroid(fechaIni: any){
+  return this.firestore.collection("promediosAndroid", ref => ref.where("fecha", ">=", fechaIni)).snapshotChanges();
+}
+
+
+
 }

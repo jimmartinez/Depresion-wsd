@@ -170,7 +170,8 @@ try{
                 { title: 'Formularios', url: '/formularios', icon: 'list' },
                 { title: 'Pacientes', url: '/pacientes', icon: 'people' },
                 { title: 'Etiquetas', url: '/etiquetas', icon: 'ticket' },
-                { title: 'Puntajes', url: '/puntajes', icon: 'trophy' }
+                { title: 'Puntajes', url: '/puntajes', icon: 'trophy' },
+                { title: 'Puntajes Android', url: '/android', icon: 'trophy' }
               ];
 
             } else {

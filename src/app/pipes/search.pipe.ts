@@ -13,7 +13,12 @@ export class SearchPipe implements PipeTransform {
       try {
         return lista.filter(item =>  item.paciente.includes(texto));
       } catch (error) {
-        return lista.filter(item =>  item.correoPrincipal.includes(texto));
+        try {
+          return lista.filter(item =>  item.correoPrincipal.includes(texto));
+        } catch (error) {
+          return lista.filter(item =>  item.correo.includes(texto));
+        }
+
       }
 
   }

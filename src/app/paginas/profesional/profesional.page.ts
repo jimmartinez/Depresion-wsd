@@ -37,6 +37,13 @@ export class ProfesionalPage implements OnInit {
     
   }
 
+  irAPuntajesAndroid(){
+
+    this.router.navigateByUrl('puntajes');
+    this.menuCtrl.enable(true);
+    
+  }
+
 
 
 }

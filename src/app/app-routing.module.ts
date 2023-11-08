@@ -62,6 +62,10 @@ const routes: Routes = [
   {
     path: 'puntajes',
     loadChildren: () => import('./paginas/profesional/puntajes/puntajes.module').then( m => m.PuntajesPageModule)
+  },
+  {
+    path: 'android',
+    loadChildren: () => import('./paginas/profesional/android/android.module').then( m => m.AndroidPageModule)
   }
 ];
 

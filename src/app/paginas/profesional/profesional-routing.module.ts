@@ -22,6 +22,10 @@ const routes: Routes = [
   },  {
     path: 'puntajes',
     loadChildren: () => import('./puntajes/puntajes.module').then( m => m.PuntajesPageModule)
+  },
+  {
+    path: 'android',
+    loadChildren: () => import('./android/android.module').then( m => m.AndroidPageModule)
   }
 
 ];
