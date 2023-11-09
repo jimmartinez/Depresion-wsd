@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -17,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     IonicModule,
     AndroidPageRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AndroidPage,
@@ -25,3 +26,4 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SearchPipe]
 })
 export class AndroidPageModule {}
+

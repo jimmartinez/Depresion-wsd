@@ -19,6 +19,7 @@ export class AndroidPage implements OnInit {
 
 
   collectionPuntajesA = {count: 20, data: []};
+  collectionRespuestas = {count: 20, data: []};
 
   nombreProfesional ='cargando';
 
@@ -37,7 +38,6 @@ export class AndroidPage implements OnInit {
 
 
     fechaIni= new Date;
-    fechaCambiante = new Date;
 
   ngOnInit() {
 
@@ -76,7 +76,7 @@ export class AndroidPage implements OnInit {
     console.log('mes'+mes)
     console.log('año'+anio)
 
-    this.fechaIni.setDate(dia);
+    this.fechaIni.setDate(dia-2);
     this.fechaIni.setMonth(mes-1);
     this.fechaIni.setFullYear(anio);
 
@@ -110,6 +110,39 @@ export class AndroidPage implements OnInit {
     }, 5000);
 
 
+
+  }
+
+
+  verRespuestas(item:any){
+    document.getElementById('verRespuestas').style.display='block';
+
+
+    //obtener correo, fecha, pregunta y respuesta
+    
+
+
+      this.registroService.getRespuestasAndroid( this.fechaIni, item.correo).subscribe(resp=>{
+
+        this.collectionRespuestas.data = resp.map( (e:any)=>{
+          return{
+            
+            
+            fecha: new Date(e.payload.doc.data().fecha.seconds * 1000).toISOString().slice(0, 10),
+            pregunta: e.payload.doc.data().pregunta,
+            respuesta: e.payload.doc.data().respuesta,
+            
+            idFirebase: e.payload.doc.id
+  
+          }
+        })
+      },
+      error=>{
+        console.log('hay un error'+error);
+      }
+  
+      );
+    
 
   }
 

@@ -16,7 +16,7 @@
           <div>  
            
             <ion-avatar slot="start">
-              <img src="https://imgs.globovision.com/41T1b5hiCk6bhh4IC5ag2FFeeTk=/847x0/smart/9578fca5d59845cf84546777e80164b1">
+              <img src="https://img.freepik.com/psd-gratis/icono-3d-aplicacion-redes-sociales_23-2150049569.jpg?size=626&ext=jpg">
             </ion-avatar>
           </div>
         </ion-col>
@@ -54,7 +54,7 @@
           <td>{{item.variable}}</td>
           <td>{{item.promedio}}</td>
           <td>            
-            <button class="items" >
+            <button class="items" (click)="verRespuestas(item)">
               <img class="iconos" src="../../../../assets/icon/ver.png">
             </button>
           </td>
@@ -71,6 +71,53 @@
     
     
   </div>
+
+
+
+      <!--este es el modulo de asignacion-->
+      <div style="text-align: center;">
+    
+        <div id="verRespuestas" class="modal">
+          
+    
+          <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('verRespuestas').style.display='none'" class="close" title="Close Modal">&times;</span>
+              
+              <div class="center">
+                  <h1 class="uno">RESPUESTAS DE *CORREO*  </h1>
+                  <br> 
+              </div>
+              
+            </div>
+        
+            <div style="text-align: center;">
+
+
+              <table class="table" id="tabla">
+                <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Pregunta</th>
+                  <th>Respuesta</th>
+                </tr>
+              
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of collectionRespuestas.data">
+                    <td>{{item.fecha}}</td>
+                    <td>{{item.pregunta}}</td>
+                    <td>{{item.respuesta}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+              
+          </form>
+        </div>
+    
+      
+      </div>
 
 </ion-content>
 

@@ -205,16 +205,16 @@ export class InformacionPage implements OnInit {
       identidadGenero: ['',Validators.required],
       orientacionSexual: ['',Validators.required],
       estrato: ['',Validators.required],
-      estadoCivil: ['',Validators.required],
       
 
     })
 
+    
 
     //este si debe ir porque verifica que si este autenticado
     setTimeout(() => {
       this.correo = this.app.getCorreo();
-      console.log(this.correo)
+      console.log(this.correo+'apapap')
       console.log(this.collectionInfoBasica.data[0].nombre)
     }, 4000);
           
@@ -242,7 +242,7 @@ export class InformacionPage implements OnInit {
               identidadGenero: e.payload.doc.data().identidadGenero,
               orientacionSexual: e.payload.doc.data().orientacionSexual,
               estrato: e.payload.doc.data().estrato,
-              estadoCivil: e.payload.doc.data().estadoCivil,
+              
               
 
               rol: e.payload.doc.data().rol,
@@ -256,7 +256,7 @@ export class InformacionPage implements OnInit {
         }
         );
       
-      }, 4500);
+      }, 5000);
 
     setTimeout(() => {
     
@@ -312,7 +312,6 @@ export class InformacionPage implements OnInit {
         this.abrirEditarInfoBasica();
         this.nombre = this.collectionInfoBasica.data[0].nombre.toString();
         console.log(this.collectionInfoBasica.data[0].nombre)
-        console.log('this.collectionInfoBasica.data[0].nombre')
         this.apellido = this.collectionInfoBasica.data[0].apellido1.toString();
         this.rol = this.collectionInfoBasica.data[0].rol.toString();
       } catch (error) {
@@ -406,7 +405,7 @@ export class InformacionPage implements OnInit {
       identidadGenero: this.collectionInfoBasica.data[0].identidadGenero,
       orientacionSexual: this.collectionInfoBasica.data[0].orientacionSexual,
       estrato: this.collectionInfoBasica.data[0].estrato,
-      estadoCivil: this.collectionInfoBasica.data[0].estadoCivil
+
 
 
     });
@@ -445,8 +444,6 @@ export class InformacionPage implements OnInit {
 
   actualizarInfoBasica(){
 
-
-    this.registroForm.controls['servicioSalud'].setValue(this.collectionInfoBasica.data[0].servicioSalud);
 
     
 

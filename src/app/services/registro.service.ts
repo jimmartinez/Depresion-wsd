@@ -197,9 +197,14 @@ getAsignacionesPaciente(correo: string){
 
 
 
-//para obtener los datos de respuestas android
+//para obtener los datos de promedios android por fecha
 getPromedioAndroid(fechaIni: any){
   return this.firestore.collection("promediosAndroid", ref => ref.where("fecha", ">=", fechaIni)).snapshotChanges();
+}
+
+//para obtener los datos de respuestas android por fecha y correo
+getRespuestasAndroid(fechaIni: any,correo:any){
+  return this.firestore.collection("respuestasAndroid", ref => ref.where("fecha", ">=", fechaIni).where("correo", "==", correo)).snapshotChanges();
 }
 
 
